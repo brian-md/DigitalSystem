@@ -4,6 +4,7 @@ import Layout from 'components/layout';
 import Box from 'components/box';
 import Hero from 'components/hero';
 import Title from 'components/title';
+import Section from 'components/section';
 import Gallery from 'components/gallery';
 import IOExample from 'components/io-example';
 import Modal from 'containers/modal';
@@ -17,6 +18,7 @@ const Index = ({ data }) => (
         data.prismicHomePage.data.hero_image.localFile.childImageSharp.fluid
       }
     />
+    <Section title="hiii">asdf</Section>
     <Box>
       <Title as="h2" size="large">
         {data.homeJson.content.childMarkdownRemark.rawMarkdownBody}

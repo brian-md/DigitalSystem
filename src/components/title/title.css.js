@@ -3,20 +3,13 @@ import MEDIA from 'helpers/mediaTemplates';
 
 export const Text = styled.span`
   display: block;
-  font-weight: ${({ size }) => () => {
-    switch (size) {
-      case 'large':
-        return '400';
-      default:
-        return '500';
-    }
-  }};
+  font-weight: ${({bold})=> (bold ? 900 : 100)};
   font-size: ${({ size }) => () => {
     switch (size) {
       case 'xl':
         return '3.5rem';
       case 'large':
-        return '3.2rem';
+        return '2.5rem';
       default:
         return '2rem';
     }
@@ -47,7 +40,7 @@ export const Text = styled.span`
         case 'x':
           return '2.9rem';
         case 'large':
-          return '2.6rem';
+          return '2.0rem';
         default:
           return '2rem';
       }
