@@ -14,7 +14,7 @@ export const Text = styled.span`
   font-size: ${({ size }) => () => {
     switch (size) {
       case 'xl':
-        return '';
+        return '3.5rem';
       case 'large':
         return '3.2rem';
       default:
@@ -44,6 +44,8 @@ export const Text = styled.span`
   ${MEDIA.TABLET`
     font-size: ${({ size }) => () => {
       switch (size) {
+        case 'x':
+          return '2.9rem';
         case 'large':
           return '2.6rem';
         default:

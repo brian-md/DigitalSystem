@@ -26,6 +26,10 @@ export default createGlobalStyle`
     vertical-align: baseline;
   }
 
+  strong {
+    font-weight: 900;
+  }
+
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure,
   footer, header, hgroup, menu, nav, section {
@@ -33,7 +37,10 @@ export default createGlobalStyle`
   }
 
   html {
-    font-size: 14pt;
+    font-size: 11pt;
+    ${MEDIA.MIN_TABLET`
+    font-size: 12pt;
+  `};  
   ${MEDIA.MIN_DESKTOP`
     font-size: 12pt;
   `};

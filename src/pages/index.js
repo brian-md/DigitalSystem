@@ -11,7 +11,12 @@ import { graphql } from 'gatsby';
 
 const Index = ({ data }) => (
   <Layout>
-    <Hero title="Hi there" />
+    <Hero
+      title={data.prismicHomePage.data.tagline.html}
+      image={
+        data.prismicHomePage.data.hero_image.localFile.childImageSharp.fluid
+      }
+    />
     <Box>
       <Title as="h2" size="large">
         {data.homeJson.content.childMarkdownRemark.rawMarkdownBody}
@@ -40,6 +45,22 @@ export default Index;
 
 export const query = graphql`
   query HomepageQuery {
+    prismicHomePage {
+      data {
+        tagline {
+          html
+        }
+        hero_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 2500) {
+                ...GatsbyImageSharpFluid_noBase64
+              }
+            }
+          }
+        }
+      }
+    }
     homeJson {
       title
       content {
