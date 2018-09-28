@@ -4,6 +4,7 @@ import Layout from 'components/layout';
 import Box from 'components/box';
 import Hero from 'components/hero';
 import Title from 'components/title';
+import Paragraph from 'components/paragraph';
 import Section from 'components/section';
 import Gallery from 'components/gallery';
 import IOExample from 'components/io-example';
@@ -18,7 +19,11 @@ const Index = ({ data }) => (
         data.prismicHomePage.data.hero_image.localFile.childImageSharp.fluid
       }
     />
-    <Section title="hiii">asdf</Section>
+    <Section title={data.prismicHomePage.data.services_title.text}>
+      <Paragraph html>
+        {data.prismicHomePage.data.services_tagline.html}
+      </Paragraph>
+    </Section>
     <Box>
       <Title as="h2" size="large">
         {data.homeJson.content.childMarkdownRemark.rawMarkdownBody}
@@ -51,6 +56,12 @@ export const query = graphql`
       data {
         tagline {
           html
+        }
+        services_tagline {
+          html
+        }
+        services_title {
+          text
         }
         hero_image {
           localFile {

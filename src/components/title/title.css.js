@@ -3,7 +3,7 @@ import MEDIA from 'helpers/mediaTemplates';
 
 export const Text = styled.span`
   display: block;
-  font-weight: ${({bold})=> (bold ? 900 : 100)};
+  font-weight: ${({ bold }) => (bold ? 900 : 100)};
   font-size: ${({ size }) => () => {
     switch (size) {
       case 'xl':

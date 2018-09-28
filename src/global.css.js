@@ -25,7 +25,9 @@ export default createGlobalStyle`
     font: inherit;
     vertical-align: baseline;
   }
-
+  p:only-of-type {
+    margin: 0;
+  }
   strong {
     font-weight: 900;
   }
