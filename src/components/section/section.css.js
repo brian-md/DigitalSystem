@@ -7,32 +7,67 @@ export const Container = styled.section`
   align-items: center;
   padding: 4rem;
   flex-direction: column;
-  padding: 6rem 0 4rem 0;
+  padding: 60rem 0 4rem 0;
+  padding-top: ${({top})=> top ? '14.75rem' : '6rem'}
   overflow: hidden;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: ${({ bg }) => () => {
+    switch (bg) {
+      case 'white':
+        return '#ffffff';
+      case 'purple':
+        return '#4797ec';
+    }
+  }};
+  background-image: ${({ bg }) => () => {
+    switch (bg) {
+      case 'white':
+        return 'none';
+      case 'purple':
+        return `url("/images/overlay.png"),linear-gradient(45deg, rgba(71, 151, 236, 0), #884beb 80%)`;
+    }
+  }};
+  color: ${({ bg }) => () => {
+    switch (bg) {
+      case 'purple':
+        return '#ffffff';
+      default:
+        return `#000000`;
+    }
+  }};
   position: relative;
   text-align: center;
+
   &::after {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1900' height='150' viewBox='0 0 1900 150' preserveAspectRatio='none'%3E%3Cpath d='M0,25.7C243.4,84,596.7,150,950,150c353.3,0,706.6-66,950-124.3V150H0V25.7z' fill='%23ffffff'/%3E%3C/svg%3E");
     background-size: 100% 100%;
     background-position: center;
     bottom: -1px;
     content: '';
-    height: 0rem;
+    height: ${({bottom}) => bottom ? '8rem' : '0'};
     left: 0;
     position: absolute;
     width: 100%;
     box-shadow: inset 0 -1px 0 0 #ffffff;
   }
+  &::before {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1900' height='150' viewBox='0 0 1900 150' preserveAspectRatio='none'%3E%3Cpath d='M0,0h1900c-243.3,58.2-596.3,123.9-949.4,124h-1.2C596.3,123.9,243.3,58.2,0,0z' fill='%23ffffff'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-position: center;
+    content: "";
+    height: ${({top}) => top ? '8rem' : '0'};
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
   ${MEDIA.DESKTOP`
-    &::after {
+    &::after, &::before {
         background-size: 125% 100%;
         height: 6rem;
     }
   `};
   ${MEDIA.TABLET`
-    &::after {
+    &::after, &::before {
         background-size: 125% 100%;
         height: 4rem;
     }

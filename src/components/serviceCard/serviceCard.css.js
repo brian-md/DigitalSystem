@@ -11,9 +11,14 @@ export const Container = styled.div`
     // eslint-disable-next-line
     flip ? '\'content image\'' : '\'image content\''};
   align-self: stretch;
-  div:first-child {
-    max-width: 25vw;
+  img {
+    border-radius: 100%;
   }
+  ${MEDIA.MIN_LARGE`
+    div:first-child {
+      max-width: 35vw;
+    }
+  `}
   ${MEDIA.LARGE`
   grid-template-columns: ${({ flip }) => (flip ? '1fr 20rem' : '20rem 1fr')};
   `};
