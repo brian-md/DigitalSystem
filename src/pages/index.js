@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Layout from 'components/layout';
-import Box from 'components/box';
 import Hero from 'components/hero';
-import Title from 'components/title';
 import Paragraph from 'components/paragraph';
 import Section from 'components/section';
-import Gallery from 'components/gallery';
-import IOExample from 'components/io-example';
-import Modal from 'containers/modal';
+import ServiceCardList from 'containers/serviceCardList';
 import { graphql } from 'gatsby';
 
 const Index = ({ data }) => (
@@ -23,24 +19,17 @@ const Index = ({ data }) => (
       <Paragraph html>
         {data.prismicHomePage.data.services_tagline.html}
       </Paragraph>
+      <ServiceCardList
+        services={data.allPrismicService.edges}
+        spotlight={[
+          data.prismicHomePage.data.service_spotlight_1.document[0].uid,
+          data.prismicHomePage.data.service_spotlight_2.document[0].uid,
+          data.prismicHomePage.data.service_spotlight_3.document[0].uid,
+        ]}
+      />
     </Section>
-    <Box>
-      <Title as="h2" size="large">
-        {data.homeJson.content.childMarkdownRemark.rawMarkdownBody}
-      </Title>
-      <Modal>
-        <video
-          src="https://i.imgur.com/gzFqNSW.mp4"
-          playsInline
-          loop
-          autoPlay
-          muted
-        />
-      </Modal>
-    </Box>
-    <Gallery items={data.homeJson.gallery} />
+
     <div style={{ height: '50vh' }} />
-    <IOExample />
   </Layout>
 );
 
@@ -72,6 +61,21 @@ export const query = graphql`
             }
           }
         }
+        service_spotlight_1 {
+          document {
+            uid
+          }
+        }
+        service_spotlight_2 {
+          document {
+            uid
+          }
+        }
+        service_spotlight_3 {
+          document {
+            uid
+          }
+        }
       }
     }
     homeJson {
@@ -82,13 +86,26 @@ export const query = graphql`
           rawMarkdownBody
         }
       }
-      gallery {
-        title
-        copy
-        image {
-          childImageSharp {
-            fluid(maxHeight: 500, quality: 90) {
-              ...GatsbyImageSharpFluid_withWebp
+    }
+    allPrismicService {
+      edges {
+        node {
+          uid
+          data {
+            service_name {
+              text
+            }
+            short_description {
+              text
+            }
+            main_image {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 2500) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
             }
           }
         }

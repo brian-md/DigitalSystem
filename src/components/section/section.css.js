@@ -39,3 +39,15 @@ export const Container = styled.section`
     min-height: 0;
   `};
 `;
+
+export const Inner = styled.div`
+  margin: 0 auto;
+  width: 75rem;
+  max-width: calc(100% - 8rem);
+  ${MEDIA.DESKTOP`
+    max-width: calc(100% - 6rem);
+  `};
+  ${MEDIA.TABLET`
+    max-width: calc(100% - 4rem);
+  `};
+`;

@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 import MEDIA from 'helpers/mediaTemplates';
+const getMargin = align =>
+  ({
+    center: '0 auto',
+    left: '0 auto 0 0',
+    right: '0 0 0 auto',
+  }[align]);
 
 export const Text = styled.span`
   display: block;
@@ -11,9 +17,10 @@ export const Text = styled.span`
       case 'large':
         return '2.5rem';
       default:
-        return '2rem';
+        return '1.75rem';
     }
   }};
+  text-align: ${({ align }) => align};
   line-height: 1.2;
   text-transform: uppercase;
   padding-bottom: ${({ line }) => (line ? '0.87em' : '0')};
@@ -24,7 +31,7 @@ export const Text = styled.span`
     content: '';
     height: 2px;
     display: ${({ line }) => (line ? 'block' : 'none')};
-    margin: ${({ center }) => (center ? '0 auto' : '0')};
+    margin: ${({ align }) => getMargin(align)};
     width: 5rem;
     background-color: #4797ec;
     background-image: url(/images/overlay.png),
@@ -34,15 +41,27 @@ export const Text = styled.span`
     box-sizing: content-box;
     background: ${({ invert }) => (invert ? 'white' : 'auto')};
   }
+  ${MEDIA.DESKTOP`
+    font-size: ${({ size }) => () => {
+      switch (size) {
+        case 'xl':
+          return '3.2rem';
+        case 'large':
+          return '2.3rem';
+        default:
+          return '1.5rem';
+      }
+    }};
+  `};
   ${MEDIA.TABLET`
     font-size: ${({ size }) => () => {
       switch (size) {
-        case 'x':
+        case 'xl':
           return '2.9rem';
         case 'large':
           return '2.0rem';
         default:
-          return '2rem';
+          return '1.25rem';
       }
     }};
   `};

@@ -11,17 +11,20 @@ export const Text = styled.p`
       case 'large':
         return '1.75rem';
       default:
-        return '1.25rem';
+        return '1rem';
     }
   }};
   margin: 0;
   line-height: 2;
-  letter-spacing: 2px;
+  letter-spacing: 0.1px;
   margin-bottom: 2rem;
+  &:only-of-type {
+    margin-bottom: 2rem;
+  }
   ${MEDIA.TABLET`
     font-size: ${({ size }) => () => {
       switch (size) {
-        case 'x':
+        case 'xl':
           return '2rem';
         case 'large':
           return '1.7rem';

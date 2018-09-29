@@ -32,7 +32,7 @@ const Hero = ({ title, image }) => (
         <Title as="h1">LOGO</Title>
       </AnimatedContainer>
       <AnimatedContainer>
-        <Title as="h1" line center invert size="xl" html>
+        <Title as="h1" line align="center" invert size="xl" html>
           {title}
         </Title>
       </AnimatedContainer>
@@ -40,12 +40,12 @@ const Hero = ({ title, image }) => (
       <Img
         fluid={image}
         style={{
-          position: 'absolute',
+          position: 'fixed',
           top: 0,
           left: 0,
           minWidth: '100vw',
           minHeight: '100%',
-          zIndex: -1,
+          zIndex: -4,
         }}
       />
     </ParentContainer>

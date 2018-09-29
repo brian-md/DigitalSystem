@@ -46,7 +46,7 @@ export default createGlobalStyle`
   ${MEDIA.MIN_DESKTOP`
     font-size: 12pt;
   `};
-    ${MEDIA.MIN_LARGE`
+    ${MEDIA.MIN_XL`
     font-size: 14pt;
   `};
   }

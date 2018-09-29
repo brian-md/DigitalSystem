@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container } from './section.css';
+import { Container, Inner } from './section.css';
 import Title from 'components/title';
 
 const Section = ({ title, children }) => (
   <Container>
-    <Title size="large" as="h2" line center>
-      {title}
-    </Title>
-    {children}
+    <Inner>
+      <Title size="large" as="h2" line center>
+        {title}
+      </Title>
+      {children}
+    </Inner>
   </Container>
 );
 
