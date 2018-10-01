@@ -12,8 +12,6 @@ class ServiceCardList extends Component {
     const filteredServices = services.filter(
       service => !spotlight.includes(service.node.uid)
     );
-    // eslint-disable-next-line
-    console.log([...spotlightServices, ...filteredServices]);
     this.state = {
       services: [...spotlightServices, ...filteredServices],
     };
@@ -22,7 +20,7 @@ class ServiceCardList extends Component {
     return this.state.services.map((service, i) => (
       <ServiceCard
         service={service}
-        key="service.node.uid"
+        key={service.node.uid}
         flip={i % 2 !== 0}
       />
     ));

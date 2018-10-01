@@ -6,7 +6,7 @@ import Title from 'components/title';
 const Section = ({ title, children, bg, top, bottom }) => (
   <Container bg={bg} top={top} bottom={bottom}>
     <Inner>
-      <Title size="large" as="h2" line center>
+      <Title size="large" as="h2" line center invert={bg === 'purple'}>
         {title}
       </Title>
       {children}

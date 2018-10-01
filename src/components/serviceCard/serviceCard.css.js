@@ -18,8 +18,7 @@ export const Container = styled.div`
     div:first-child {
       max-width: 35vw;
     }
-  `}
-  ${MEDIA.LARGE`
+  `} ${MEDIA.LARGE`
   grid-template-columns: ${({ flip }) => (flip ? '1fr 20rem' : '20rem 1fr')};
   `};
   ${MEDIA.DESKTOP`

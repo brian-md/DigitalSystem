@@ -28,7 +28,9 @@ const Index = ({ data }) => (
         ]}
       />
     </Section>
-    <Section title="Who We Serve" bg="purple" bottom top>hello</Section>
+    <Section title="Who We Serve" bg="purple" bottom top>
+      hello
+    </Section>
     <Section title="Get In Touch">hello</Section>
 
     <div style={{ height: '50vh' }} />
