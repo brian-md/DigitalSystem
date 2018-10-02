@@ -55,8 +55,8 @@ line-height: normal;
         background-image: url("/images/overlay.png"),linear-gradient(45deg, rgba(71, 151, 236, 0), #884beb 80%);
         background-color: #4797ec;
         overflow-y: scroll; 
-        justify-content: center;
   -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
         animation: ${mobileMenuSlide} .5s ease;
         width: 100vw;
         position: fixed;
@@ -65,12 +65,13 @@ line-height: normal;
         transition: all 0.2s ease-in-out;
         opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};;
         top: ${({ menuOpen }) => (menuOpen ? '0' : '-100vh')};
-        padding: 2rem;
+        padding: 10vh 2rem;
         align-items: center;
         a, button {
           font-size: 1.3rem;
         }
       li {
+        min-height: min-content
         align-items: center;
         display: flex;
         justify-content: center;
@@ -180,12 +181,16 @@ export const SubmenuWrapper = styled.dl`
     margin-right: 1rem;
   }
   ${MEDIA.DESKTOP`
-  animation: ${mobileSubmenuSlide} .5s ease;
-padding: 1rem 0;
-margin: 1rem 0;
-background: rgba(0, 0, 0, 0.15);
+    animation: ${mobileSubmenuSlide} .5s ease;
+    padding: 1rem 0;
+    margin: 1rem 0;
+    background: rgba(0, 0, 0, 0.15);
     position: relative;
     flex-direction: column;
+    overflow-y: scroll !important; 
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    max-height: 50vh;
     top: 0;
     width: 100vw;
     dt {

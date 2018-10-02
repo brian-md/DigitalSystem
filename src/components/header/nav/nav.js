@@ -42,6 +42,7 @@ const Nav = ({
       </li>
     );
   });
+
   return (
     <Container submenuOpen={submenuOpen} menuOpen={menuOpen}>
       <ul>{mappedMenu}</ul>
