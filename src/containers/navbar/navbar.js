@@ -18,17 +18,21 @@ class NavBar extends Component {
       { name: 'Home', to: '/' },
       {
         name: 'Services',
-        submenu: data.map(service => ({
-          name: service.node.data.service_name.text,
-          to: `/services/${service.node.uid}`,
-        })),
+        to: '/services',
+        submenu: data
+          .map(service => ({
+            name: service.node.data.service_name.text,
+            to: `/services/${service.node.uid}`,
+          }))
+          .concat([{ name: 'See All', to: '/services' }]),
       },
       {
         name: 'Industries',
+        to: '/industries',
         submenu: [
           { name: 'Education', to: '/adf' },
           { name: 'Commercial', to: '/asdf' },
-        ],
+        ].concat([{ name: 'See All', to: '/industries' }]),
       },
     ];
   }
@@ -94,6 +98,7 @@ class NavBar extends Component {
         menu={this.menu}
         toggleSubmenu={this.toggleSubmenu}
         toggleMenu={this.toggleMenu}
+        location={this.props.location}
         {...this.state}
       />
     );
@@ -105,6 +110,7 @@ NavBar.propTypes = {
   title: PropTypes.string,
   stuck: PropTypes.bool,
   data: PropTypes.array,
+  location: PropTypes.string,
 };
 
 const NavBarWithData = props => (

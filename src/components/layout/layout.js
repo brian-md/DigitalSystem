@@ -5,11 +5,15 @@ import Head from 'components/head';
 import NavBar from 'containers/navbar';
 import GlobalStyle from 'global.css.js';
 
-const Layout = ({ data, children, stuckNav }) => (
+const Layout = ({ data, children, stuckNav, location }) => (
   <div>
     <GlobalStyle />
     <Head />
-    <NavBar title={data.site.siteMetadata.siteTitle} stuck={stuckNav} />
+    <NavBar
+      title={data.site.siteMetadata.siteTitle}
+      stuck={stuckNav}
+      location={location}
+    />
     {children}
   </div>
 );
@@ -18,6 +22,7 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
   data: PropTypes.object.isRequired,
   stuckNav: PropTypes.bool,
+  location: PropTypes.string,
 };
 
 const LayoutWithQuery = props => (
@@ -38,6 +43,7 @@ const LayoutWithQuery = props => (
 LayoutWithQuery.propTypes = {
   children: PropTypes.node.isRequired,
   stuckNav: PropTypes.bool,
+  location: PropTypes.string,
 };
 
 export default LayoutWithQuery;

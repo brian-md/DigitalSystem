@@ -7,8 +7,8 @@ import Section from 'components/section';
 // import ServiceCardList from 'containers/serviceCardList';
 import { graphql } from 'gatsby';
 
-const Index = ({ data }) => (
-  <Layout>
+const Index = ({ data, location }) => (
+  <Layout location={location.pathname}>
     <Hero
       small
       pullUp="-10rem"
@@ -28,6 +28,7 @@ const Index = ({ data }) => (
 
 Index.propTypes = {
   data: PropTypes.object.isRequired,
+  location: PropTypes.object,
 };
 
 export default Index;

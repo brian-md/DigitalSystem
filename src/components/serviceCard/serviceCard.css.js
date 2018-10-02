@@ -18,15 +18,18 @@ export const Container = styled.div`
     div:first-child {
       max-width: 35vw;
     }
-  `} ${MEDIA.LARGE`
+  `};
+  ${MEDIA.LARGE`
   grid-template-columns: ${({ flip }) => (flip ? '1fr 20rem' : '20rem 1fr')};
   `};
+
   ${MEDIA.DESKTOP`
     grid-template-columns: 1fr;
     grid-template-rows: 20rem 1fr;
     grid-template-areas: 
         'image'
         'content';
+    grid-gap: 2rem;
     div:first-child {
         width: 20rem;
         margin: 0 auto;

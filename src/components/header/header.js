@@ -14,6 +14,7 @@ const Header = ({
   toggleSubmenu,
   toggleMenu,
   currentSubmenu,
+  location,
 }) => (
   <Container stuck={stuck} menuOpen={menuOpen} submenuOpen={submenuOpen}>
     <Link to="/">
@@ -26,6 +27,7 @@ const Header = ({
       toggleSubmenu={toggleSubmenu}
       currentSubmenu={currentSubmenu}
       stuck={stuck}
+      location={location}
     />
 
     <MenuButton menuOpen={menuOpen} toggleMenu={toggleMenu} />
@@ -40,6 +42,7 @@ Header.propTypes = {
   menuOpen: PropTypes.bool,
   toggleMenu: PropTypes.func,
   toggleSubmenu: PropTypes.func,
+  location: PropTypes.string,
   currentSubmenu: PropTypes.string,
 };
 

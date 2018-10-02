@@ -10,29 +10,53 @@ const Nav = ({
   currentSubmenu,
   stuck,
   menuOpen,
+  location,
 }) => {
   const mappedMenu = menu.map(item => {
     return (
       <li key={item.name}>
-        {item.to ? (
-          <Link to={item.to}>{item.name}</Link>
+        {item.to && !item.submenu ? (
+          <Link
+            to={item.to}
+            className={location && location === item.to ? 'current' : undefined}
+          >
+            {item.name}
+          </Link>
         ) : (
           <button
             onClick={() => toggleSubmenu(item.name)}
             role="menu"
-            className={item.name == currentSubmenu ? 'open-submenu' : undefined}
+            className={
+              item.name == currentSubmenu
+                ? 'open-submenu'
+                : location && location.includes(item.to)
+                  ? 'current'
+                  : undefined
+            }
           >
             {item.name}
           </button>
         )}
         {item.submenu && (
           <SubmenuWrapper stuck={stuck} visible={item.name == currentSubmenu}>
-            <dt>{item.name}</dt>
+            <dt>
+              {item.name}
+              <Link to={item.to}>See All</Link>
+            </dt>
             <dd>
               <Submenu stuck={stuck} visible={item.name == currentSubmenu}>
                 {item.submenu.map(menuItem => (
                   <li key={menuItem.name}>
-                    <Link to={menuItem.to}>{menuItem.name}</Link>
+                    <Link
+                      className={
+                        location && location === menuItem.to
+                          ? 'current'
+                          : undefined
+                      }
+                      to={menuItem.to}
+                    >
+                      {menuItem.name}
+                    </Link>
                   </li>
                 ))}
               </Submenu>
@@ -52,6 +76,7 @@ const Nav = ({
 
 Nav.propTypes = {
   menu: PropTypes.array,
+  location: PropTypes.string,
   toggleSubmenu: PropTypes.func,
   submenuOpen: PropTypes.bool,
   currentSubmenu: PropTypes.string,

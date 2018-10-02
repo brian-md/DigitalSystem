@@ -49,6 +49,9 @@ line-height: normal;
       &:focus, &.open-submenu {
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
       }
+      &.current {
+        background-color: rgb(255, 255, 255, 0.1)
+      }
     }
     ${MEDIA.DESKTOP`
         flex-direction: column;
@@ -89,7 +92,7 @@ line-height: normal;
 export const Submenu = styled.ul`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
 
@@ -98,6 +101,7 @@ export const Submenu = styled.ul`
     padding: 0.3rem 0.6rem;
   }
   li {
+    margin-left: 0.75rem;
     text-transform: none;
     padding: 0;
     display: flex;
@@ -179,6 +183,20 @@ export const SubmenuWrapper = styled.dl`
     color: rgba(255, 255, 255, 0.8);
     padding-right: 1rem;
     margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    
+    a {
+      margin: 0;
+      padding: 0;
+      margin-top:-.1rem;
+      font-size: 0.65rem;
+      :active,
+      :focus {
+        box-shadow: none;
+        text-decoration: underline;
+      }
+    }
   }
   ${MEDIA.DESKTOP`
     animation: ${mobileSubmenuSlide} .5s ease;
