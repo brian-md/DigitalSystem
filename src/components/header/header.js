@@ -6,7 +6,6 @@ import Title from 'components/title';
 import Nav from 'components/header/nav';
 
 const Header = ({
-  title,
   stuck,
   menu,
   menuOpen,
@@ -16,15 +15,15 @@ const Header = ({
 }) => (
   <Container stuck={stuck} submenuOpen={submenuOpen}>
     <Link to="/">
-      <Title as="h1">{title}</Title>
+      <Title as="h1">logo</Title>
     </Link>
-
     <Nav
       menu={menu}
       menuOpen={menuOpen}
       submenuOpen={submenuOpen}
       toggleSubmenu={toggleSubmenu}
       currentSubmenu={currentSubmenu}
+      stuck={stuck}
     />
   </Container>
 );

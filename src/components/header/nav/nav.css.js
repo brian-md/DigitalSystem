@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+import MEDIA from 'helpers/mediaTemplates';
 
 export const Container = styled.nav`
-align-self: flex-start;
-  ul {
+white-space: nowrap
+line-height: normal;
+  &>ul {
     display: flex;
     list-style: none;
     padding: 0;
@@ -35,7 +37,7 @@ align-self: flex-start;
         color: #dadada;
       }
       &:active,
-      &:focus {
+      &:focus, &.open-submenu {
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
       }
     }
@@ -43,19 +45,53 @@ align-self: flex-start;
 `;
 
 export const Submenu = styled.ul`
-  transition: all 0.5s ease;
-
   display: flex;
   flex-direction: row;
-  position: absolute;
-  right: 0;
-  bottom: ${({ visible }) => (visible ? '0' : '50rem')};
-  opacity: ${({ visible }) => (visible ? '1' : '0')};
-  z-index: -1;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+
   li,
   li a {
     /* background: green; */
     text-transform: none;
+    padding: 0;
   }
-  /* background: pink; */
+  li {
+    display: flex;
+  }
+`;
+
+export const SubmenuWrapper = styled.dl`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  transition: all 0.5s ease;
+  transition: ${({ stuck, visible }) =>
+    stuck
+      ? 'opacity 0.2s ease 0s, top 0s ease 0.0s;'
+      : visible
+        ? 'opacity 0.2s ease 0.25s, top 0.0s ease 00s;'
+        : 'opacity 0.2s ease 0.5s, top 0.1s ease 00s;'}
+  min-height: 3.5rem;
+  position: absolute;
+  right: 0;
+  top: ${({ visible }) => (visible ? '3.5rem' : '-50rem')};
+  opacity: ${({ visible }) => (visible ? '1' : '0')};
+  z-index: -10;
+  padding: 1rem 5rem;
+  box-sizing: border-box;
+  dt {
+    text-transform: uppercase;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    text-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    padding-right: 1rem;
+    margin-right: 1rem;
+  }
+  ${MEDIA.MIN_XL`
+    padding: 1rem 20vw;
+  `};
 `;

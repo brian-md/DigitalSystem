@@ -23,6 +23,13 @@ class NavBar extends Component {
           to: `/services/${service.node.uid}`,
         })),
       },
+      {
+        name: 'Industries',
+        submenu: [
+          { name: 'Education', to: '/adf' },
+          { name: 'Commercial', to: '/asdf' },
+        ],
+      },
     ];
   }
   componentDidMount() {
@@ -36,10 +43,24 @@ class NavBar extends Component {
     // eslint-disable-next-line
     console.log(this.state.currentSubmenu);
     this.setState(prevState => {
-      return prevState.submenuOpen
-        ? { submenuOpen: false, currentSubmenu: null }
-        : { submenuOpen: true, currentSubmenu: submenu };
+      return this.state.currentSubmenu && this.state.currentSubmenu != submenu
+        ? { currentSubmenu: submenu }
+        : prevState.submenuOpen
+          ? { submenuOpen: false, currentSubmenu: null }
+          : { submenuOpen: true, currentSubmenu: submenu };
     });
+  };
+
+  openSubmenu = submenu => {
+    this.setState({ submenuOpen: true, currentSubmenu: submenu });
+  };
+
+  closeSubmenu = () => {
+    this.setState({ submenuOpen: false, currentSubmenu: null });
+  };
+
+  changeSubmenu = submenu => {
+    this.setState({ currentSubmenu: submenu });
   };
 
   scrollListener = () => {

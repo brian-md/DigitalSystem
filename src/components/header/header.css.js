@@ -7,7 +7,7 @@ export const Container = styled.header`
   align-items: center;
   padding: 0 3rem;
   margin-top: ${({ stuck }) => (stuck ? '0' : '0.75rem')};
-  height: ${({ submenuOpen }) => (submenuOpen ? '10rem' : '3.5rem')};
+  min-height: ${({ submenuOpen }) => (submenuOpen ? '3.5rem' : '3.5rem')};
   line-height: 3.5rem;
   position: ${({ stuck }) => (stuck ? 'fixed' : 'absolute')};
   top: 0;
@@ -25,6 +25,8 @@ export const Container = styled.header`
       stuck || submenuOpen ? '100%' : '0.75rem'};
     left: 0;
     position: absolute;
+    padding-top: ${({ submenuOpen, stuck }) =>
+      submenuOpen && stuck ? 0 : submenuOpen ? '0.75rem' : 0};
     top: ${({ stuck }) => (stuck ? '0' : '-0.75rem')};
     z-index: 900;
     width: 100%;
