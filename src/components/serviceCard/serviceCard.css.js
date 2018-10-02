@@ -52,6 +52,19 @@ export const Content = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: flex-start;
+  ${MEDIA.DESKTOP`
+    padding-bottom: 2rem;
+    button {
+      align-self: center;
+    }
+  `};
+  ${MEDIA.PHONE`
+    align-items: stretch;
+    button {
+      align-self: stretch;
+    }
+  `};
 `;
 
 export const ImageWrapper = styled.div`

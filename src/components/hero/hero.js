@@ -4,6 +4,7 @@ import posed from 'react-pose';
 import { Container, SmallContainer, ImageWrapper } from './hero.css';
 import Title from 'components/title';
 import Paragraph from 'components/paragraph';
+import Button from 'components/button';
 
 import Img from 'gatsby-image';
 
@@ -35,16 +36,22 @@ const HeroContents = ({ title, image, subtitle, logo, small }) => (
       </AnimatedContainer>
     )}
     <AnimatedContainer>
-      <Title as="h1" line align="center" invert size="xl" html>
+      <Title as="h1" line={!small} align="center" invert size="xl" html>
         {title}
       </Title>
     </AnimatedContainer>
     {subtitle && (
       <AnimatedContainer>
-        <Paragraph>{subtitle}</Paragraph>
+        <Paragraph size="medium">{subtitle}</Paragraph>
       </AnimatedContainer>
     )}
-    <AnimatedContainer>button</AnimatedContainer>
+    <AnimatedContainer>
+      <Button fit primary invert large>
+        Learn More
+      </Button>
+      <Button primary>Learn More</Button>
+      <Button big>Learn More</Button>
+    </AnimatedContainer>
     <ImageWrapper small={small}>
       <Img fluid={image} style={{ minHeight: '100vh' }} />
     </ImageWrapper>

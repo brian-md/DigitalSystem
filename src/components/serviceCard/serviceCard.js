@@ -5,6 +5,7 @@ import { Container, Content } from './serviceCard.css';
 import Image from 'components/image';
 import Title from 'components/title';
 import Paragraph from 'components/paragraph';
+import Button from 'components/button';
 
 const ServiceCard = ({ service, flip }) => (
   <Container flip={flip}>
@@ -19,6 +20,7 @@ const ServiceCard = ({ service, flip }) => (
         {service.node.data.service_name.text}
       </Title>
       <Paragraph>{service.node.data.short_description.text}</Paragraph>
+      <Button to={`/services/${service.node.uid}`}>Learn More</Button>
     </Content>
   </Container>
 );

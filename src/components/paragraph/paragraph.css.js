@@ -10,6 +10,8 @@ export const Text = styled.p`
         return '2.5rem';
       case 'large':
         return '1.75rem';
+      case 'medium':
+        return '1.5rem';
       default:
         return '1rem';
     }
@@ -28,6 +30,8 @@ export const Text = styled.p`
           return '2rem';
         case 'large':
           return '1.7rem';
+        case 'medium':
+          return '1.3rem';
         default:
           return '1rem';
       }
