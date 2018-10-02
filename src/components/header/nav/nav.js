@@ -13,7 +13,7 @@ const Nav = ({ menu, toggleSubmenu, submenuOpen, currentSubmenu, stuck }) => {
           <button
             onClick={() => toggleSubmenu(item.name)}
             role="menu"
-            className={item.name == currentSubmenu && 'open-submenu'}
+            className={item.name == currentSubmenu ? 'open-submenu' : undefined}
           >
             {item.name}
           </button>

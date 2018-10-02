@@ -10,6 +10,7 @@ import { graphql } from 'gatsby';
 const Index = ({ data }) => (
   <Layout>
     <Hero
+      logo
       title={data.prismicHomePage.data.tagline.html}
       image={
         data.prismicHomePage.data.hero_image.localFile.childImageSharp.fluid

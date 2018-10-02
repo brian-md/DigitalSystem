@@ -1,15 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Layout from 'components/layout';
-// import Hero from 'components/hero';
+import Hero from 'components/hero';
 // import Paragraph from 'components/paragraph';
 import Section from 'components/section';
 // import ServiceCardList from 'containers/serviceCardList';
 import { graphql } from 'gatsby';
 
 const Index = ({ data }) => (
-  <Layout stuckNav>
-    <Section title={data.prismicService.data.service_name.text}>hiiii</Section>
+  <Layout>
+    <Hero
+      small
+      pullUp="-10rem"
+      title={data.prismicService.data.service_name.text}
+      image={
+        data.prismicService.data.main_image.localFile.childImageSharp.fluid
+      }
+    />
     <Section title="Who We Serve" bg="purple" bottom top>
       hello
     </Section>
@@ -32,6 +39,18 @@ export const query = graphql`
       data {
         service_name {
           text
+        }
+        short_description {
+          text
+        }
+        main_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 2500) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }

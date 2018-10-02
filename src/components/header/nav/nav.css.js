@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import MEDIA from 'helpers/mediaTemplates';
 
 export const Container = styled.nav`
@@ -53,20 +53,48 @@ export const Submenu = styled.ul`
 
   li,
   li a {
-    /* background: green; */
-    text-transform: none;
-    padding: 0;
+    padding: 0.3rem 0.6rem;
   }
   li {
+    text-transform: none;
+    padding: 0;
     display: flex;
+    position: relative;
+    &::after {
+      content: '';
+      height: 1rem;
+      margin: auto;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.6);
+      position: relative;
+      right: -0.375rem;
+    }
+    &:last-child::after {
+      content: none;
+    }
+  }
+`;
+// keyframes returns a unique name based on a hash of the contents of the keyframes
+const submenuSlide = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0rem);
   }
 `;
 
+// Here we create a component that will rotate everything we pass in over two seconds
+
 export const SubmenuWrapper = styled.dl`
-  display: flex;
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
+  animation: ${submenuSlide} .5s ease;
   align-items: center;
-  justify-content: space-between;
-  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
   width: 100%;
   transition: all 0.5s ease;
   transition: ${({ stuck, visible }) =>
@@ -79,7 +107,6 @@ export const SubmenuWrapper = styled.dl`
   position: absolute;
   right: 0;
   top: ${({ visible }) => (visible ? '3.5rem' : '-50rem')};
-  opacity: ${({ visible }) => (visible ? '1' : '0')};
   z-index: -10;
   padding: 1rem 5rem;
   box-sizing: border-box;

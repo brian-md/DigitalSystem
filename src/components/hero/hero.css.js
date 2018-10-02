@@ -40,3 +40,23 @@ export const Container = styled.section`
     min-height: 0;
   `};
 `;
+
+export const SmallContainer = styled(Container)`
+  min-height: 25vh;
+  padding: 7rem 0 6rem 0;
+`;
+
+export const ImageWrapper = styled.div`
+  position: fixed;
+  left: 0;
+  min-width: 100vw;
+  top: 0;
+  z-index: -4;
+  ${MEDIA.MIN_TABLET`
+    
+  top: ${({ small }) => (small ? '-20rem' : 0)};
+  > div {
+    min-height: calc(100vh + 20rem);
+  }
+  `};
+`;
