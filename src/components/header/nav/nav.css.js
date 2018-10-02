@@ -1,17 +1,26 @@
 import styled, { keyframes } from 'styled-components';
 import MEDIA from 'helpers/mediaTemplates';
 
+const mobileMenuSlide = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+`;
+
 export const Container = styled.nav`
 white-space: nowrap
 line-height: normal;
   &>ul {
+    box-sizing: border-box;
     display: flex;
     list-style: none;
     padding: 0;
-
-    a,
-    li {
-    }
     li {
       & + li {
         margin-left: .75rem;
@@ -41,6 +50,38 @@ line-height: normal;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
       }
     }
+    ${MEDIA.DESKTOP`
+        flex-direction: column;
+        background-image: url("/images/overlay.png"),linear-gradient(45deg, rgba(71, 151, 236, 0), #884beb 80%);
+        background-color: #4797ec;
+        overflow-y: scroll; 
+        justify-content: center;
+  -webkit-overflow-scrolling: touch;
+        animation: ${mobileMenuSlide} .5s ease;
+        width: 100vw;
+        position: fixed;
+        height: 100vh;
+        left: 0;
+        transition: all 0.2s ease-in-out;
+        opacity: ${({ menuOpen }) => (menuOpen ? '1' : '0')};;
+        top: ${({ menuOpen }) => (menuOpen ? '0' : '-100vh')};
+        padding: 2rem;
+        align-items: center;
+        a, button {
+          font-size: 1.3rem;
+        }
+      li {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+    li {
+      & + li {
+        margin-left: 0;
+      }
+    }
+  `};
   }
 `;
 
@@ -73,6 +114,15 @@ export const Submenu = styled.ul`
       content: none;
     }
   }
+  ${MEDIA.DESKTOP`
+    flex-direction: column;
+    &>li>a, button {
+      font-size: 1rem;
+    }
+    li::after {
+      content: none;
+    }
+  `};
 `;
 // keyframes returns a unique name based on a hash of the contents of the keyframes
 const submenuSlide = keyframes`
@@ -87,6 +137,17 @@ const submenuSlide = keyframes`
   }
 `;
 
+const mobileSubmenuSlide = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+`;
 // Here we create a component that will rotate everything we pass in over two seconds
 
 export const SubmenuWrapper = styled.dl`
@@ -118,6 +179,22 @@ export const SubmenuWrapper = styled.dl`
     padding-right: 1rem;
     margin-right: 1rem;
   }
+  ${MEDIA.DESKTOP`
+  animation: ${mobileSubmenuSlide} .5s ease;
+padding: 1rem 0;
+margin: 1rem 0;
+background: rgba(0, 0, 0, 0.15);
+    position: relative;
+    flex-direction: column;
+    top: 0;
+    width: 100vw;
+    dt {
+      border-right: none;
+      margin: 0;
+      padding: 0;
+      display: none;
+    }
+  `};
   ${MEDIA.MIN_XL`
     padding: 1rem 20vw;
   `};

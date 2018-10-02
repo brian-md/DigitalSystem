@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import { Container } from './header.css';
 import Title from 'components/title';
 import Nav from 'components/header/nav';
+import MenuButton from 'components/header/menuButton';
 
 const Header = ({
   stuck,
@@ -11,9 +12,10 @@ const Header = ({
   menuOpen,
   submenuOpen,
   toggleSubmenu,
+  toggleMenu,
   currentSubmenu,
 }) => (
-  <Container stuck={stuck} submenuOpen={submenuOpen}>
+  <Container stuck={stuck} menuOpen={menuOpen} submenuOpen={submenuOpen}>
     <Link to="/">
       <Title as="h1">logo</Title>
     </Link>
@@ -25,6 +27,8 @@ const Header = ({
       currentSubmenu={currentSubmenu}
       stuck={stuck}
     />
+
+    <MenuButton menuOpen={menuOpen} toggleMenu={toggleMenu} />
   </Container>
 );
 
@@ -34,6 +38,7 @@ Header.propTypes = {
   menu: PropTypes.array,
   submenuOpen: PropTypes.bool,
   menuOpen: PropTypes.bool,
+  toggleMenu: PropTypes.func,
   toggleSubmenu: PropTypes.func,
   currentSubmenu: PropTypes.string,
 };

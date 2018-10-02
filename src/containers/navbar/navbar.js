@@ -37,11 +37,10 @@ class NavBar extends Component {
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.scrollListener);
+    document.body.style.overflow = 'scroll';
   }
 
   toggleSubmenu = submenu => {
-    // eslint-disable-next-line
-    console.log(this.state.currentSubmenu);
     this.setState(prevState => {
       return this.state.currentSubmenu && this.state.currentSubmenu != submenu
         ? { currentSubmenu: submenu }
@@ -49,6 +48,27 @@ class NavBar extends Component {
           ? { submenuOpen: false, currentSubmenu: null }
           : { submenuOpen: true, currentSubmenu: submenu };
     });
+  };
+
+  toggleMenu = () => {
+    // eslint-disable-next-line
+    console.log(this.state.menuOpen);
+    this.setState(prevState => {
+      if (prevState.menuOpen) {
+        this.closeMenu();
+      } else {
+        this.openMenu();
+      }
+    });
+  };
+
+  openMenu = () => {
+    this.setState({ menuOpen: true });
+    document.body.style.overflow = 'hidden';
+  };
+  closeMenu = () => {
+    this.setState({ menuOpen: false });
+    document.body.style.overflow = 'scroll';
   };
 
   openSubmenu = submenu => {
@@ -73,6 +93,7 @@ class NavBar extends Component {
         title={this.props.title}
         menu={this.menu}
         toggleSubmenu={this.toggleSubmenu}
+        toggleMenu={this.toggleMenu}
         {...this.state}
       />
     );

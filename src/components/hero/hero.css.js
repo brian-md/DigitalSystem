@@ -8,7 +8,7 @@ export const Container = styled.section`
   padding: 4rem;
   flex-direction: column;
   padding: 10rem 0 8rem 0;
-  overflow: hidden;
+  overflow: visible;
   background-color: rgba(58, 58, 58, 0.6);
   color: #ffffff;
   min-height: 50vh;

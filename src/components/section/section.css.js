@@ -9,7 +9,7 @@ export const Container = styled.section`
   flex-direction: column;
   padding: 60rem 0 4rem 0;
   padding-top: ${({ top }) => (top ? '14.75rem' : '6rem')}
-  overflow: hidden;
+  overflow: visible;
   background-color: ${({ bg }) => () => {
     switch (bg) {
       case 'white':

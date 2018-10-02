@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { Container, Submenu, SubmenuWrapper } from './nav.css';
 
-const Nav = ({ menu, toggleSubmenu, submenuOpen, currentSubmenu, stuck }) => {
+const Nav = ({
+  menu,
+  toggleSubmenu,
+  submenuOpen,
+  currentSubmenu,
+  stuck,
+  menuOpen,
+}) => {
   const mappedMenu = menu.map(item => {
     return (
       <li key={item.name}>
@@ -36,7 +43,7 @@ const Nav = ({ menu, toggleSubmenu, submenuOpen, currentSubmenu, stuck }) => {
     );
   });
   return (
-    <Container submenuOpen={submenuOpen}>
+    <Container submenuOpen={submenuOpen} menuOpen={menuOpen}>
       <ul>{mappedMenu}</ul>
     </Container>
   );
@@ -48,6 +55,7 @@ Nav.propTypes = {
   submenuOpen: PropTypes.bool,
   currentSubmenu: PropTypes.string,
   stuck: PropTypes.bool,
+  menuOpen: PropTypes.bool,
 };
 
 export default Nav;

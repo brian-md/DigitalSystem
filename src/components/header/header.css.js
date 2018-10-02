@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import MEDIA from 'helpers/mediaTemplates';
 
 export const Container = styled.header`
   display: flex;
@@ -37,4 +38,7 @@ export const Container = styled.header`
   * {
     z-index: 950;
   }
+  ${MEDIA.DESKTOP`
+  padding: 0 1rem;
+`};
 `;
