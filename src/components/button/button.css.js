@@ -2,17 +2,19 @@ import styled from 'styled-components';
 
 export const BasicButton = styled.button`
   display: inline-block;
-  padding: ${({ big, large }) =>
-    big ? '0 2rem' : large ? '0 3rem' : '0 1.75rem'};
+  padding: ${({ medium, large }) =>
+    medium ? '0 2rem' : large ? '0 3rem' : '0 1.75rem'};
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   white-space: nowrap;
+  font-family: 'Dosis', sans-serif;
   border-radius: 3.5rem;
   cursor: pointer;
-  height: ${({ big, large }) =>
-    big ? '3rem' : large ? '4.375rem' : '2.625rem'};
-  line-height: 2.625rem;
+  height: ${({ medium, large }) =>
+    medium ? '3rem' : large ? '4.375rem' : '2.625rem'};
+  line-height: ${({ medium, large }) =>
+    medium ? '3rem' : large ? '4.375rem' : '2.625rem'};
  
   border: none;
   box-shadow: ${({ invert }) =>

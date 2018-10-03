@@ -79,6 +79,7 @@ line-height: normal;
         display: flex;
         justify-content: center;
         flex-direction: column;
+        margin: 1rem 0;
       }
     li {
       & + li {
@@ -100,7 +101,7 @@ export const Submenu = styled.ul`
   li a {
     padding: 0.3rem 0.6rem;
   }
-  li {
+  > li {
     margin-left: 0.75rem;
     text-transform: none;
     padding: 0;
@@ -121,6 +122,9 @@ export const Submenu = styled.ul`
   }
   ${MEDIA.DESKTOP`
     flex-direction: column;
+    &>li {
+      margin: 0.5rem 0 !important;
+    }
     &>li>a, button {
       font-size: 1rem;
     }
@@ -205,10 +209,10 @@ export const SubmenuWrapper = styled.dl`
     background: rgba(0, 0, 0, 0.15);
     position: relative;
     flex-direction: column;
-    overflow-y: scroll !important; 
-    -webkit-overflow-scrolling: touch;
+    /* overflow-y: scroll !important; 
+    -webkit-overflow-scrolling: touch; */
     justify-content: flex-start;
-    max-height: 50vh;
+    /* max-height: 50vh; */
     top: 0;
     width: 100vw;
     dt {

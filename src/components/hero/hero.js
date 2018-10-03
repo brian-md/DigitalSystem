@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import posed from 'react-pose';
-import { Container, SmallContainer, ImageWrapper } from './hero.css';
+import {
+  Container,
+  SmallContainer,
+  ImageWrapper,
+  ButtonWrapper,
+} from './hero.css';
 import Title from 'components/title';
 import Paragraph from 'components/paragraph';
 import Button from 'components/button';
@@ -28,7 +33,15 @@ const ParentContainer = posed.div({
   enter: { staggerChildren: 200 },
 });
 
-const HeroContents = ({ title, image, subtitle, logo, small }) => (
+const HeroContents = ({
+  title,
+  image,
+  subtitle,
+  logo,
+  small,
+  primaryAction,
+  secondaryAction,
+}) => (
   <ParentContainer>
     {logo && (
       <AnimatedContainer>
@@ -45,13 +58,22 @@ const HeroContents = ({ title, image, subtitle, logo, small }) => (
         <Paragraph size="medium">{subtitle}</Paragraph>
       </AnimatedContainer>
     )}
-    <AnimatedContainer>
-      <Button fit primary invert large>
-        Learn More
-      </Button>
-      <Button primary>Learn More</Button>
-      <Button big>Learn More</Button>
-    </AnimatedContainer>
+    {(primaryAction || secondaryAction) && (
+      <AnimatedContainer>
+        <ButtonWrapper>
+          {secondaryAction && (
+            <Button invert={1} {...secondaryAction}>
+              {secondaryAction.desc}
+            </Button>
+          )}
+          {primaryAction && (
+            <Button primary={1} {...primaryAction}>
+              {primaryAction.desc}
+            </Button>
+          )}
+        </ButtonWrapper>
+      </AnimatedContainer>
+    )}
     <ImageWrapper small={small}>
       <Img fluid={image} style={{ minHeight: '100vh' }} />
     </ImageWrapper>
@@ -64,6 +86,8 @@ HeroContents.propTypes = {
   subtitle: PropTypes.string,
   small: PropTypes.bool,
   logo: PropTypes.bool,
+  primaryAction: PropTypes.object,
+  secondaryAction: PropTypes.object,
 };
 
 const Hero = props =>
@@ -83,6 +107,8 @@ Hero.propTypes = {
   subtitle: PropTypes.string,
   small: PropTypes.bool,
   logo: PropTypes.bool,
+  primaryAction: PropTypes.object,
+  secondaryAction: PropTypes.object,
 };
 
 export default Hero;

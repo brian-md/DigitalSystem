@@ -20,14 +20,15 @@ const Button = ({ children, primary, to, href, ...props }) => {
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
-  invert: PropTypes.bool,
-  big: PropTypes.bool,
-  large: PropTypes.bool,
-  primary: PropTypes.bool,
-  fit: PropTypes.bool,
+  invert: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+  medium: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+  large: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+  primary: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+  fit: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   to: PropTypes.string,
   href: PropTypes.string,
-  disabled: PropTypes.bool,
+  target: PropTypes.string,
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 };
 
 export default Button;

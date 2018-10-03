@@ -60,3 +60,29 @@ export const ImageWrapper = styled.div`
   }
   `};
 `;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  > * {
+    margin-left: 1rem;
+  }
+  > *:first-child {
+    margin-left: 0;
+  }
+  ${MEDIA.TABLET`
+  flex-direction: column;
+  > * {
+    margin-left: 0
+    margin-top: 1rem;
+  }
+  >*:first-child {
+    margin-top: 0;
+  }
+  `};
+  ${MEDIA.PHONE`
+    align-items: stretch;
+  `};
+`;

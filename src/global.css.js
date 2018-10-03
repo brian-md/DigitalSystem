@@ -99,7 +99,7 @@ export default createGlobalStyle`
     border-radius: 5px;
     color: ${accent};
     border: 1px solid #ddd;
-    font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
+    font-family: 'Dosis', sans-serif;
   }
 
   video {

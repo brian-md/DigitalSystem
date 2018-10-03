@@ -15,6 +15,14 @@ const Index = ({ data, location }) => (
       image={
         data.prismicHomePage.data.hero_image.localFile.childImageSharp.fluid
       }
+      primaryAction={{
+        to: '/contact',
+        desc: 'Get Started',
+      }}
+      secondaryAction={{
+        to: '/contact',
+        desc: 'Watch Video',
+      }}
     />
     <Section title={data.prismicHomePage.data.services_title.text}>
       <Paragraph html>
