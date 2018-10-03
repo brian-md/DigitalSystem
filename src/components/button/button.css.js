@@ -5,7 +5,8 @@ export const BasicButton = styled.button`
   padding: ${({ medium, large }) =>
     medium ? '0 2rem' : large ? '0 3rem' : '0 1.75rem'};
   text-align: center;
-  font-size: 0.9rem;
+font-size: ${({ medium, large }) =>
+  medium ? '1rem' : large ? '1.1rem' : '0.9rem'};
   text-transform: uppercase;
   white-space: nowrap;
   font-family: 'Dosis', sans-serif;

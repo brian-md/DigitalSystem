@@ -62,12 +62,12 @@ const HeroContents = ({
       <AnimatedContainer>
         <ButtonWrapper>
           {secondaryAction && (
-            <Button invert={1} {...secondaryAction}>
+            <Button medium={1} invert={1} {...secondaryAction}>
               {secondaryAction.desc}
             </Button>
           )}
           {primaryAction && (
-            <Button primary={1} {...primaryAction}>
+            <Button medium={1} primary={1} {...primaryAction}>
               {primaryAction.desc}
             </Button>
           )}
