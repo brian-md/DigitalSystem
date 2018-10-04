@@ -34,15 +34,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-prismic',
       options: {
-        // The name of your prismic.io repository. This is required.
-        // Example: 'gatsby-source-prismic-test-site' if your prismic.io address
-        // is 'gatsby-source-prismic-test-site.prismic.io'.
         repositoryName: 'dsiav',
-
-        // An API access token to your prismic.io repository. This is required.
-        // You can generate an access token in the "API & Security" section of
-        // your repository settings. Setting a "Callback URL" is not necessary.
-        // The token will be listed under "Permanent access tokens".
         accessToken:
           'MC5XNjFmZ2hJQUFDWUFWdk1o.IFp477-9Ze-_vV7vv73vv73vv73vv73vv73vv73vv73vv71QRO-_vVjvv73vv70177-9EHfvv73vv73vv73vv71rde-_vQ',
 

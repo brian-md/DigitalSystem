@@ -2,13 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Layout from 'components/layout';
 import Hero from 'components/hero';
+import { Helmet } from 'react-helmet';
 // import Paragraph from 'components/paragraph';
 import Section from 'components/section';
+import ImageWings from 'components/imageWings';
+import ImageCard from 'components/imageCard';
 // import ServiceCardList from 'containers/serviceCardList';
 import { graphql } from 'gatsby';
 
 const Index = ({ data, location }) => (
   <Layout location={location.pathname}>
+    <Helmet
+      title={`${data.prismicService.data.service_name.text} | ${
+        data.site.siteMetadata.siteTitle
+      }`}
+    />
     <Hero
       small
       pullUp="-10rem"
@@ -16,9 +24,30 @@ const Index = ({ data, location }) => (
       image={
         data.prismicService.data.main_image.localFile.childImageSharp.fluid
       }
+      subtitle={data.prismicService.data.tagline.text}
     />
+    <Section>
+      <ImageCard
+        flip
+        title={data.prismicService.data.long_description_title.text}
+        description={data.prismicService.data.long_description.text}
+        image={
+          data.prismicService.data.main_image.localFile.childImageSharp.fluid
+        }
+      />
+    </Section>
     <Section title="Who We Serve" bg="purple" bottom top>
-      hello
+      <ImageWings
+        image={
+          data.prismicService.data.secondary_image.localFile.childImageSharp
+            .fluid
+        }
+        description={data.prismicService.data.features_intro.text}
+        features={data.prismicService.data.features.map(feature => ({
+          title: feature.title.text,
+          description: feature.description.text,
+        }))}
+      />
     </Section>
     <Section title="Get In Touch">hello</Section>
 
@@ -41,17 +70,47 @@ export const query = graphql`
         service_name {
           text
         }
+        tagline {
+          text
+        }
         short_description {
+          text
+        }
+        long_description_title {
+          text
+        }
+        long_description {
           text
         }
         main_image {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 2500) {
+              fluid(maxWidth: 3800) {
                 ...GatsbyImageSharpFluid
               }
             }
           }
+        }
+        secondary_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1000, maxHeight: 1000) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+        features_intro {
+          text
+        }
+        features {
+          title {
+            text
+          }
+          description {
+            text
+          }
+          icon
         }
       }
     }
@@ -77,6 +136,11 @@ export const query = graphql`
             }
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        siteTitle
       }
     }
   }

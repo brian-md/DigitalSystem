@@ -12,3 +12,8 @@ export const Container = styled.div`
 
   `};
 `;
+
+export const SmallImage = styled(Container)`
+  height: 10rem;
+  width: 10rem;
+`;

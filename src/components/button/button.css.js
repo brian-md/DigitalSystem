@@ -2,20 +2,60 @@ import styled from 'styled-components';
 
 export const BasicButton = styled.button`
   display: inline-block;
-  padding: ${({ medium, large }) =>
-    medium ? '0 2rem' : large ? '0 3rem' : '0 1.75rem'};
+  padding: ${({ size }) => () => {
+    switch (size) {
+      case 'small':
+        return '0 1.35rem';
+      case 'medium':
+        return '0 2rem';
+      case 'large':
+        return '0 3rem';
+      default:
+        return '0 1.75rem';
+    }
+  }};
   text-align: center;
-font-size: ${({ medium, large }) =>
-  medium ? '1rem' : large ? '1.1rem' : '0.9rem'};
+    font-size: ${({ size }) => () => {
+      switch (size) {
+        case 'small':
+          return '0.8rem';
+        case 'medium':
+          return '1rem';
+        case 'large':
+          return '1.1rem';
+        default:
+          return '.9rem';
+      }
+    }};
   text-transform: uppercase;
   white-space: nowrap;
   font-family: 'Dosis', sans-serif;
   border-radius: 3.5rem;
   cursor: pointer;
-  height: ${({ medium, large }) =>
-    medium ? '3rem' : large ? '4.375rem' : '2.625rem'};
-  line-height: ${({ medium, large }) =>
-    medium ? '3rem' : large ? '4.375rem' : '2.625rem'};
+  height: ${({ size }) => () => {
+    switch (size) {
+      case 'small':
+        return '2rem';
+      case 'medium':
+        return '3rem';
+      case 'large':
+        return '4.375rem';
+      default:
+        return '2.625rem';
+    }
+  }};
+  line-height: ${({ size }) => () => {
+    switch (size) {
+      case 'small':
+        return '2rem';
+      case 'medium':
+        return '3rem';
+      case 'large':
+        return '4.375rem';
+      default:
+        return '2.625rem';
+    }
+  }};
  
   border: none;
   box-shadow: ${({ invert }) =>

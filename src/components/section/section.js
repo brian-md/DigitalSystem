@@ -6,16 +6,18 @@ import Title from 'components/title';
 const Section = ({ title, children, bg, top, bottom }) => (
   <Container bg={bg} top={top} bottom={bottom}>
     <Inner>
-      <Title size="large" as="h2" line center invert={bg === 'purple'}>
-        {title}
-      </Title>
+      {title && (
+        <Title size="large" as="h2" line center invert={bg === 'purple'}>
+          {title}
+        </Title>
+      )}
       {children}
     </Inner>
   </Container>
 );
 
 Section.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   children: PropTypes.node.isRequired,
   bg: PropTypes.oneOf(['purple', 'grey', 'white']),
   bottom: PropTypes.bool,

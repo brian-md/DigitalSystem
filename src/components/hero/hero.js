@@ -49,7 +49,7 @@ const HeroContents = ({
       </AnimatedContainer>
     )}
     <AnimatedContainer>
-      <Title as="h1" line={!small} align="center" invert size="xl" html>
+      <Title as="h1" line align="center" invert size="xl" html>
         {title}
       </Title>
     </AnimatedContainer>

@@ -21,6 +21,10 @@ export const Container = styled.div`
   `};
   ${MEDIA.LARGE`
   grid-template-columns: ${({ flip }) => (flip ? '1fr 20rem' : '20rem 1fr')};
+  div:first-child {
+        width: 20rem;
+        height: 20rem;
+    }
   `};
 
   ${MEDIA.DESKTOP`
@@ -49,23 +53,23 @@ export const Container = styled.div`
   `};
 `;
 
-export const Content = styled.div`
-  grid-area: content;
-  text-align: left;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: flex-start;
-  ${MEDIA.DESKTOP`
-    padding-bottom: 2rem;
-    button {
-      align-self: center;
-    }
+export const SmallContainer = styled(Container)`
+  grid-gap: 2rem;
+  grid-template-columns: ${({ flip }) => (flip ? '1fr 10rem' : '10rem 1fr')};
+  grid-template-rows: 1fr;
+  ${MEDIA.LARGE`
+  grid-template-columns: ${({ flip }) => (flip ? '1fr 10rem' : '10rem 1fr')};
   `};
-  ${MEDIA.PHONE`
-    align-items: stretch;
-    button {
-      align-self: stretch;
+  ${MEDIA.DESKTOP`
+    grid-template-columns: 1fr;
+    grid-template-rows: 10rem 1fr;
+    grid-template-areas: 
+        'image'
+        'content';
+    grid-gap: 2rem;
+    div:first-child {
+        width: 10rem;
+        margin: 0 auto;
     }
   `};
 `;

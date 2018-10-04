@@ -12,6 +12,8 @@ export const Text = styled.p`
         return '1.75rem';
       case 'medium':
         return '1.5rem';
+      case 'small':
+        return '0.9rem';
       default:
         return '1rem';
     }
@@ -32,6 +34,8 @@ export const Text = styled.p`
           return '1.7rem';
         case 'medium':
           return '1.3rem';
+        case 'small':
+          return '0.9rem';
         default:
           return '1rem';
       }
