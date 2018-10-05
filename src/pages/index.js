@@ -7,13 +7,22 @@ import Section from 'components/section';
 import ServiceCardList from 'containers/serviceCardList';
 import { graphql } from 'gatsby';
 
-const Index = ({ data }) => (
-  <Layout>
+const Index = ({ data, location }) => (
+  <Layout location={location.pathname}>
     <Hero
+      logo
       title={data.prismicHomePage.data.tagline.html}
       image={
         data.prismicHomePage.data.hero_image.localFile.childImageSharp.fluid
       }
+      primaryAction={{
+        to: '/contact',
+        desc: 'Get Started',
+      }}
+      secondaryAction={{
+        to: '/contact',
+        desc: 'Watch Video',
+      }}
     />
     <Section title={data.prismicHomePage.data.services_title.text}>
       <Paragraph html>
@@ -28,7 +37,9 @@ const Index = ({ data }) => (
         ]}
       />
     </Section>
-    <Section title="Who We Serve" bg="purple" bottom top>hello</Section>
+    <Section title="Who We Serve" bg="purple" bottom top>
+      hello
+    </Section>
     <Section title="Get In Touch">hello</Section>
 
     <div style={{ height: '50vh' }} />
@@ -37,6 +48,7 @@ const Index = ({ data }) => (
 
 Index.propTypes = {
   data: PropTypes.object.isRequired,
+  location: PropTypes.object,
 };
 
 export default Index;

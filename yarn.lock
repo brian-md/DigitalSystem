@@ -10018,6 +10018,12 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
+react-spring@^5.9.0:
+  version "5.9.0"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.9.0.tgz#0ad0c6f9826fea9ce25e819d7a566dfc132c3d21"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 react-testing-library@^4.1.7:
   version "4.1.9"
   resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-4.1.9.tgz#a96fe41fd2a6205d6a2029604f46df18b9cda2d2"

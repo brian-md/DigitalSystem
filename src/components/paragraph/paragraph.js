@@ -20,7 +20,7 @@ const Paragraph = ({ children, as = 'p', size, center, html }) => {
 Paragraph.propTypes = {
   children: PropTypes.string.isRequired,
   as: PropTypes.string,
-  size: PropTypes.oneOf(['xl', 'large']),
+  size: PropTypes.oneOf(['xl', 'large', 'medium', 'small']),
   center: PropTypes.bool,
   html: PropTypes.bool,
 };

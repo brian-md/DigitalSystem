@@ -16,6 +16,8 @@ export const Text = styled.span`
         return '3.5rem';
       case 'large':
         return '2.5rem';
+      case 'small':
+        return '1.35rem';
       default:
         return '1.75rem';
     }
@@ -48,6 +50,8 @@ export const Text = styled.span`
           return '3.2rem';
         case 'large':
           return '2.3rem';
+        case 'small':
+          return '1.25rem';
         default:
           return '1.5rem';
       }
@@ -60,6 +64,8 @@ export const Text = styled.span`
           return '2.9rem';
         case 'large':
           return '2.0rem';
+        case 'small':
+          return '1.1rem';
         default:
           return '1.25rem';
       }

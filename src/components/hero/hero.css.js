@@ -8,7 +8,7 @@ export const Container = styled.section`
   padding: 4rem;
   flex-direction: column;
   padding: 10rem 0 8rem 0;
-  overflow: hidden;
+  overflow: visible;
   background-color: rgba(58, 58, 58, 0.6);
   color: #ffffff;
   min-height: 50vh;
@@ -38,5 +38,51 @@ export const Container = styled.section`
         height: 4rem;
     }
     min-height: 0;
+  `};
+`;
+
+export const SmallContainer = styled(Container)`
+  min-height: 25vh;
+  padding: 6.5rem 5vw;
+`;
+
+export const ImageWrapper = styled.div`
+  position: fixed;
+  left: 0;
+  min-width: 100vw;
+  top: 0;
+  z-index: -4;
+  ${MEDIA.MIN_TABLET`
+    
+  top: ${({ small }) => (small ? '-20rem' : 0)};
+  > div {
+    min-height: calc(100vh + 20rem);
+  }
+  `};
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  > * {
+    margin-left: 1rem;
+  }
+  > *:first-child {
+    margin-left: 0;
+  }
+  ${MEDIA.TABLET`
+  flex-direction: column;
+  > * {
+    margin-left: 0
+    margin-top: 1rem;
+  }
+  >*:first-child {
+    margin-top: 0;
+  }
+  `};
+  ${MEDIA.PHONE`
+    align-items: stretch;
   `};
 `;

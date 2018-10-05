@@ -23,7 +23,7 @@ Title.propTypes = {
   children: PropTypes.string.isRequired,
   as: PropTypes.string,
   line: PropTypes.bool,
-  size: PropTypes.oneOf(['xl', 'large']),
+  size: PropTypes.oneOf(['xl', 'large', 'small']),
   align: PropTypes.oneOf(['left', 'center', 'right']),
   invert: PropTypes.bool,
   html: PropTypes.bool,

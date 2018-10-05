@@ -1,9 +1,24 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import MEDIA from 'helpers/mediaTemplates';
+
+const popUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
-  display: grid;
+  animation: ${popUp} 0.5s ease-in;
+  transition: all 0.5s ease-in-out;
+  opacity: ${({ visible }) => (visible ? '1' : '0')};
+  display: ${({ visible }) => (visible ? 'grid' : 'none')};
   grid-gap: 6rem;
   grid-template-columns: ${({ flip }) => (flip ? '1fr 30rem' : '30rem 1fr')};
   grid-template-rows: 1fr;
@@ -18,16 +33,22 @@ export const Container = styled.div`
     div:first-child {
       max-width: 35vw;
     }
-  `}
+  `};
   ${MEDIA.LARGE`
   grid-template-columns: ${({ flip }) => (flip ? '1fr 20rem' : '20rem 1fr')};
+  div:first-child {
+        width: 20rem;
+        height: 20rem;
+    }
   `};
+
   ${MEDIA.DESKTOP`
     grid-template-columns: 1fr;
     grid-template-rows: 20rem 1fr;
     grid-template-areas: 
         'image'
         'content';
+    grid-gap: 2rem;
     div:first-child {
         width: 20rem;
         margin: 0 auto;
@@ -47,12 +68,25 @@ export const Container = styled.div`
   `};
 `;
 
-export const Content = styled.div`
-  grid-area: content;
-  text-align: left;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+export const SmallContainer = styled(Container)`
+  grid-gap: 2rem;
+  grid-template-columns: ${({ flip }) => (flip ? '1fr 10rem' : '10rem 1fr')};
+  grid-template-rows: 1fr;
+  ${MEDIA.LARGE`
+  grid-template-columns: ${({ flip }) => (flip ? '1fr 10rem' : '10rem 1fr')};
+  `};
+  ${MEDIA.DESKTOP`
+    grid-template-columns: 1fr;
+    grid-template-rows: 10rem 1fr;
+    grid-template-areas: 
+        'image'
+        'content';
+    grid-gap: 2rem;
+    div:first-child {
+        width: 10rem;
+        margin: 0 auto;
+    }
+  `};
 `;
 
 export const ImageWrapper = styled.div`

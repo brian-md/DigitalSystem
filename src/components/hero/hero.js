@@ -1,8 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import posed from 'react-pose';
-import { Container } from './hero.css';
+import {
+  Container,
+  SmallContainer,
+  ImageWrapper,
+  ButtonWrapper,
+} from './hero.css';
 import Title from 'components/title';
+import Paragraph from 'components/paragraph';
+import Button from 'components/button';
+
 import Img from 'gatsby-image';
 
 // Example of a component-specific page transition
@@ -25,36 +33,82 @@ const ParentContainer = posed.div({
   enter: { staggerChildren: 200 },
 });
 
-const Hero = ({ title, image }) => (
-  <Container>
-    <ParentContainer>
+const HeroContents = ({
+  title,
+  image,
+  subtitle,
+  logo,
+  small,
+  primaryAction,
+  secondaryAction,
+}) => (
+  <ParentContainer>
+    {logo && (
       <AnimatedContainer>
         <Title as="h1">LOGO</Title>
       </AnimatedContainer>
+    )}
+    <AnimatedContainer>
+      <Title as="h1" line align="center" invert size="xl" html>
+        {title}
+      </Title>
+    </AnimatedContainer>
+    {subtitle && (
       <AnimatedContainer>
-        <Title as="h1" line align="center" invert size="xl" html>
-          {title}
-        </Title>
+        <Paragraph size="medium">{subtitle}</Paragraph>
       </AnimatedContainer>
-      <AnimatedContainer>button</AnimatedContainer>
-      <Img
-        fluid={image}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          minWidth: '100vw',
-          minHeight: '100%',
-          zIndex: -4,
-        }}
-      />
-    </ParentContainer>
-  </Container>
+    )}
+    {(primaryAction || secondaryAction) && (
+      <AnimatedContainer>
+        <ButtonWrapper>
+          {secondaryAction && (
+            <Button medium={0} invert={1} {...secondaryAction}>
+              {secondaryAction.desc}
+            </Button>
+          )}
+          {primaryAction && (
+            <Button medium={0} primary={1} {...primaryAction}>
+              {primaryAction.desc}
+            </Button>
+          )}
+        </ButtonWrapper>
+      </AnimatedContainer>
+    )}
+    <ImageWrapper small={small}>
+      <Img fluid={image} style={{ minHeight: '100vh' }} />
+    </ImageWrapper>
+  </ParentContainer>
 );
+
+HeroContents.propTypes = {
+  title: PropTypes.string.isRequired,
+  image: PropTypes.object,
+  subtitle: PropTypes.string,
+  small: PropTypes.bool,
+  logo: PropTypes.bool,
+  primaryAction: PropTypes.object,
+  secondaryAction: PropTypes.object,
+};
+
+const Hero = props =>
+  props.small ? (
+    <SmallContainer>
+      <HeroContents {...props} />
+    </SmallContainer>
+  ) : (
+    <Container>
+      <HeroContents {...props} />
+    </Container>
+  );
 
 Hero.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.object,
+  subtitle: PropTypes.string,
+  small: PropTypes.bool,
+  logo: PropTypes.bool,
+  primaryAction: PropTypes.object,
+  secondaryAction: PropTypes.object,
 };
 
 export default Hero;
