@@ -28,7 +28,7 @@ class NavBar extends Component {
       },
       {
         name: 'Industries',
-        to: '/Industries',
+        to: '/industries',
         submenu: industries
           .map(industry => ({
             name: industry.node.data.industry_name.text,
