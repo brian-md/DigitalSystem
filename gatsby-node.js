@@ -42,4 +42,28 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
+
+  const industries = await graphql(`
+    {
+      allPrismicIndustry {
+        edges {
+          node {
+            uid
+          }
+        }
+      }
+    }
+  `);
+
+  const industryTemplate = path.resolve('./src/templates/industry.js');
+
+  industries.data.allPrismicIndustry.edges.forEach(edge => {
+    createPage({
+      path: `/industries/${edge.node.uid}`,
+      component: industryTemplate,
+      context: {
+        slug: edge.node.uid,
+      },
+    });
+  });
 };

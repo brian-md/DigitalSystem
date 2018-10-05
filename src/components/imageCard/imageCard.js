@@ -6,10 +6,10 @@ import Image from 'components/image';
 import Card from 'components/card';
 
 const ImageCard = props => {
-  const { flip, image, alt, title, small, wrapperStyle } = props;
+  const { flip, image, alt, title, small, visible, wrapperStyle } = props;
   const Wrapper = small ? SmallContainer : Container;
   return (
-    <Wrapper flip={flip} style={wrapperStyle && wrapperStyle}>
+    <Wrapper visible={visible} flip={flip} style={wrapperStyle && wrapperStyle}>
       <Image small={small} image={image} alt={alt ? alt : title} circle />
       <Card {...props} />
     </Wrapper>
@@ -23,9 +23,14 @@ ImageCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   small: PropTypes.bool,
+  visible: PropTypes.bool,
   cta: PropTypes.object,
   wrapperStyle: PropTypes.object,
   contentStyle: PropTypes.object,
+};
+
+ImageCard.defaultProps = {
+  visible: true,
 };
 
 export default ImageCard;

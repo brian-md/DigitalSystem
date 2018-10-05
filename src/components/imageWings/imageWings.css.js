@@ -50,6 +50,7 @@ grid-template-columns: 15rem;
 `};
   > p:only-of-type {
     margin-bottom: 0;
+    padding: 0 2rem;
   }
 `;
 

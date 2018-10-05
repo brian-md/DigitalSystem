@@ -1,9 +1,22 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import MEDIA from 'helpers/mediaTemplates';
+
+const popUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
-  display: grid;
+  animation: ${popUp} 0.5s ease-in;
+  display: ${({ visible }) => (visible ? 'grid' : 'none')};
   grid-gap: 6rem;
   grid-template-columns: ${({ flip }) => (flip ? '1fr 30rem' : '30rem 1fr')};
   grid-template-rows: 1fr;

@@ -13,13 +13,13 @@ class NavBar extends Component {
       menuOpen: false,
       currentSubmenu: null,
     };
-    const { data } = this.props;
+    const { services, industries } = this.props;
     this.menu = [
       { name: 'Home', to: '/' },
       {
         name: 'Services',
         to: '/services',
-        submenu: data
+        submenu: services
           .map(service => ({
             name: service.node.data.service_name.text,
             to: `/services/${service.node.uid}`,
@@ -28,11 +28,13 @@ class NavBar extends Component {
       },
       {
         name: 'Industries',
-        to: '/industries',
-        submenu: [
-          { name: 'Education', to: '/adf' },
-          { name: 'Commercial', to: '/asdf' },
-        ].concat([{ name: 'See All', to: '/industries' }]),
+        to: '/Industries',
+        submenu: industries
+          .map(industry => ({
+            name: industry.node.data.industry_name.text,
+            to: `/industries/${industry.node.uid}`,
+          }))
+          .concat([{ name: 'See All', to: '/industries' }]),
       },
     ];
   }
@@ -129,9 +131,27 @@ const NavBarWithData = props => (
             }
           }
         }
+        allPrismicIndustry {
+          edges {
+            node {
+              uid
+              data {
+                industry_name {
+                  text
+                }
+              }
+            }
+          }
+        }
       }
     `}
-    render={data => <NavBar {...props} data={data.allPrismicService.edges} />}
+    render={data => (
+      <NavBar
+        {...props}
+        services={data.allPrismicService.edges}
+        industries={data.allPrismicIndustry.edges}
+      />
+    )}
   />
 );
 

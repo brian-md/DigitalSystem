@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ImageCard from 'components/imageCard';
-import { Transition } from 'react-spring';
 
 class ServiceCardList extends Component {
   constructor(props) {
@@ -32,24 +31,13 @@ class ServiceCardList extends Component {
   };
 
   render() {
-    const services = this.state.showMore
-      ? [...this.spotlightServices, ...this.remainingServices]
-      : [...this.spotlightServices];
     return (
       <>
-        <Transition
-          keys={services.map(service => service.node.uid)}
-          from={{ opacity: 0, transform: 'translateX(-100px)' }}
-          enter={{ opacity: 1, transform: 'translateX(0px)' }}
-          leave={{ opacity: 0, transform: 'translateX(-100px)' }}
-        >
-          {services.map((service, i) => styles => (
+        {this.spotlightServices
+          .map((service, i) => (
             <ImageCard
+              key={service.node.uid}
               flip={i % 2 !== 0}
-              wrapperStyle={{
-                opacity: styles.opacity,
-                transform: styles.transform,
-              }}
               image={
                 service.node.data.main_image.localFile.childImageSharp.fluid
               }
@@ -57,12 +45,31 @@ class ServiceCardList extends Component {
               description={service.node.data.short_description.text}
               cta={{ to: `/services/${service.node.uid}`, text: 'Learn More' }}
             />
-          ))}
-        </Transition>
+          ))
+          .concat(
+            this.remainingServices.map((service, i) => (
+              <ImageCard
+                key={service.node.uid}
+                flip={i % 2 == 0}
+                image={
+                  service.node.data.main_image.localFile.childImageSharp.fluid
+                }
+                title={service.node.data.service_name.text}
+                description={service.node.data.short_description.text}
+                cta={{
+                  to: `/services/${service.node.uid}`,
+                  text: 'Learn More',
+                }}
+                visible={this.state.showMore}
+              />
+            ))
+          )}
 
-        <button onClick={this.showToggle}>
-          Show {this.state.showMore ? 'Less' : 'More'}
-        </button>
+        {!this.state.showMore && (
+          <button onClick={this.showToggle}>
+            Show {this.state.showMore ? 'Less' : 'More'}
+          </button>
+        )}
       </>
     );
   }
