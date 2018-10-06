@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import Layout from 'components/layout';
 import Hero from 'components/hero';
 import Paragraph from 'components/paragraph';
+import Tabber from 'containers/tabber';
+import ImageWings from 'components/imageWings';
 import Section from 'components/section';
+import Button from 'components/button';
 import ServiceCardList from 'containers/serviceCardList';
 import { graphql } from 'gatsby';
 
@@ -38,7 +41,35 @@ const Index = ({ data, location }) => (
       />
     </Section>
     <Section title="Who We Serve" bg="purple" bottom top>
-      hello
+      <Tabber
+        keys={data.allPrismicIndustry.edges.map(industry => industry.node.uid)}
+      >
+        {({ setTab, getVisibility }) => {
+          const buttons = data.allPrismicIndustry.edges.map(industry => (
+            <Button
+              key={industry.node.uid}
+              onClick={() => setTab(industry.node.uid)}
+            >
+              {industry.node.data.industry_name.text}
+            </Button>
+          ));
+          const content = data.allPrismicIndustry.edges.map(industry => (
+            <ImageWings
+              visible={getVisibility(industry.node.uid)}
+              key={industry.node.uid}
+              image={
+                industry.node.data.main_image.localFile.childImageSharp.fluid
+              }
+            />
+          ));
+          return (
+            <>
+              {buttons}
+              {content}
+            </>
+          );
+        }}
+      </Tabber>
     </Section>
     <Section title="Get In Touch">hello</Section>
 
@@ -116,6 +147,30 @@ export const query = graphql`
               localFile {
                 childImageSharp {
                   fluid(maxWidth: 2500) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    allPrismicIndustry {
+      edges {
+        node {
+          uid
+          data {
+            industry_name {
+              text
+            }
+            short_description {
+              text
+            }
+            main_image {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000, maxHeight: 1000) {
                     ...GatsbyImageSharpFluid
                   }
                 }

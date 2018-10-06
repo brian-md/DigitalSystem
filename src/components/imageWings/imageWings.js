@@ -7,9 +7,9 @@ import Paragraph from 'components/paragraph';
 import Card from 'components/card';
 
 const ImageWings = props => {
-  const { image, alt, features, fixedImage, description } = props;
+  const { image, alt, features, fixedImage, description, visible } = props;
   return (
-    <Container>
+    <Container visible={visible}>
       <Middle>
         <Image
           image={image}
@@ -40,12 +40,17 @@ const ImageWings = props => {
   );
 };
 
+ImageWings.defaultProps = {
+  visible: true,
+};
+
 ImageWings.propTypes = {
   alt: PropTypes.string,
   image: PropTypes.object.isRequired,
   features: arrayOf(PropTypes.object),
   left: PropTypes.node,
   right: PropTypes.node,
+  visible: PropTypes.bool,
   fixedImage: PropTypes.bool,
   description: PropTypes.string,
   cta: PropTypes.object,

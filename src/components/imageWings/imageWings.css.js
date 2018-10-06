@@ -1,8 +1,21 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import MEDIA from 'helpers/mediaTemplates';
 
+const popUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+`;
+
 export const Container = styled.div`
-  display: grid;
+  display: ${({ visible }) => (visible ? 'grid' : 'none')};
+  animation: ${popUp} 0.5s ease-in;
   grid-template-columns: 1fr 30rem 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: 'left middle right';
