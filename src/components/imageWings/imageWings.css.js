@@ -24,6 +24,7 @@ export const Container = styled.div`
   grid-template-columns: 1fr 20rem 1fr;
   `};
   ${MEDIA.DESKTOP`
+  grid-gap: 1.5rem;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: min-content 1fr;
   grid-template-areas: 
@@ -39,7 +40,7 @@ export const Container = styled.div`
                     "left"
                     "right";
      */
-     display: flex;
+     display: ${({ visible }) => (visible ? 'flex' : 'none')};;
      flex-direction: column;
   `};
 `;
@@ -51,20 +52,25 @@ export const Middle = styled.div`
   grid-template-rows: min-content min-content min-content;
   margin: auto;
   grid-gap: 2rem;
+  > p:only-of-type {
+    padding: 0 2rem;
+    margin: 0 !important;
+  }
   ${MEDIA.LARGE`
   grid-template-columns: 20rem;
   grid-template-rows: min-content min-content min-content;  
-
+  margin-bottom: 2rem;
     `};
-  ${MEDIA.PHONE`
-grid-template-columns: 15rem;
+  ${MEDIA.DESKTOP`
+    grid-gap: 1rem;
+    
+    `} ${MEDIA.PHONE`
+  grid-template-columns: 80vw;
   grid-template-rows: min-content min-content min-content;  
-
-`};
   > p:only-of-type {
-    margin-bottom: 0;
-    padding: 0 2rem;
+    padding: 0 0.5rem;
   }
+`};
 `;
 
 const Wing = styled.ul`

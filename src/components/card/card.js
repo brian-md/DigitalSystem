@@ -6,7 +6,7 @@ import Title from 'components/title';
 import Paragraph from 'components/paragraph';
 import Button from 'components/button';
 
-const Card = ({ flip, title, description, cta, small, visible }) => (
+const Card = ({ flip, invert, title, description, cta, small, visible }) => (
   <Container small={small} visible={visible} flip={flip}>
     <Title line={!small} align="left" size={small && 'small'} as="h3">
       {title}
@@ -15,7 +15,7 @@ const Card = ({ flip, title, description, cta, small, visible }) => (
       <Paragraph size={small && 'small'}>{description}</Paragraph>
     )}
     {cta && (
-      <Button size={small && 'small'} {...cta}>
+      <Button size={small && 'small'} invert={invert} {...cta}>
         {cta.text ? cta.text : 'Learn More'}
       </Button>
     )}
@@ -26,6 +26,7 @@ Card.propTypes = {
   alt: PropTypes.string,
   flip: PropTypes.bool,
   small: PropTypes.bool,
+  invert: PropTypes.bool,
   visible: PropTypes.bool,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,

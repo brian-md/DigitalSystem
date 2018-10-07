@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import Layout from 'components/layout';
 import Hero from 'components/hero';
 import Paragraph from 'components/paragraph';
-import Tabber from 'containers/tabber';
-import ImageWings from 'components/imageWings';
+// import Tabber from 'containers/tabber';
+// import ImageWings from 'components/imageWings';
+import ImageWingTabs from 'components/imageWingTabs';
 import Section from 'components/section';
-import Button from 'components/button';
+// import Button from 'components/button';
 import ServiceCardList from 'containers/serviceCardList';
 import { graphql } from 'gatsby';
 
@@ -41,35 +42,27 @@ const Index = ({ data, location }) => (
       />
     </Section>
     <Section title="Who We Serve" bg="purple" bottom top>
-      <Tabber
-        keys={data.allPrismicIndustry.edges.map(industry => industry.node.uid)}
-      >
-        {({ setTab, getVisibility }) => {
-          const buttons = data.allPrismicIndustry.edges.map(industry => (
-            <Button
-              key={industry.node.uid}
-              onClick={() => setTab(industry.node.uid)}
-            >
-              {industry.node.data.industry_name.text}
-            </Button>
-          ));
-          const content = data.allPrismicIndustry.edges.map(industry => (
-            <ImageWings
-              visible={getVisibility(industry.node.uid)}
-              key={industry.node.uid}
-              image={
-                industry.node.data.main_image.localFile.childImageSharp.fluid
-              }
-            />
-          ));
-          return (
-            <>
-              {buttons}
-              {content}
-            </>
+      <ImageWingTabs
+        invert
+        data={data.allPrismicIndustry.edges.map(industry => {
+          const solutions = data.allPrismicSolution.edges.filter(
+            solution =>
+              solution.node.data.industry.document[0].uid === industry.node.uid
           );
-        }}
-      </Tabber>
+          return {
+            name: industry.node.data.industry_name.text,
+            image:
+              industry.node.data.main_image.localFile.childImageSharp.fluid,
+            description: industry.node.data.short_description.text,
+            features: solutions.map(solution => ({
+              title: solution.node.data.solution_name.text,
+              description: solution.node.data.short_description.text,
+              cta: { to: `/solutions/${solution.node.uid}` },
+            })),
+            cta: { to: `/industries/${industry.node.uid}` },
+          };
+        })}
+      />
     </Section>
     <Section title="Get In Touch">hello</Section>
 
@@ -175,6 +168,26 @@ export const query = graphql`
                   }
                 }
               }
+            }
+          }
+        }
+      }
+    }
+    allPrismicSolution {
+      edges {
+        node {
+          uid
+          data {
+            industry {
+              document {
+                uid
+              }
+            }
+            solution_name {
+              text
+            }
+            short_description {
+              text
             }
           }
         }

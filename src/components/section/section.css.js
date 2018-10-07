@@ -7,7 +7,7 @@ export const Container = styled.section`
   align-items: center;
   padding: 4rem;
   flex-direction: column;
-  padding: 6rem 0 5rem 0;
+  padding: 6rem 0 8rem 0;
   padding-top: ${({ top }) => (top ? '14.75rem' : '6rem')}
   overflow: visible;
   background-color: ${({ bg }) => () => {

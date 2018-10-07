@@ -3,11 +3,21 @@ import PropTypes, { arrayOf } from 'prop-types';
 import { Container, Left, Middle, Right } from './imageWings.css';
 
 import Image from 'components/image';
+import Button from 'components/button';
 import Paragraph from 'components/paragraph';
 import Card from 'components/card';
 
 const ImageWings = props => {
-  const { image, alt, features, fixedImage, description, visible } = props;
+  const {
+    image,
+    alt,
+    features,
+    fixedImage,
+    invert,
+    description,
+    visible,
+    cta,
+  } = props;
   return (
     <Container visible={visible}>
       <Middle>
@@ -19,13 +29,20 @@ const ImageWings = props => {
           style={{ gridArea: 'image' }}
         />
         {description && <Paragraph>{description}</Paragraph>}
+        {cta && (
+          <Button invert={invert} size="small" {...cta}>
+            {cta.text ? cta.text : 'Learn More'}
+          </Button>
+        )}
       </Middle>
 
       <Left>
         {features &&
           features
             .slice(0, Math.floor(features.length / 2))
-            .map((feature, i) => <Card small key={i} {...feature} />)}
+            .map((feature, i) => (
+              <Card small invert={invert} key={i} {...feature} />
+            ))}
       </Left>
       <Right>
         {features &&
@@ -34,7 +51,9 @@ const ImageWings = props => {
               Math.floor(features.length / 2),
               Math.floor(features.length / 2) * 2
             )
-            .map((feature, i) => <Card small key={i} {...feature} />)}
+            .map((feature, i) => (
+              <Card small invert={invert} key={i} {...feature} />
+            ))}
       </Right>
     </Container>
   );
@@ -48,6 +67,7 @@ ImageWings.propTypes = {
   alt: PropTypes.string,
   image: PropTypes.object.isRequired,
   features: arrayOf(PropTypes.object),
+  invert: PropTypes.bool,
   left: PropTypes.node,
   right: PropTypes.node,
   visible: PropTypes.bool,

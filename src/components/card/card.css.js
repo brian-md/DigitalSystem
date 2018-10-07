@@ -30,9 +30,9 @@ export const Container = styled.div`
     }
   `};
   ${MEDIA.PHONE`
-    align-items: stretch;
+    align-items: flex-start;
     button {
-      align-self: stretch;
+      align-self: flex-start;
     }
   `};
 `;

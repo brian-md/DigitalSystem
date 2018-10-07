@@ -24,10 +24,11 @@ Button.propTypes = {
   primary: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   fit: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   to: PropTypes.string,
+  noOutline: PropTypes.bool,
   href: PropTypes.string,
   target: PropTypes.string,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-  size: PropTypes.oneOf(['small', 'regular', 'medium', 'large']),
+  size: PropTypes.oneOf(['small', 'regular', 'medium', 'large', 'tiny']),
 };
 
 export default Button;

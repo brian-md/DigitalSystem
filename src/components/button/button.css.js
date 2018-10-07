@@ -4,6 +4,8 @@ export const BasicButton = styled.button`
   display: inline-block;
   padding: ${({ size }) => () => {
     switch (size) {
+      case 'tiny':
+        return '0 0.8rem';
       case 'small':
         return '0 1.35rem';
       case 'medium':
@@ -34,6 +36,8 @@ export const BasicButton = styled.button`
   cursor: pointer;
   height: ${({ size }) => () => {
     switch (size) {
+      case 'tiny':
+        return '1.5rem';
       case 'small':
         return '2rem';
       case 'medium':
@@ -46,6 +50,8 @@ export const BasicButton = styled.button`
   }};
   line-height: ${({ size }) => () => {
     switch (size) {
+      case 'tiny':
+        return '1.5rem';
       case 'small':
         return '2rem';
       case 'medium':
@@ -58,8 +64,12 @@ export const BasicButton = styled.button`
   }};
  
   border: none;
-  box-shadow: ${({ invert }) =>
-    invert ? 'inset 0 0 0 1px #ffffff' : 'inset 0 0 0 1px #000000'};
+  box-shadow: ${({ invert, noOutline }) =>
+    noOutline
+      ? 'none'
+      : invert
+        ? 'inset 0 0 0 1px #ffffff'
+        : 'inset 0 0 0 1px #000000'};
   border: none;
   background-color: transparent;
   user-select: none;
@@ -85,8 +95,12 @@ export const BasicButton = styled.button`
     background-color: rgba(255, 255, 255, 0.1);
   }
   :active, :hover {
-    box-shadow: ${({ invert }) =>
-      invert ? 'inset 0 0 0 1px #ffffff' : 'inset 0 0 0 1px #4797ec'};
+    box-shadow: ${({ invert, noOutline }) =>
+      noOutline
+        ? 'none'
+        : invert
+          ? 'inset 0 0 0 1px #ffffff'
+          : 'inset 0 0 0 1px #4797ec'};
 
   }
 `;

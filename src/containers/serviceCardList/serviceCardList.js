@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ImageCard from 'components/imageCard';
+import Button from 'components/button';
 
 class ServiceCardList extends Component {
   constructor(props) {
@@ -66,9 +67,9 @@ class ServiceCardList extends Component {
           )}
 
         {!this.state.showMore && (
-          <button onClick={this.showToggle}>
-            Show {this.state.showMore ? 'Less' : 'More'}
-          </button>
+          <Button onClick={this.showToggle} size="tiny">
+            Show More
+          </Button>
         )}
       </>
     );
