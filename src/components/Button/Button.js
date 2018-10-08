@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { BasicButton, PrimaryButton } from './Button.css';
 
-const Button = ({ children, primary, to, href, ...props }) => {
+const Button = ({ children, to, href, primary, ...props }) => {
   const StyledButton = primary ? PrimaryButton : BasicButton;
   return to ? (
     <StyledButton as={Link} to={to} {...props}>
