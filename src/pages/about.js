@@ -1,20 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import Layout from 'components/layout';
-import Box from 'components/box';
+import { Layout } from 'components';
 import Head from 'components/head';
 
 const About = ({ data }) => (
   <Layout stuckNav>
     <Head pageTitle={data.aboutJson.title} />
-    <Box>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: data.aboutJson.content.childMarkdownRemark.html,
-        }}
-      />
-    </Box>
+
+    <div
+      dangerouslySetInnerHTML={{
+        __html: data.aboutJson.content.childMarkdownRemark.html,
+      }}
+    />
   </Layout>
 );
 

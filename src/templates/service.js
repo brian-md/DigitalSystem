@@ -1,14 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Layout from 'components/layout';
-import Hero from 'components/hero';
-import { Helmet } from 'react-helmet';
-// import Paragraph from 'components/paragraph';
-import Section from 'components/section';
-import ImageWings from 'components/imageWings';
-import ImageCard from 'components/imageCard';
-// import ServiceCardList from 'containers/serviceCardList';
 import { graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
+import { Hero, ImageCard, ImageWings, Layout, Section } from 'components';
 
 const Index = ({ data, location }) => (
   <Layout location={location.pathname}>

@@ -1,11 +1,6 @@
 import React from 'react';
-import Box from 'components/box';
-import Layout from 'components/layout';
+import { Layout } from 'components';
 
-const NotFound = () => (
-  <Layout>
-    <Box>Not found.</Box>
-  </Layout>
-);
+const NotFound = () => <Layout>Not found.</Layout>;
 
 export default NotFound;

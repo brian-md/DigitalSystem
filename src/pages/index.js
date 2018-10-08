@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Layout from 'components/layout';
-import Hero from 'components/hero';
-import Paragraph from 'components/paragraph';
+import { graphql } from 'gatsby';
 // import Tabber from 'containers/tabber';
 // import ImageWings from 'components/imageWings';
-import ImageWingTabs from 'components/imageWingTabs';
-import Section from 'components/section';
-// import Button from 'components/button';
-import ServiceCardList from 'containers/serviceCardList';
-import { graphql } from 'gatsby';
+import { ServiceCardList } from 'containers';
+import { Hero, Paragraph, ImageWingTabs, Layout, Section } from 'components';
 
 const Index = ({ data, location }) => (
   <Layout location={location.pathname}>
@@ -43,7 +38,7 @@ const Index = ({ data, location }) => (
     </Section>
     <Section title="Who We Serve" bg="purple" bottom top>
       <ImageWingTabs
-        invert
+        invert={1}
         data={data.allPrismicIndustry.edges.map(industry => {
           const solutions = data.allPrismicSolution.edges.filter(
             solution =>

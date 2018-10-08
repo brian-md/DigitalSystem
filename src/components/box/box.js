@@ -8,4 +8,4 @@ Box.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Box;
+export { Box };
