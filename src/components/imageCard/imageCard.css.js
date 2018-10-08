@@ -56,13 +56,14 @@ export const Container = styled.div`
   `};
   ${MEDIA.PHONE`
     grid-template-columns: 1fr;
-    grid-template-rows: 85vw 1fr;
+    grid-template-rows: 75vw 1fr;
     grid-template-areas: 
         'image'
         'content';
     div:first-child {
-        max-width: 85vw;
-        width: 85vw;
+        max-width: 75vw;
+        width: 75vw;
+        height: 75vw;
         margin: 0 auto;
     }
   `};

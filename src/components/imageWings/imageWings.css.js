@@ -65,10 +65,11 @@ export const Middle = styled.div`
     grid-gap: 1rem;
     
     `} ${MEDIA.PHONE`
-  grid-template-columns: 80vw;
+  grid-template-columns: 70vw;
   grid-template-rows: min-content min-content min-content;  
+  
   > p:only-of-type {
-    padding: 0 0.5rem;
+    padding: 0 1rem;
   }
 `};
 `;

@@ -30,7 +30,7 @@ export const Container = styled.div`
     }
   `};
   ${MEDIA.PHONE`
-    align-items: flex-start;
+    align-items: ${({ small }) => (small ? 'flex-start' : 'stretch')};
     button {
       align-self: flex-start;
     }
