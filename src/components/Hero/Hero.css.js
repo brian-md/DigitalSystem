@@ -43,7 +43,7 @@ export const Container = styled.section`
 
 export const SmallContainer = styled(Container)`
   min-height: 25vh;
-  padding: 6.5rem 5vw;
+  padding: 8.5rem 5vw;
 `;
 
 export const ImageWrapper = styled.div`

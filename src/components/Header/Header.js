@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import { Container } from './Header.css';
 import Nav from './nav';
 import MenuButton from './menuButton';
-import { Title } from 'components';
+import { Logo } from 'components';
 
 const Header = ({
   stuck,
@@ -18,7 +18,13 @@ const Header = ({
 }) => (
   <Container stuck={stuck} menuOpen={menuOpen} submenuOpen={submenuOpen}>
     <Link to="/">
-      <Title as="h1">logo</Title>
+      <Logo
+        color="#ffffff"
+        style={{
+          transition: 'all 0.5s ease',
+          height: stuck || submenuOpen ? '2.5rem' : '5rem',
+        }}
+      />
     </Link>
     <Nav
       menu={menu}

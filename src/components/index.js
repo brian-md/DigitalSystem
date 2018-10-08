@@ -11,3 +11,5 @@ export * from './Paragraph/Paragraph';
 export * from './Section/Section';
 export * from './Title/Title';
 export * from './Transition/Transition';
+export * from './Logo/Logo';
+export * from './Footer/Footer';

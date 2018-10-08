@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Container, Inner } from './Section.css';
 import { Title } from 'components';
 
-const Section = ({ title, children, bg, top, bottom }) => (
-  <Container bg={bg} top={top} bottom={bottom}>
+const Section = ({ title, children, bg, top, bottom, flipTop, as }) => (
+  <Container bg={bg} top={top} bottom={bottom} flipTop={flipTop} as={as}>
     <Inner>
       {title && (
         <Title size="large" as="h2" line center invert={bg === 'purple'}>
@@ -22,10 +22,13 @@ Section.propTypes = {
   bg: PropTypes.oneOf(['purple', 'grey', 'white']),
   bottom: PropTypes.bool,
   top: PropTypes.bool,
+  flipTop: PropTypes.bool,
+  as: PropTypes.string,
 };
 
 Section.defaultProps = {
   bg: 'white',
+  as: 'section',
 };
 
 export { Section };

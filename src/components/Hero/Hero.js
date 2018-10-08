@@ -7,7 +7,7 @@ import {
   ImageWrapper,
   ButtonWrapper,
 } from './Hero.css';
-import { Button, Paragraph, Title } from 'components';
+import { Button, Paragraph, Title, Logo } from 'components';
 
 import Img from 'gatsby-image';
 
@@ -43,7 +43,14 @@ const HeroContents = ({
   <ParentContainer>
     {logo && (
       <AnimatedContainer>
-        <Title as="h1">LOGO</Title>
+        <Logo
+          color="#ffffff"
+          style={{
+            transition: 'all 0.5s ease',
+            height: '12rem',
+            marginBottom: '1vw',
+          }}
+        />
       </AnimatedContainer>
     )}
     <AnimatedContainer>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import Head from 'components/head';
 import { Navbar } from 'containers';
+import { Footer } from 'components';
 import GlobalStyle from 'global.css.js';
 
 const Layout = ({ data, children, stuckNav, location }) => (
@@ -15,6 +16,7 @@ const Layout = ({ data, children, stuckNav, location }) => (
       location={location}
     />
     {children}
+    <Footer />
   </div>
 );
 

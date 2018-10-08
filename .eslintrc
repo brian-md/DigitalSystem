@@ -7,8 +7,9 @@
   "rules": {
     "strict": 0,
     "quotes": [
-      "warn",
-      "single"
+      2,
+      "single",
+      "avoid-escape"
     ],
     "prettier/prettier": "warn"
   },

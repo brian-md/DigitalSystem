@@ -60,7 +60,10 @@ class NavBar extends Component {
     e.preventDefault();
     // eslint-disable-next-line
     console.log(this.state.menuOpen);
-    this.setState(prevState => ({ menuOpen: !prevState.menuOpen }));
+    this.setState(prevState => {
+      document.body.style.overflow = prevState.menuOpen ? 'scroll' : 'hidden';
+      return { menuOpen: !prevState.menuOpen };
+    });
   };
 
   openMenu = () => {

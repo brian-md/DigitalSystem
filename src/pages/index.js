@@ -60,8 +60,6 @@ const Index = ({ data, location }) => (
       />
     </Section>
     <Section title="Get In Touch">hello</Section>
-
-    <div style={{ height: '50vh' }} />
   </Layout>
 );
 

@@ -8,7 +8,8 @@ export const Container = styled.header`
   align-items: center;
   padding: 0 3rem;
   margin-top: ${({ stuck }) => (stuck ? '0' : '0.75rem')};
-  min-height: ${({ submenuOpen }) => (submenuOpen ? '3.5rem' : '3.5rem')};
+  min-height: ${({ stuck, submenuOpen }) =>
+    stuck || submenuOpen ? '3.5rem' : '6rem'};
   line-height: 3.5rem;
   position: ${({ stuck }) => (stuck ? 'fixed' : 'absolute')};
   top: 0;
