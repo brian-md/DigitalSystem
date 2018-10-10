@@ -8,7 +8,7 @@ export const Container = styled.section`
   padding: 4rem;
   flex-direction: column;
   padding: 6rem 0 8rem 0;
-  padding-top: ${({ top }) => (top ? '14.75rem' : '6rem')}
+  padding-top: ${({ top, flipTop }) => (top && !flipTop ? '14.75rem' : '6rem')}
   overflow: visible;
   background-color: ${({ bg }) => () => {
     switch (bg) {
@@ -16,6 +16,8 @@ export const Container = styled.section`
         return '#ffffff';
       case 'purple':
         return '#4797ec';
+      case 'grey':
+        return '#fafafa';
     }
   }};
   background-image: ${({ bg }) => () => {
@@ -24,6 +26,8 @@ export const Container = styled.section`
         return 'none';
       case 'purple':
         return 'url("/images/overlay.png"),linear-gradient(45deg, rgba(71, 151, 236, 0), #884beb 80%)';
+      case 'grey':
+        return 'url("/images/overlay.png"),linear-gradient(45deg, rgba(71, 151, 236, 0), #ddddddd 80%)';
     }
   }};
   color: ${({ bg }) => () => {
@@ -61,7 +65,7 @@ export const Container = styled.section`
     height: ${({ top }) => (top ? '8rem' : '0')};
     left: 0;
     position: absolute;
-    top: -3px;
+    top: -1px;
     width: 100%;
   }
   ${MEDIA.DESKTOP`

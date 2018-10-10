@@ -13,3 +13,5 @@ export * from './Title/Title';
 export * from './Transition/Transition';
 export * from './Logo/Logo';
 export * from './Footer/Footer';
+export * from './ImageCardGridTabs/ImageCardGridTabs';
+export * from './ImageCardGrid/ImageCardGrid';

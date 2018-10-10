@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import { Hero, ImageCard, ImageWings, Layout, Section } from 'components';
+import {
+  Hero,
+  ImageCard,
+  ImageWings,
+  Layout,
+  Section,
+  ImageCardGrid,
+} from 'components';
 
 const Index = ({ data, location }) => (
   <Layout location={location.pathname}>
@@ -43,7 +50,29 @@ const Index = ({ data, location }) => (
         }))}
       />
     </Section>
-    <Section title="Get In Touch">hello</Section>
+    <Section
+      title={`${data.prismicIndustry.data.industry_name.text} Solutions`}
+    >
+      <ImageCardGrid
+        features={data.allPrismicSolution.edges
+          .filter(
+            solution =>
+              solution.node.data.industry.document[0].uid ===
+              data.prismicIndustry.uid
+          )
+          .map(solution => ({
+            title: solution.node.data.solution_name.text,
+            description: solution.node.data.short_description.text,
+            image:
+              solution.node.data.main_image.localFile.childImageSharp.fluid,
+            cta: {
+              to: `/${solution.node.data.industry.document[0].uid}/${
+                solution.node.uid
+              }`,
+            },
+          }))}
+      />
+    </Section>
   </Layout>
 );
 
@@ -123,6 +152,42 @@ export const query = graphql`
                   fluid(maxWidth: 1000, maxHeight: 1000) {
                     ...GatsbyImageSharpFluid
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    allPrismicSolution {
+      edges {
+        node {
+          uid
+          data {
+            solution_name {
+              text
+            }
+            short_description {
+              text
+            }
+            main_image {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 400, maxHeight: 400) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+            industry {
+              document {
+                uid
+              }
+            }
+            services {
+              service {
+                document {
+                  uid
                 }
               }
             }

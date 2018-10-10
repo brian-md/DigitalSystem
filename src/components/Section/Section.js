@@ -3,8 +3,15 @@ import PropTypes from 'prop-types';
 import { Container, Inner } from './Section.css';
 import { Title } from 'components';
 
-const Section = ({ title, children, bg, top, bottom, flipTop, as }) => (
-  <Container bg={bg} top={top} bottom={bottom} flipTop={flipTop} as={as}>
+const Section = ({ title, children, bg, top, bottom, flipTop, as, style }) => (
+  <Container
+    bg={bg}
+    top={top}
+    bottom={bottom}
+    flipTop={flipTop}
+    as={as}
+    style={style}
+  >
     <Inner>
       {title && (
         <Title size="large" as="h2" line center invert={bg === 'purple'}>
@@ -24,6 +31,7 @@ Section.propTypes = {
   top: PropTypes.bool,
   flipTop: PropTypes.bool,
   as: PropTypes.string,
+  style: PropTypes.object,
 };
 
 Section.defaultProps = {

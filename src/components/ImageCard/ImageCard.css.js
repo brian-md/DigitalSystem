@@ -26,6 +26,9 @@ export const Container = styled.div`
     // eslint-disable-next-line
     flip ? '\'content image\'' : '\'image content\''};
   align-self: stretch;
+  div:first-child {
+    align-self: center;
+  }
   img {
     border-radius: 100%;
   }
@@ -75,6 +78,11 @@ export const SmallContainer = styled(Container)`
   grid-template-rows: 1fr;
   ${MEDIA.LARGE`
   grid-template-columns: ${({ flip }) => (flip ? '1fr 10rem' : '10rem 1fr')};
+  div:first-child {
+        width: 10rem;
+        height: 10rem;
+        margin: 0 auto;
+    }
   `};
   ${MEDIA.DESKTOP`
     grid-template-columns: 1fr;

@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import { Hero, ImageCard, ImageWings, Layout, Section } from 'components';
+import {
+  Hero,
+  ImageCard,
+  ImageWings,
+  Layout,
+  Section,
+  ImageCardGridTabs,
+} from 'components';
 
 const Index = ({ data, location }) => (
   <Layout location={location.pathname}>
@@ -30,7 +37,7 @@ const Index = ({ data, location }) => (
         }
       />
     </Section>
-    <Section title="Who We Serve" bg="purple" bottom top>
+    <Section title="Main Benefits" bg="purple" bottom top>
       <ImageWings
         image={
           data.prismicService.data.secondary_image.localFile.childImageSharp
@@ -43,6 +50,31 @@ const Index = ({ data, location }) => (
         }))}
       />
     </Section>
+    <Section title={`${data.prismicService.data.service_name.text} Solutions`}>
+      <ImageCardGridTabs
+        data={data.allPrismicIndustry.edges.map(industry => {
+          const solutions = data.allPrismicSolution.edges.filter(
+            solution =>
+              solution.node.data.industry.document[0].uid ===
+                industry.node.uid &&
+              solution.node.data.services
+                .map(service => service.service.document[0].uid)
+                .includes(data.prismicService.uid)
+          );
+          return {
+            name: industry.node.data.industry_name.text,
+            features: solutions.map(solution => ({
+              title: solution.node.data.solution_name.text,
+              image:
+                solution.node.data.main_image.localFile.childImageSharp.fluid,
+              description: solution.node.data.short_description.text,
+              cta: { to: `/${industry.node.uid}/${solution.node.uid}` },
+            })),
+          };
+        })}
+      />
+    </Section>
+    <Section title="Our Partners" bg="grey" bottom top />
     <Section title="Get In Touch">hello</Section>
   </Layout>
 );
@@ -125,6 +157,54 @@ export const query = graphql`
                   }
                 }
               }
+            }
+          }
+        }
+      }
+    }
+    allPrismicSolution {
+      edges {
+        node {
+          uid
+          data {
+            solution_name {
+              text
+            }
+            short_description {
+              text
+            }
+            main_image {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 400, maxHeight: 400) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+            industry {
+              document {
+                uid
+              }
+            }
+            services {
+              service {
+                document {
+                  uid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    allPrismicIndustry {
+      edges {
+        node {
+          uid
+          data {
+            industry_name {
+              text
             }
           }
         }
