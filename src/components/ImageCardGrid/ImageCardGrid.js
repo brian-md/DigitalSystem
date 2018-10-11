@@ -7,7 +7,13 @@ const ImageCardGrid = ({ features, invert, visible }) => {
   return (
     <Wrapper visible={visible}>
       {features.map(feature => (
-        <ImageCard key={feature.title} small {...feature} invert={invert} />
+        <ImageCard
+          as="li"
+          key={feature.title}
+          small
+          {...feature}
+          invert={invert}
+        />
       ))}
     </Wrapper>
   );
