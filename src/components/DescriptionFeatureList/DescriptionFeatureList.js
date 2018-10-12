@@ -14,7 +14,7 @@ const DescriptionFeatureList = ({ description, features }) => {
           const Feature = feature.icon ? IconTitle : Title;
           return (
             <li key={feature.description}>
-              <Feature align="left" icon={feature.icon} size="small">
+              <Feature align="left" icon={feature.icon} size="small" noCaps>
                 {feature.description}
               </Feature>
             </li>

@@ -31,6 +31,7 @@ ImageCard.propTypes = {
   wrapperStyle: PropTypes.object,
   contentStyle: PropTypes.object,
   as: PropTypes.string,
+  stacked: PropTypes.bool,
 };
 
 ImageCard.defaultProps = {

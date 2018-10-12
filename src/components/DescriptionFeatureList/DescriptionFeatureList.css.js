@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   text-align: left;
   > p:only-of-type {
-    flex: 2;
+    flex: 1.618;
     margin: auto;
     margin-right: 4rem;
   }
@@ -19,7 +19,7 @@ export const Description = styled(Paragraph)`
 export const FeatureList = styled.ul`
   display: flex;
   flex-direction: column;
-  flex: 3;
+  flex: 1;
   li {
     margin-bottom: 2rem;
   }
