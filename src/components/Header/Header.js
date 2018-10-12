@@ -22,7 +22,7 @@ const Header = ({
         color="#ffffff"
         style={{
           transition: 'all 0.5s ease',
-          height: stuck || submenuOpen ? '2.5rem' : '5rem',
+          height: stuck || submenuOpen ? '2rem' : '5rem',
         }}
       />
     </Link>

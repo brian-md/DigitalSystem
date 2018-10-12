@@ -47,6 +47,7 @@ const Index = ({ data, location }) => (
         features={data.prismicService.data.features.map(feature => ({
           title: feature.title.text,
           description: feature.description.text,
+          icon: feature.icon,
         }))}
       />
     </Section>
@@ -68,13 +69,17 @@ const Index = ({ data, location }) => (
               image:
                 solution.node.data.main_image.localFile.childImageSharp.fluid,
               description: solution.node.data.short_description.text,
-              cta: { to: `/${industry.node.uid}/${solution.node.uid}` },
+              cta: {
+                to: `/industries/${industry.node.uid}/${solution.node.uid}`,
+              },
             })),
           };
         })}
       />
     </Section>
-    <Section title="Our Partners" bg="grey" bottom top />
+    <Section title="Our Partners" bg="grey" bottom top>
+      brands
+    </Section>
     <Section title="Get In Touch">hello</Section>
   </Layout>
 );

@@ -7,7 +7,7 @@ import { Footer } from 'components';
 import GlobalStyle from 'global.css.js';
 
 const Layout = ({ data, children, stuckNav, location }) => (
-  <div>
+  <div style={{ minHeight: '100vh' }}>
     <GlobalStyle />
     <Head />
     <Navbar
