@@ -52,7 +52,11 @@ const Index = ({ data, location }) => (
             features: solutions.map(solution => ({
               title: solution.node.data.solution_name.text,
               description: solution.node.data.short_description.text,
-              cta: { to: `/solutions/${solution.node.uid}` },
+              cta: {
+                to: `/industries/${
+                  solution.node.data.industry.document[0].uid
+                }/${solution.node.uid}`,
+              },
             })),
             cta: { to: `/industries/${industry.node.uid}` },
           };

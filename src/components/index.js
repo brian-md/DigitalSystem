@@ -15,3 +15,6 @@ export * from './Logo/Logo';
 export * from './Footer/Footer';
 export * from './ImageCardGridTabs/ImageCardGridTabs';
 export * from './ImageCardGrid/ImageCardGrid';
+export * from './Icon/Icon';
+export * from './IconTitle/IconTitle';
+export * from './DescriptionFeatureList/DescriptionFeatureList';

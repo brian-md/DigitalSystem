@@ -49,7 +49,9 @@ const Nav = ({
                   <li key={menuItem.name}>
                     <Link
                       className={
-                        location && location === menuItem.to
+                        location &&
+                        location.includes(menuItem.to) &&
+                        menuItem.name !== 'See All'
                           ? 'current'
                           : undefined
                       }

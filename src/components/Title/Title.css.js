@@ -24,7 +24,7 @@ export const Text = styled.span`
   }};
   text-align: ${({ align }) => align};
   line-height: 1.2;
-  text-transform: uppercase;
+  text-transform: ${({ noCaps }) => (noCaps ? 'uppercase' : 'none')};
   padding-bottom: ${({ line }) => (line ? '0.87em' : '0')};
   margin: ${({ line }) => (line ? '0 0 0.87em 0' : '0')};
   &::after {

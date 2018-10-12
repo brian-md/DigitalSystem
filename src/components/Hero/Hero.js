@@ -79,9 +79,11 @@ const HeroContents = ({
         </ButtonWrapper>
       </AnimatedContainer>
     )}
-    <ImageWrapper small={small}>
-      <Img fluid={image} style={{ minHeight: '100vh' }} />
-    </ImageWrapper>
+    {image && (
+      <ImageWrapper small={small}>
+        <Img fluid={image} style={{ minHeight: '100vh' }} />
+      </ImageWrapper>
+    )}
   </ParentContainer>
 );
 

@@ -68,7 +68,9 @@ const Index = ({ data, location }) => (
               image:
                 solution.node.data.main_image.localFile.childImageSharp.fluid,
               description: solution.node.data.short_description.text,
-              cta: { to: `/${industry.node.uid}/${solution.node.uid}` },
+              cta: {
+                to: `/industries/${industry.node.uid}/${solution.node.uid}`,
+              },
             })),
           };
         })}

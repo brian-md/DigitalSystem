@@ -2,18 +2,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text } from './Title.css';
 
-const Title = ({ children, as = 'span', size, line, align, invert, html }) => {
+const Title = ({
+  children,
+  as = 'span',
+  noCaps,
+  size,
+  line,
+  align,
+  invert,
+  html,
+}) => {
   return html ? (
     <Text
       as={as}
       size={size}
       line={line}
       align={align}
+      noCaps={noCaps}
       invert={invert}
       dangerouslySetInnerHTML={{ __html: children }}
     />
   ) : (
-    <Text as={as} size={size} line={line} align={align} invert={invert}>
+    <Text
+      as={as}
+      size={size}
+      line={line}
+      align={align}
+      noCaps={noCaps}
+      invert={invert}
+    >
       {children}
     </Text>
   );
@@ -27,6 +44,7 @@ Title.propTypes = {
   align: PropTypes.oneOf(['left', 'center', 'right']),
   invert: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   html: PropTypes.bool,
+  noCaps: PropTypes.bool,
 };
 
 Title.defaultProps = {
