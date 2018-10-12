@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Wrapper, FeatureList } from './DescriptionFeatureList.css';
-import { IconTitle, Title, Paragraph } from 'components';
+import {
+  Wrapper,
+  FeatureList,
+  Description,
+} from './DescriptionFeatureList.css';
+import { IconTitle, Title } from 'components';
 
-const DescriptionFeatureList = ({ description, features }) => {
+const DescriptionFeatureList = ({ children, features }) => {
   return (
     <Wrapper>
-      <Paragraph style={{ flex: '1' }} center={false}>
-        {description}
-      </Paragraph>
+      <Description>{children}</Description>
+
       <FeatureList>
         {features.map(feature => {
           const Feature = feature.icon ? IconTitle : Title;
@@ -26,7 +29,7 @@ const DescriptionFeatureList = ({ description, features }) => {
 };
 
 DescriptionFeatureList.propTypes = {
-  description: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   features: PropTypes.arrayOf(
     PropTypes.shape({
       description: PropTypes.string.isRequired,

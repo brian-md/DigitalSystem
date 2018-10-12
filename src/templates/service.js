@@ -47,6 +47,7 @@ const Index = ({ data, location }) => (
         features={data.prismicService.data.features.map(feature => ({
           title: feature.title.text,
           description: feature.description.text,
+          icon: feature.icon,
         }))}
       />
     </Section>
@@ -76,7 +77,9 @@ const Index = ({ data, location }) => (
         })}
       />
     </Section>
-    <Section title="Our Partners" bg="grey" bottom top />
+    <Section title="Our Partners" bg="grey" bottom top>
+      brands
+    </Section>
     <Section title="Get In Touch">hello</Section>
   </Layout>
 );

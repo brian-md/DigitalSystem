@@ -11,45 +11,52 @@ import {
   DescriptionFeatureList,
 } from 'components';
 
-const Index = ({ data, location }) => (
-  <Layout location={location.pathname} stuckNav>
-    <Helmet
-      title={`${data.prismicSolution.data.solution_name.text} | ${
-        data.site.siteMetadata.siteTitle
-      }`}
-    />
+const Index = ({ data, location }) => {
+  const {
+    site: {
+      siteMetadata: { siteTitle },
+    },
+    prismicSolution: {
+      data: {
+        solution_name,
+        tagline,
+        main_image,
+        long_description,
+        long_description_title,
+        features_title,
+        features_summary,
+        features,
+      },
+    },
+  } = data;
+  return (
+    <Layout location={location.pathname} stuckNav>
+      <Helmet title={`${solution_name.text} | ${siteTitle}`} />
 
-    <Section>
-      <Title size="large" line as="h1">
-        {data.prismicSolution.data.solution_name.text}
-      </Title>
-      <Paragraph size="medium">
-        {data.prismicSolution.data.tagline.text}
-      </Paragraph>
-      <ImageCard
-        image={
-          data.prismicSolution.data.main_image.localFile.childImageSharp.fluid
-        }
-        title={data.prismicSolution.data.long_description_title.text}
-        description={data.prismicSolution.data.long_description.text}
-      />
-    </Section>
-    <Section
-      bg="purple"
-      title={data.prismicSolution.data.features_title.text}
-      top
-      bottom
-    >
-      <DescriptionFeatureList
-        description={data.prismicSolution.data.features_summary.text}
-        features={data.prismicSolution.data.features.map(feature => ({
-          description: feature.feature.text,
-          icon: feature.icon,
-        }))}
-      />
-    </Section>
-  </Layout>
-);
+      <Section>
+        <Title size="large" line as="h1">
+          {solution_name.text}
+        </Title>
+        <Paragraph size="medium">{tagline.text}</Paragraph>
+        <ImageCard
+          image={main_image.localFile.childImageSharp.fluid}
+          title={long_description_title.text}
+          description={long_description.text}
+        />
+      </Section>
+      <Section bg="purple" title={features_title.text} top bottom>
+        <DescriptionFeatureList
+          features={features.map(feature => ({
+            description: feature.feature.text,
+            icon: feature.icon,
+          }))}
+        >
+          <Paragraph>{features_summary.text}</Paragraph>
+        </DescriptionFeatureList>
+      </Section>
+    </Layout>
+  );
+};
 
 Index.propTypes = {
   data: PropTypes.object.isRequired,

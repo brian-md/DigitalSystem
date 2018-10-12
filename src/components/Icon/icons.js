@@ -1,7 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Wrapper } from './Icon.css.js';
-const icons = {
+export const icons = {
   warning: [
     {
       path:
@@ -11,7 +8,7 @@ const icons = {
     {
       path:
         'M512 341.333c-25.6 0-42.667 17.067-42.667 42.667v170.667c0 25.6 17.067 42.667 42.667 42.667s42.667-17.067 42.667-42.667v-170.667c0-25.6-17.067-42.667-42.667-42.667z',
-      color: '#ffffff',
+      color: '#fffff',
     },
     {
       path:
@@ -20,22 +17,3 @@ const icons = {
     },
   ],
 };
-
-const Icon = ({ icon }) => {
-  const iconObject = icons[icon] ? icons[icon] : icons['warning'];
-  const paths = iconObject.map((shape, i) => (
-    <path key={i} d={shape.path} fill={shape.color} />
-  ));
-  return (
-    <Wrapper>
-      <svg viewBox="0 0 1024 1024">{paths}</svg>
-    </Wrapper>
-  );
-};
-
-Icon.propTypes = {
-  icon: PropTypes.string.isRequired,
-  color: PropTypes.string,
-};
-
-export { Icon };
