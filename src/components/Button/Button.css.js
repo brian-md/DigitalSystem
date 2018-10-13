@@ -84,7 +84,7 @@ export const BasicButton = styled.button`
     text-decoration: none;
     transition: all 0.25s ease-in-out;
 
-    :active, :hover, :hover a {
+    :active, :hover,:focus,  :hover a {
         
         color: ${({ invert }) => (invert ? '#ffffff ' : '#4797ec ')};
   }
@@ -94,7 +94,7 @@ export const BasicButton = styled.button`
   :active {
     background-color: rgba(255, 255, 255, 0.1);
   }
-  :active, :hover {
+  :active, :hover, :focus {
     box-shadow: ${({ invert, noOutline }) =>
       noOutline
         ? 'none'

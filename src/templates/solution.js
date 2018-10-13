@@ -79,6 +79,7 @@ const Index = ({ data, location }) => {
             );
             return {
               title: service.node.data.service_name.text,
+              link: `/services/${service.node.uid}`,
               image:
                 service.node.data.main_image.localFile.childImageSharp.fluid,
               description: service.node.data.short_description.text,
