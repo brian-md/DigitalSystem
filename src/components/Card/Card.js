@@ -20,16 +20,17 @@ const Card = ({
         icon={icon}
         line={!small}
         align="left"
-        size={small && 'small'}
+        size={small ? 'small' : undefined}
         as="h3"
+        invert={invert}
       >
         {title}
       </CardTitle>
       {description && (
-        <Paragraph size={small && 'small'}>{description}</Paragraph>
+        <Paragraph size={small ? 'small' : undefined}>{description}</Paragraph>
       )}
       {cta && (
-        <Button size={small && 'small'} invert={invert} {...cta}>
+        <Button size={small ? 'small' : undefined} invert={invert} {...cta}>
           {cta.text ? cta.text : 'Learn More'}
         </Button>
       )}

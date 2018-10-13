@@ -18,3 +18,4 @@ export * from './ImageCardGrid/ImageCardGrid';
 export * from './Icon/Icon';
 export * from './IconTitle/IconTitle';
 export * from './DescriptionFeatureList/DescriptionFeatureList';
+export * from './ImageCircle/ImageCircle';

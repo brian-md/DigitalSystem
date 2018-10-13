@@ -13,10 +13,10 @@ const DescriptionFeatureList = ({ children, features }) => {
       <Description>{children}</Description>
 
       <FeatureList>
-        {features.map(feature => {
+        {features.map((feature, i) => {
           const Feature = feature.icon ? IconTitle : Title;
           return (
-            <li key={feature.description}>
+            <li key={i}>
               <Feature align="left" icon={feature.icon} size="small" noCaps>
                 {feature.description}
               </Feature>

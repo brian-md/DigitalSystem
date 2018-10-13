@@ -1,20 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, SmallContainer } from './ImageCard.css';
-import { Card, Image } from 'components';
+import { Card, ImageCircle } from 'components';
 
 const ImageCard = props => {
-  const { flip, image, as, alt, title, small, wrapperStyle, visible } = props;
-  const Wrapper = small ? SmallContainer : Container;
+  const {
+    flip,
+    image,
+    as,
+    alt,
+    title,
+    size,
+    wrapperStyle,
+    visible,
+    stacked,
+  } = props;
+  const Wrapper = size === 'small' ? SmallContainer : Container;
   return (
     <Wrapper
       visible={visible}
+      stacked={stacked}
       as={as}
       flip={flip}
       style={wrapperStyle && wrapperStyle}
     >
-      <Image small={small} image={image} alt={alt ? alt : title} circle />
-      <Card {...props} />{' '}
+      <ImageCircle size={size} image={image} alt={alt ? alt : title} circle />
+      <Card {...props} small={size === 'small'} />{' '}
     </Wrapper>
   );
 };
@@ -25,12 +36,12 @@ ImageCard.propTypes = {
   flip: PropTypes.bool,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
-  small: PropTypes.bool,
   visible: PropTypes.bool,
   cta: PropTypes.object,
   wrapperStyle: PropTypes.object,
   contentStyle: PropTypes.object,
   as: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   stacked: PropTypes.bool,
 };
 

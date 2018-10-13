@@ -17,10 +17,10 @@ export const Container = styled.div`
       : flip
         ? 'translateX(-10rem)'
         : 'translateX(10rem)'};
-  h3 {
-    padding-bottom: ${({ small }) => (small ? '0.5rem' : 'auto')};
-  }
+
   > p:only-of-type {
+    margin-top: ${({ small }) => (small ? '0.5rem' : '0')};
+
     margin-bottom: ${({ small }) => (small ? '1rem' : '2rem')};
   }
   ${MEDIA.DESKTOP`

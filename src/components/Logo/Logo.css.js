@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
+  align-items: flex-start;
   svg {
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: auto;
     max-width: 85vw;
-    height: 100%;
+    max-height: 100%;
+    transition: all 0.5s ease;
   }
 `;

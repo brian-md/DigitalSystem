@@ -9,6 +9,7 @@ import {
   Paragraph,
   Layout,
   DescriptionFeatureList,
+  ImageCardGrid,
 } from 'components';
 
 const Index = ({ data, location }) => {
@@ -21,11 +22,16 @@ const Index = ({ data, location }) => {
         solution_name,
         tagline,
         main_image,
+        secondary_image,
         long_description,
         long_description_title,
         features_title,
+        features_subtitle,
         features_summary,
         features,
+        explanation,
+        industry,
+        services,
       },
     },
   } = data;
@@ -51,8 +57,61 @@ const Index = ({ data, location }) => {
             icon: feature.icon,
           }))}
         >
-          <Paragraph>{features_summary.text}</Paragraph>
+          {/* <Paragraph>{features_summary.text}</Paragraph> */}
+
+          <ImageCard
+            invert
+            stacked
+            size="medium"
+            flip
+            image={secondary_image.localFile.childImageSharp.fluid}
+            title={features_subtitle.text}
+            description={features_summary.text}
+          />
         </DescriptionFeatureList>
+      </Section>
+      <Section title="How We Do It">
+        <Paragraph>{explanation.text}</Paragraph>
+        <ImageCardGrid
+          features={services.map(serviceId => {
+            const service = data.allPrismicService.edges.find(
+              service => service.node.uid === serviceId.service.document[0].uid
+            );
+            return {
+              title: service.node.data.service_name.text,
+              image:
+                service.node.data.main_image.localFile.childImageSharp.fluid,
+              description: service.node.data.short_description.text,
+              cta: {
+                to: `/services/${service.node.uid}`,
+                text: 'Read More',
+              },
+            };
+          })}
+        />
+      </Section>
+      <Section bg="grey" top bottom title="Related Solutions">
+        <ImageCardGrid
+          small
+          stacked
+          features={data.allPrismicSolution.edges
+            .filter(
+              solution =>
+                solution.node.data.industry.document[0].uid ===
+                industry.document[0].uid
+            )
+            .map(solution => ({
+              title: solution.node.data.solution_name.text,
+              description: solution.node.data.short_description.text,
+              image:
+                solution.node.data.main_image.localFile.childImageSharp.fluid,
+              cta: {
+                to: `/industries/${
+                  solution.node.data.industry.document[0].uid
+                }/${solution.node.uid}`,
+              },
+            }))}
+        />
       </Section>
     </Layout>
   );
@@ -94,6 +153,15 @@ export const query = graphql`
             }
           }
         }
+        secondary_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1000, maxHeight: 1000) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
         industry {
           document {
             uid
@@ -109,6 +177,9 @@ export const query = graphql`
         features_title {
           text
         }
+        features_subtitle {
+          text
+        }
         features_summary {
           text
         }
@@ -118,6 +189,9 @@ export const query = graphql`
           }
           icon
         }
+        explanation {
+          text
+        }
       }
     }
     allPrismicIndustry {
@@ -126,6 +200,30 @@ export const query = graphql`
           uid
           data {
             industry_name {
+              text
+            }
+            short_description {
+              text
+            }
+            main_image {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000, maxHeight: 1000) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    allPrismicService {
+      edges {
+        node {
+          uid
+          data {
+            service_name {
               text
             }
             short_description {
