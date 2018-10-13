@@ -8,9 +8,9 @@ const Logo = ({ color, height, ...props }) => (
       xmlns="http://www.w3.org/2000/svg"
       id="svg2"
       style={{
-        width: height ? `calc(${height}*1920.787/775.667)` : '1920.787px',
+        width: height ? `${(height * 1920.787) / 775.667}rem` : '1920.787px',
       }}
-      height={height ? height : 775.667}
+      height={height ? `${height}rem` : 775.667}
       viewBox="0 0 1920.7867 775.66669"
     >
       <g id="g10" fill={color || '#100f0d'} strokeWidth="0.133">

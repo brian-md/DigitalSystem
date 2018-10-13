@@ -7,5 +7,6 @@ export const Wrapper = styled.div`
     margin: auto;
     max-width: 85vw;
     max-height: 100%;
+    transition: all 0.5s ease;
   }
 `;

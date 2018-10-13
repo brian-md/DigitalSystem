@@ -30,7 +30,9 @@ export const Container = styled.div`
   align-self: stretch;
   > div:first-child {
     align-self: center;
-    margin-bottom: ${({ stacked }) => (stacked ? '2rem' : 0)};
+    margin: ${({ stacked }) => (stacked ? '0' : undefined)};
+
+    margin-bottom: ${({ stacked }) => (stacked ? '2rem' : undefined)};
   }
   img {
     border-radius: 100%;
@@ -58,6 +60,8 @@ export const Container = styled.div`
     >div:first-child {
         width: 20rem;
         margin: 0 auto;
+        margin-bottom: ${({ stacked }) => (stacked ? '1rem' : undefined)};
+
     }
   `};
   ${MEDIA.PHONE`
@@ -71,6 +75,8 @@ export const Container = styled.div`
         width: 75vw;
         height: 75vw;
         margin: 0 auto;
+        margin-bottom: ${({ stacked }) => (stacked ? '1rem' : undefined)};
+
     }
   `};
 `;

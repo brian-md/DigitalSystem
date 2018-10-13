@@ -8,7 +8,6 @@ const sizes = {
 
 export const ImageWrapper = styled.div`
   max-width: 90vw;
-  margin: auto;
   width: ${({ size }) => (size ? sizes[size].all : sizes.default.all)};
   height: ${({ size }) => (size ? sizes[size].all : sizes.default.all)};
   ${MEDIA.DESKTOP`
