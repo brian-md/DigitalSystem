@@ -28,6 +28,7 @@ ImageCardGrid.propTypes = {
       image: PropTypes.object.isRequired,
       description: PropTypes.string,
       cta: PropTypes.object,
+      link: PropTypes.string,
     })
   ),
   invert: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),

@@ -86,7 +86,21 @@ export default createGlobalStyle`
   }
 
   a {
-    color: ${accent};
+    /* color: ${accent}; */
+    text-decoration: underline;
+    color: inherit;
+    text-decoration-skip: edges;
+    transition: all 0.2s ease;
+    opacity: 0.6;
+    :visited {
+      color: inherit;
+    }
+    :hover, :focus, :active {
+      opacity: 1;
+    }
+    :active {
+      opacity: 0.4;
+    }
   }
 
   pre {

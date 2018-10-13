@@ -38,6 +38,7 @@ ImageCard.propTypes = {
   description: PropTypes.string,
   visible: PropTypes.bool,
   cta: PropTypes.object,
+  link: PropTypes.string,
   wrapperStyle: PropTypes.object,
   contentStyle: PropTypes.object,
   as: PropTypes.string,

@@ -30,7 +30,12 @@ const Card = ({
         <Paragraph size={small ? 'small' : undefined}>{description}</Paragraph>
       )}
       {cta && (
-        <Button size={small ? 'small' : undefined} invert={invert} {...cta}>
+        <Button
+          aria-label={`Learn More about ${title}`}
+          size={small ? 'small' : undefined}
+          invert={invert}
+          {...cta}
+        >
           {cta.text ? cta.text : 'Learn More'}
         </Button>
       )}
@@ -48,6 +53,7 @@ Card.propTypes = {
   description: PropTypes.string,
   cta: PropTypes.object,
   icon: PropTypes.string,
+  link: PropTypes.string,
 };
 
 Card.defaultProps = {
