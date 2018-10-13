@@ -10,7 +10,7 @@ const ImageCardGrid = ({ features, invert, visible }) => {
         <ImageCard
           as="li"
           key={feature.title}
-          small
+          size="small"
           {...feature}
           invert={invert}
         />

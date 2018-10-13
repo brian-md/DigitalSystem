@@ -22,6 +22,7 @@ const Card = ({
         align="left"
         size={small && 'small'}
         as="h3"
+        invert={invert}
       >
         {title}
       </CardTitle>

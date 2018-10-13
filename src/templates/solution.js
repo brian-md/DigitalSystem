@@ -51,8 +51,22 @@ const Index = ({ data, location }) => {
             icon: feature.icon,
           }))}
         >
-          <Paragraph>{features_summary.text}</Paragraph>
+          {/* <Paragraph>{features_summary.text}</Paragraph> */}
+
+          <ImageCard
+            invert
+            stacked
+            size="medium"
+            flip
+            image={main_image.localFile.childImageSharp.fluid}
+            title="{long_description_title.text}"
+            description={features_summary.text}
+          />
         </DescriptionFeatureList>
+      </Section>
+      <Section title="How We Do It">asdf</Section>
+      <Section bg="grey" top bottom title="Related Solutions">
+        asdf
       </Section>
     </Layout>
   );

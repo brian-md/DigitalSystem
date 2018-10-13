@@ -20,9 +20,9 @@ const Header = ({
     <Link to="/">
       <Logo
         color="#ffffff"
+        height={stuck || submenuOpen ? '2rem' : '5rem'}
         style={{
           transition: 'all 0.5s ease',
-          height: stuck || submenuOpen ? '2rem' : '5rem',
         }}
       />
     </Link>
