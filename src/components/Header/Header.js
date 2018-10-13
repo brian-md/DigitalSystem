@@ -17,7 +17,7 @@ const Header = ({
   location,
 }) => (
   <Container stuck={stuck} menuOpen={menuOpen} submenuOpen={submenuOpen}>
-    <Link to="/">
+    <Link aria-label="Back to the Home Page" to="/">
       <Logo
         color="#ffffff"
         height={stuck || submenuOpen ? 2 : 5}
