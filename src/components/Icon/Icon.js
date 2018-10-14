@@ -21,13 +21,13 @@ const icons = {
   ],
 };
 
-const Icon = ({ icon }) => {
+const Icon = ({ icon, size, className, color }) => {
   const iconObject = icons[icon] ? icons[icon] : icons['warning'];
   const paths = iconObject.map((shape, i) => (
-    <path key={i} d={shape.path} fill={shape.color} />
+    <path key={i} d={shape.path} fill={color ? color : shape.color} />
   ));
   return (
-    <Wrapper>
+    <Wrapper size={size} color={color} className={className}>
       <svg viewBox="0 0 1024 1024">{paths}</svg>
     </Wrapper>
   );
@@ -35,7 +35,9 @@ const Icon = ({ icon }) => {
 
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
+  size: PropTypes.oneOf(['small', 'large', 'jumbo']),
   color: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export { Icon };

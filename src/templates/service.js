@@ -39,6 +39,7 @@ const Index = ({ data, location }) => (
     </Section>
     <Section title="Main Benefits" bg="purple" bottom top>
       <ImageWings
+        invert
         image={
           data.prismicService.data.secondary_image.localFile.childImageSharp
             .fluid
