@@ -94,9 +94,7 @@ export default createGlobalStyle`
     :visited {
       color: inherit;
     }
-    :hover, :focus, :active {
-      opacity: 0.8;
-    }
+ 
     :active {
       opacity: 0.4;
     }
