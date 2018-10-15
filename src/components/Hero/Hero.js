@@ -41,14 +41,14 @@ const HeroContents = ({
   secondaryAction,
   children,
 }) => (
-  <ParentContainer>
+  <ParentContainer style={{ width: '100%' }}>
     {logo && (
       <AnimatedContainer>
         <Logo
           color="#ffffff"
           style={{
             transition: 'all 0.5s ease',
-            height: '12rem',
+            height: '10rem',
             marginBottom: '1vw',
           }}
         />

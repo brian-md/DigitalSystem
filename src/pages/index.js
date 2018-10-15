@@ -18,7 +18,6 @@ import {
 const Index = ({ data, location }) => (
   <Layout location={location.pathname}>
     <Hero
-      logo
       title={data.prismicHomePage.data.tagline.html}
       image={
         data.prismicHomePage.data.hero_image.localFile.childImageSharp.fluid
@@ -34,16 +33,16 @@ const Index = ({ data, location }) => (
     >
       <Inner>
         <Grid flex size={15}>
-          <IconTitle iconSize="large" icon="asdf" stacked invert to="/">
+          <IconTitle iconSize="large" icon="residential" stacked invert to="/">
             Residential
           </IconTitle>
-          <IconTitle iconSize="large" icon="asdf" stacked invert>
+          <IconTitle iconSize="large" icon="commercial" stacked invert>
             Commercial
           </IconTitle>
-          <IconTitle iconSize="large" icon="asdf" stacked invert>
+          <IconTitle iconSize="large" icon="hospitality" stacked invert>
             Hospitality
           </IconTitle>
-          <IconTitle iconSize="large" icon="asdf" stacked invert>
+          <IconTitle iconSize="large" icon="restaurants" stacked invert>
             Restaurants
           </IconTitle>
           <IconTitle iconSize="large" icon="asdf" stacked invert>

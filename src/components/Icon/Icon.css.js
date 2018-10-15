@@ -7,6 +7,7 @@ const sizes = {
 };
 
 export const Wrapper = styled.i`
+  transition: all 0.25s ease;
   width: ${({ size }) =>
     size ? `${sizes[size].wrapper}px` : `${sizes.default.wrapper}px`};
   height: ${({ size }) =>

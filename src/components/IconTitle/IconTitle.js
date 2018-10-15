@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { Wrapper } from './IconTitle.css';
-import { Icon, Title, IconButton } from 'components';
+import { Icon, Title } from 'components';
 
 const IconTitle = ({ icon, children, ...props }) => {
   const { invert, stacked, iconSize, titleSize, to, href } = props;
-  const IconElement = to || href ? IconButton : Icon;
+  // const IconElement = to || href ? IconButton : Icon;
   return (
-    <Wrapper stacked={stacked}>
-      <IconElement
+    <Wrapper stacked={stacked} as={to ? Link : undefined} to={to}>
+      <Icon
         size={iconSize}
         color={invert ? undefined : 'rgba(0, 0, 0, 0.9)'}
         icon={icon}
