@@ -19,3 +19,6 @@ export * from './Icon/Icon';
 export * from './IconTitle/IconTitle';
 export * from './DescriptionFeatureList/DescriptionFeatureList';
 export * from './ImageCircle/ImageCircle';
+export * from './IconButton/IconButton';
+export * from './Grid/Grid';
+export * from './Inner/Inner';

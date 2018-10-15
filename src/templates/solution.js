@@ -52,6 +52,7 @@ const Index = ({ data, location }) => {
       </Section>
       <Section bg="purple" title={features_title.text} top bottom>
         <DescriptionFeatureList
+          invert
           features={features.map(feature => ({
             description: feature.feature.text,
             icon: feature.icon,

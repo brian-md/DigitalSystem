@@ -7,7 +7,7 @@ import {
 } from './DescriptionFeatureList.css';
 import { IconTitle, Title } from 'components';
 
-const DescriptionFeatureList = ({ children, features }) => {
+const DescriptionFeatureList = ({ children, features, ...props }) => {
   return (
     <Wrapper>
       <Description>{children}</Description>
@@ -17,7 +17,13 @@ const DescriptionFeatureList = ({ children, features }) => {
           const Feature = feature.icon ? IconTitle : Title;
           return (
             <li key={i}>
-              <Feature align="left" icon={feature.icon} size="small" noCaps>
+              <Feature
+                {...props}
+                align="left"
+                icon={feature.icon}
+                size="small"
+                noCaps
+              >
                 {feature.description}
               </Feature>
             </li>

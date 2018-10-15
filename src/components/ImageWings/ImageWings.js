@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes, { arrayOf } from 'prop-types';
 import { Container, Left, Middle, Right } from './ImageWings.css';
-import { Button, Card, Image, Paragraph } from 'components';
+import { Button, Icon, Card, Image, Paragraph } from 'components';
 
 const ImageWings = props => {
   const {
@@ -13,10 +13,12 @@ const ImageWings = props => {
     description,
     visible,
     cta,
+    icon,
   } = props;
   return (
     <Container visible={visible}>
       <Middle>
+        {icon && <Icon size="jumbo" icon={icon} style={{ margin: 'auto' }} />}
         <Image
           image={image}
           alt={alt && alt}
@@ -37,7 +39,7 @@ const ImageWings = props => {
           features
             .slice(0, Math.floor(features.length / 2))
             .map((feature, i) => (
-              <Card small invert={invert} key={i} {...feature} />
+              <Card as="li" small invert={invert} key={i} {...feature} />
             ))}
       </Left>
       <Right>
@@ -48,7 +50,7 @@ const ImageWings = props => {
               Math.floor(features.length / 2) * 2
             )
             .map((feature, i) => (
-              <Card small invert={invert} key={i} {...feature} />
+              <Card as="li" small invert={invert} key={i} {...feature} />
             ))}
       </Right>
     </Container>
@@ -70,6 +72,7 @@ ImageWings.propTypes = {
   fixedImage: PropTypes.bool,
   description: PropTypes.string,
   cta: PropTypes.object,
+  icon: PropTypes.string,
 };
 
 export { ImageWings };
