@@ -21,6 +21,8 @@ class HomePage extends Component {
       const industrySection = ReactDOM.findDOMNode(
         this.industrySection.current
       );
+      // eslint-disable-next-line
+      console.log(industrySection)
       window.scrollTo({
         top: industrySection.offsetTop + 215,
         behavior: 'smooth',

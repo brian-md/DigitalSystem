@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { Container, SmallContainer } from './ImageCard.css';
 import { Card, ImageCircle } from 'components';
 
-const ImageCard = props => {
+const ImageCard = ({ as, ...props }) => {
   const {
     flip,
     image,
-    as,
+
     alt,
     title,
     size,
