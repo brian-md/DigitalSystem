@@ -4,11 +4,18 @@ import PropTypes from 'prop-types';
 import { Wrapper } from './IconTitle.css';
 import { Icon, Title } from 'components';
 
-const IconTitle = ({ icon, children, ...props }) => {
-  const { invert, stacked, iconSize, titleSize, to, href } = props;
+const IconTitle = ({ icon, children, onClick, stacked, ...props }) => {
+  const { invert, iconSize, titleSize, to, href } = props;
   // const IconElement = to || href ? IconButton : Icon;
   return (
-    <Wrapper stacked={stacked} as={to ? Link : undefined} to={to}>
+    <Wrapper
+      stacked={stacked}
+      as={to ? Link : onClick ? 'a' : undefined}
+      to={to}
+      onClick={onClick}
+      onKeyUp={onClick}
+      role={onClick ? 'button' : undefined}
+    >
       <Icon
         size={iconSize}
         color={invert ? undefined : 'rgba(0, 0, 0, 0.9)'}
@@ -26,11 +33,12 @@ const IconTitle = ({ icon, children, ...props }) => {
 IconTitle.propTypes = {
   icon: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
-  stacked: PropTypes.bool,
+  stacked: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
   iconSize: PropTypes.oneOf(['small', 'large', 'jumbo']),
   titleSize: PropTypes.oneOf(['small', 'large']),
   to: PropTypes.string,
   href: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export { IconTitle };

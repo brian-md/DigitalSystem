@@ -4,8 +4,12 @@ import { ButtonWrapper } from './ImageWingTabs.css';
 import { Tabber } from 'containers';
 import { Button, ImageWings } from 'components';
 
-const ImageWingTabs = ({ data, invert }) => (
-  <Tabber keys={data.map(tab => tab.name)}>
+const ImageWingTabs = ({ data, invert, currentTab }) => (
+  <Tabber
+    key={currentTab}
+    activeTab={currentTab}
+    keys={data.map(tab => tab.name)}
+  >
     {({ setTab, getVisibility }) => {
       const buttons = data.map(tab => (
         <Button
@@ -55,6 +59,7 @@ ImageWingTabs.propTypes = {
       cta: PropTypes.object,
     })
   ),
+  currentTab: PropTypes.string,
   invert: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 };
 
