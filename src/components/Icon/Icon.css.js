@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const sizes = {
-  large: { wrapper: 96, icon: 48 },
-  jumbo: { wrapper: 144, icon: 72 },
-  default: { wrapper: 48, icon: 24 },
+  large: { wrapper: 96, icon: 48, border: 2 },
+  jumbo: { wrapper: 144, icon: 72, border: 2 },
+  default: { wrapper: 48, icon: 24, border: 1 },
 };
 
 export const Wrapper = styled.i`
@@ -12,8 +12,14 @@ export const Wrapper = styled.i`
   height: ${({ size }) =>
     size ? `${sizes[size].wrapper}px` : `${sizes.default.wrapper}px`};
   border-radius: 100%;
-  box-shadow: ${({ color }) =>
-    color ? `inset 0 0 0 1px ${color}` : 'inset 0 0 0 1px #ffffff'};
+  box-shadow: ${({ color, size }) =>
+    color
+      ? size
+        ? `inset 0 0 0 ${sizes[size].border}px ${color}`
+        : `inset 0 0 0 ${sizes.default.border}px ${color}`
+      : size
+        ? `inset 0 0 0 ${sizes[size].border}px #ffffff`
+        : 'inset 0 0 0 1px #ffffff'};
   display: inline-flex;
   svg {
     margin: auto;

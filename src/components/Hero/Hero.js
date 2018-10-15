@@ -39,6 +39,7 @@ const HeroContents = ({
   small,
   primaryAction,
   secondaryAction,
+  children,
 }) => (
   <ParentContainer>
     {logo && (
@@ -79,6 +80,7 @@ const HeroContents = ({
         </ButtonWrapper>
       </AnimatedContainer>
     )}
+    {children && <AnimatedContainer>{children}</AnimatedContainer>}
     {image && (
       <ImageWrapper small={small}>
         <Img fluid={image} style={{ minHeight: '100vh' }} />
@@ -95,6 +97,7 @@ HeroContents.propTypes = {
   logo: PropTypes.bool,
   primaryAction: PropTypes.object,
   secondaryAction: PropTypes.object,
+  children: PropTypes.node,
 };
 
 const Hero = props =>
@@ -116,6 +119,7 @@ Hero.propTypes = {
   logo: PropTypes.bool,
   primaryAction: PropTypes.object,
   secondaryAction: PropTypes.object,
+  children: PropTypes.node,
 };
 
 export { Hero };

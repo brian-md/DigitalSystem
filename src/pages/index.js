@@ -4,7 +4,16 @@ import { graphql } from 'gatsby';
 // import Tabber from 'containers/tabber';
 // import ImageWings from 'components/imageWings';
 import { ServiceCardList } from 'containers';
-import { Hero, Paragraph, ImageWingTabs, Layout, Section } from 'components';
+import {
+  Hero,
+  Paragraph,
+  ImageWingTabs,
+  Layout,
+  Section,
+  IconTitle,
+  Grid,
+  Inner,
+} from 'components';
 
 const Index = ({ data, location }) => (
   <Layout location={location.pathname}>
@@ -14,15 +23,35 @@ const Index = ({ data, location }) => (
       image={
         data.prismicHomePage.data.hero_image.localFile.childImageSharp.fluid
       }
-      primaryAction={{
-        to: '/contact',
-        desc: 'Get Started',
-      }}
-      secondaryAction={{
-        to: '/contact',
-        desc: 'Watch Video',
-      }}
-    />
+      // primaryAction={{
+      //   to: '/contact',
+      //   desc: 'Get Started',
+      // }}
+      // secondaryAction={{
+      //   to: '/contact',
+      //   desc: 'Watch Video',
+      // }}
+    >
+      <Inner>
+        <Grid flex size={15}>
+          <IconTitle iconSize="large" icon="asdf" stacked invert to="/">
+            Residential
+          </IconTitle>
+          <IconTitle iconSize="large" icon="asdf" stacked invert>
+            Commercial
+          </IconTitle>
+          <IconTitle iconSize="large" icon="asdf" stacked invert>
+            Hospitality
+          </IconTitle>
+          <IconTitle iconSize="large" icon="asdf" stacked invert>
+            Restaurants
+          </IconTitle>
+          <IconTitle iconSize="large" icon="asdf" stacked invert>
+            House of Worship
+          </IconTitle>
+        </Grid>
+      </Inner>
+    </Hero>
     <Section title={data.prismicHomePage.data.services_title.text}>
       <Paragraph html>
         {data.prismicHomePage.data.services_tagline.html}
