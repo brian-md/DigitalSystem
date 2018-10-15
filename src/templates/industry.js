@@ -37,23 +37,14 @@ const Index = ({ data, location }) => (
         }
       />
     </Section>
-    <Section title="Who We Serve" bg="purple" bottom top>
-      <ImageWings
-        image={
-          data.prismicIndustry.data.secondary_image.localFile.childImageSharp
-            .fluid
-        }
-        description={data.prismicIndustry.data.features_intro.text}
-        features={data.prismicIndustry.data.features.map(feature => ({
-          title: feature.title.text,
-          description: feature.description.text,
-        }))}
-      />
-    </Section>
     <Section
+      bg="purple"
+      bottom
+      top
       title={`${data.prismicIndustry.data.industry_name.text} Solutions`}
     >
       <ImageCardGrid
+        invert
         features={data.allPrismicSolution.edges
           .filter(
             solution =>
@@ -71,6 +62,19 @@ const Index = ({ data, location }) => (
               }`,
             },
           }))}
+      />
+    </Section>
+    <Section title="Who We Serve">
+      <ImageWings
+        image={
+          data.prismicIndustry.data.secondary_image.localFile.childImageSharp
+            .fluid
+        }
+        description={data.prismicIndustry.data.features_intro.text}
+        features={data.prismicIndustry.data.features.map(feature => ({
+          title: feature.title.text,
+          description: feature.description.text,
+        }))}
       />
     </Section>
   </Layout>
