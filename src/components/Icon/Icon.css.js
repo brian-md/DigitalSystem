@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const sizes = {
+  medium: { wrapper: 72, icon: 36, border: 2 },
   large: { wrapper: 96, icon: 48, border: 2 },
   jumbo: { wrapper: 144, icon: 72, border: 2 },
   default: { wrapper: 48, icon: 24, border: 1 },

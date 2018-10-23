@@ -4,7 +4,7 @@ import MEDIA from 'helpers/mediaTemplates';
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 4rem 1fr min-content;
+  grid-template-rows: min-content 1fr min-content;
   grid-template-areas:
     'social social social'
     'siteInfo nav contact'
@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
   `};
   ${MEDIA.TABLET`
     grid-template-columns: 1fr;
-    grid-template-rows: 4rem repeat(4, min-content);
+    grid-template-rows: min-content repeat(4, min-content);
     grid-template-areas: 
             'social'
             'contact'
@@ -65,9 +65,14 @@ export const Social = styled.ul`
   display: flex;
   justify-content: center;
   align-content: center;
+  flex-wrap: wrap;
+
   > * {
-    margin: 0 1rem;
+    margin: 1rem;
   }
+  ${MEDIA.MIN_DESKTOP`
+    margin-bottom: 2rem;
+  `};
 `;
 
 export const Contact = styled.div`

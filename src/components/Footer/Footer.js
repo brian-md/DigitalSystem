@@ -20,16 +20,15 @@ const Footer = () => (
   >
     <Wrapper>
       <Social>
-        <IconButton href="google.com" icon="adf" />
-        <IconButton href="google.com" icon="adf" />
-        <IconButton href="google.com" icon="adf" />
+        <IconButton size="medium" href="google.com" icon="facebook" />
+        <IconButton size="medium" href="google.com" icon="linkedin" />
       </Social>
       <Contact>
-        <IconTitle icon="asdf" invert size="small" href="tel:888-90-Digital">
+        <IconTitle icon="phone" invert size="small" href="tel:888-90-Digital">
           888-90-Digital
         </IconTitle>
         <IconTitle
-          icon="asdf"
+          icon="email"
           invert
           size="small"
           href="mailto:info@digitalsystemsav.com"

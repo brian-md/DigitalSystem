@@ -16,9 +16,9 @@ export const Wrapper = styled.div`
     to || onClick || href ? 'pointer' : undefined}
   transition: all 0.25 ease;
   :hover {
+    i {
     transform: ${({ to, onClick, href }) =>
       to || onClick || href ? 'scale(1.05)' : 'none'};
-    i {
       background: ${({ to, onClick, href }) =>
         to || onClick || href ? 'rgba(255, 255, 255, 0.2)' : undefined};
     }
