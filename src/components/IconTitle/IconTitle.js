@@ -10,18 +10,18 @@ const IconTitle = ({ icon, children, onClick, stacked, ...props }) => {
   return (
     <Wrapper
       stacked={stacked}
-      as={to ? Link : onClick ? 'a' : undefined}
+      as={to ? Link : onClick || href ? 'a' : undefined}
       to={to}
       onClick={onClick}
       onKeyUp={onClick}
       role={onClick ? 'button' : undefined}
+      href={href}
     >
       <Icon
         size={iconSize}
         color={invert ? undefined : 'rgba(0, 0, 0, 0.9)'}
         icon={icon}
         to={to}
-        href={href}
       />
       <Title size={titleSize} {...props}>
         {children}
