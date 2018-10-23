@@ -12,13 +12,15 @@ export const Wrapper = styled.div`
   color: inherit
   align-items: center;
   text-decoration: none;
-  cursor: ${({ to, onClick }) => (to || onClick ? 'pointer' : undefined)}
+  cursor: ${({ to, onClick, href }) =>
+    to || onClick || href ? 'pointer' : undefined}
   transition: all 0.25 ease;
   :hover {
-    transform: ${({ to, onClick }) => (to || onClick ? 'scale(1.05)' : 'none')};
+    transform: ${({ to, onClick, href }) =>
+      to || onClick || href ? 'scale(1.05)' : 'none'};
     i {
-      background: ${({ to, onClick }) =>
-        to || onClick ? 'rgba(255, 255, 255, 0.2)' : undefined};
+      background: ${({ to, onClick, href }) =>
+        to || onClick || href ? 'rgba(255, 255, 255, 0.2)' : undefined};
     }
   }
   > i {

@@ -25,10 +25,15 @@ const Footer = () => (
         <IconButton href="google.com" icon="adf" />
       </Social>
       <Contact>
-        <IconTitle icon="asdf" invert size="small">
+        <IconTitle icon="asdf" invert size="small" href="tel:888-90-Digital">
           888-90-Digital
         </IconTitle>
-        <IconTitle icon="asdf" invert size="small">
+        <IconTitle
+          icon="asdf"
+          invert
+          size="small"
+          href="mailto:info@digitalsystemsav.com"
+        >
           info@digitalsystemsav.com
         </IconTitle>
       </Contact>
