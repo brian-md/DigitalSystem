@@ -15,7 +15,7 @@ const Layout = ({ data, children, stuckNav, location }) => (
       stuck={stuckNav}
       location={location}
     />
-    {children}
+    <main>{children}</main>
     <Footer />
   </div>
 );

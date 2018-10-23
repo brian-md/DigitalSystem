@@ -19,6 +19,7 @@ const Nav = ({
           <Link
             to={item.to}
             className={location && location === item.to ? 'current' : undefined}
+            aria-current={location && location === item.to ? 'page' : undefined}
           >
             {item.name}
           </Link>
@@ -55,6 +56,13 @@ const Nav = ({
                           ? 'current'
                           : undefined
                       }
+                      aria-current={
+                        location &&
+                        location.includes(menuItem.to) &&
+                        menuItem.name !== 'See All'
+                          ? 'page'
+                          : undefined
+                      }
                       to={menuItem.to}
                     >
                       {menuItem.name}
@@ -70,7 +78,11 @@ const Nav = ({
   });
 
   return (
-    <Container submenuOpen={submenuOpen} menuOpen={menuOpen}>
+    <Container
+      submenuOpen={submenuOpen}
+      menuOpen={menuOpen}
+      aria-label="Main Menu"
+    >
       <ul>{mappedMenu}</ul>
     </Container>
   );

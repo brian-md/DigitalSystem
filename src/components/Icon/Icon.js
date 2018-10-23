@@ -17,7 +17,7 @@ const Icon = ({ icon, size, className, color, style }) => {
 
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['small', 'large', 'jumbo']),
+  size: PropTypes.oneOf(['medium', 'small', 'large', 'jumbo']),
   color: PropTypes.string,
   className: PropTypes.string,
   style: PropTypes.object,
