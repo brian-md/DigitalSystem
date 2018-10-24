@@ -16,6 +16,7 @@ const Footer = () => (
     flipTop
     top
     bg="purple"
+    width={95}
     style={{ paddingTop: '8rem', paddingBottom: '1rem' }}
   >
     <Wrapper>

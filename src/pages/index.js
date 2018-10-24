@@ -13,6 +13,7 @@ import {
   IconTitle,
   Grid,
   Inner,
+  ContactSection,
 } from 'components';
 
 const Index = ({ data, location }) => (
@@ -88,7 +89,7 @@ const Index = ({ data, location }) => (
         })}
       />
     </Section>
-    <Section title="Get In Touch">hello</Section>
+    <ContactSection title="Let Us Help" />
   </Layout>
 );
 
