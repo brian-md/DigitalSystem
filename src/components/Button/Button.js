@@ -26,6 +26,7 @@ Button.propTypes = {
   to: PropTypes.string,
   noOutline: PropTypes.bool,
   href: PropTypes.string,
+  onClick: PropTypes.func,
   target: PropTypes.string,
   disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   size: PropTypes.oneOf(['small', 'regular', 'medium', 'large', 'tiny']),

@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import { TwoColumn, ButtonWrapper, SingleColumn } from './ContactForm.css';
 import { Button } from 'components';
+import { ContactContainer } from 'containers';
 
 const styles = theme => ({
   container: {
@@ -24,102 +25,98 @@ const styles = theme => ({
   },
 });
 
-const encode = data => {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&');
+const ContactForm = ({ classes, twoColumn }) => {
+  const FormWrapper = twoColumn ? TwoColumn : SingleColumn;
+
+  return (
+    <ContactContainer>
+      {({ handleChange, handleSubmit, form, validationErrors }) => (
+        <FormWrapper
+          onSubmit={handleSubmit}
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          name="sales-inquiry"
+        >
+          <TextField
+            required
+            label="Name"
+            className={classes.textField}
+            value={form.name}
+            onChange={handleChange('name')}
+            error={validationErrors.name.length !== 0}
+            helperText={validationErrors.name}
+            margin="normal"
+          />
+          <TextField
+            required
+            label="Email"
+            type="email"
+            className={classes.textField}
+            value={form.email}
+            onChange={handleChange('email')}
+            error={validationErrors.email.length !== 0}
+            helperText={validationErrors.email}
+            margin="normal"
+          />
+          <TextField
+            required
+            label="Phone Number"
+            type="tel"
+            className={classes.textField}
+            value={form.phone}
+            onChange={handleChange('phone')}
+            error={validationErrors.phone.length !== 0}
+            helperText={validationErrors.phone}
+            margin="normal"
+          />
+          <TextField
+            required
+            select
+            label="Job Type"
+            className={classes.textField}
+            value={form.industry}
+            onChange={handleChange('industry')}
+            error={validationErrors.industry.length !== 0}
+            helperText={validationErrors.industry}
+            SelectProps={{
+              MenuProps: {
+                className: classes.menu,
+              },
+            }}
+            margin="normal"
+          >
+            {[
+              { value: 'residential', label: 'Residential' },
+              { value: 'commercial', label: 'Commercial' },
+            ].map(option => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+          <input type="hidden" name="sales-inquiry" value="contact" />
+          <p hidden>
+            <label htmlFor="bot-field">
+              Don’t fill this out:{' '}
+              <input name="bot-field" onChange={handleChange('botField')} />
+            </label>
+          </p>
+
+          <ButtonWrapper>
+            <Button primary type="submit" size="large">
+              Get Started
+            </Button>
+          </ButtonWrapper>
+        </FormWrapper>
+      )}
+    </ContactContainer>
+  );
 };
 
-class ContactForm extends Component {
-  state = { name: '', phone: '', email: '', industry: '' };
-
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
-  };
-
-  handleSubmit = e => {
-    const form = e.target;
-    fetch('/?no-cache=1', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': form.getAttribute('name'), ...this.state }),
-    })
-      .then(() => alert('Success!'))
-      .catch(error => alert(error));
-
-    e.preventDefault();
-  };
-  render() {
-    const { classes, twoColumn } = this.props;
-    const FormWrapper = twoColumn ? TwoColumn : SingleColumn;
-
-    return (
-      <FormWrapper
-        onSubmit={this.handleSubmit}
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-        name="sales-inquiry"
-      >
-        <TextField
-          label="Name"
-          className={classes.textField}
-          value={this.state.name}
-          onChange={this.handleChange('name')}
-          margin="normal"
-        />
-        <TextField
-          label="Email"
-          className={classes.textField}
-          value={this.state.email}
-          onChange={this.handleChange('email')}
-          margin="normal"
-        />
-        <TextField
-          label="Phone Number"
-          className={classes.textField}
-          value={this.state.phone}
-          onChange={this.handleChange('phone')}
-          margin="normal"
-        />
-        <TextField
-          select
-          label="Job Type"
-          className={classes.textField}
-          value={this.state.industry}
-          onChange={this.handleChange('industry')}
-          SelectProps={{
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
-          margin="normal"
-        >
-          {[
-            { value: 'residential', label: 'Residential' },
-            { value: 'commercial', label: 'Commercial' },
-          ].map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <input type="hidden" name="sales-inquiry" value="contact" />
-
-        <ButtonWrapper>
-          <Button primary type="submit" size="large">
-            Get Started
-          </Button>
-        </ButtonWrapper>
-      </FormWrapper>
-    );
-  }
-  static propTypes = {
-    classes: PropTypes.object.isRequired,
-    twoColumn: PropTypes.bool,
-  };
-}
+ContactForm.propTypes = {
+  classes: PropTypes.object.isRequired,
+  twoColumn: PropTypes.bool,
+};
 
 const ContactFormWithStyles = withStyles(styles)(ContactForm);
 
