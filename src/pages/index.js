@@ -89,7 +89,11 @@ const Index = ({ data, location }) => (
         })}
       />
     </Section>
-    <ContactSection title="Let Us Help" />
+    <ContactSection
+      title="Let Us Help"
+      subtitle="come on!"
+      description="Immerse yourself in art and experience movies like they were meant to be.Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque interdum luctus purus sit amet rhoncus. Vestibulum vitae consectetur eros, consequat aliquet erat."
+    />
   </Layout>
 );
 

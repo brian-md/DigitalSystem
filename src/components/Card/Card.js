@@ -13,10 +13,17 @@ const Card = ({
   visible,
   as,
   icon,
+  style,
 }) => {
   const CardTitle = icon ? IconTitle : Title;
   return (
-    <Container as={as} small={small} visible={visible} flip={flip}>
+    <Container
+      style={style}
+      as={as}
+      small={small}
+      visible={visible}
+      flip={flip}
+    >
       <CardTitle
         icon={icon}
         line={!small}
@@ -56,6 +63,7 @@ Card.propTypes = {
   icon: PropTypes.string,
   link: PropTypes.string,
   as: PropTypes.string,
+  style: PropTypes.object,
 };
 
 Card.defaultProps = {

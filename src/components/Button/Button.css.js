@@ -37,7 +37,7 @@ export const BasicButton = styled.button`
   height: ${({ size }) => () => {
     switch (size) {
       case 'tiny':
-        return '1.5rem';
+        return '1.7rem';
       case 'small':
         return '2rem';
       case 'medium':
@@ -51,7 +51,7 @@ export const BasicButton = styled.button`
   line-height: ${({ size }) => () => {
     switch (size) {
       case 'tiny':
-        return '1.5rem';
+        return '1.7rem';
       case 'small':
         return '2rem';
       case 'medium':
