@@ -59,6 +59,7 @@ class ContactForm extends Component {
         onSubmit={this.handleSubmit}
         data-netlify="true"
         data-netlify-honeypot="bot-field"
+        name="sales-inquiry"
       >
         <TextField
           label="Name"
