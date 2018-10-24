@@ -40,6 +40,7 @@ class ContactForm extends Component {
   };
 
   handleSubmit = e => {
+    const form = e.target;
     fetch('/?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
