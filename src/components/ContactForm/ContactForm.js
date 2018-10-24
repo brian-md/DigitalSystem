@@ -41,8 +41,8 @@ const ContactForm = ({ classes, twoColumn }) => {
             required
             label="Name"
             className={classes.textField}
-            value={form.name}
             name="name"
+            value={form.name}
             onChange={handleChange('name')}
             error={validationErrors.name.length !== 0}
             helperText={validationErrors.name}
@@ -53,8 +53,8 @@ const ContactForm = ({ classes, twoColumn }) => {
             label="Email"
             type="email"
             className={classes.textField}
-            value={form.email}
             name="email"
+            value={form.email}
             onChange={handleChange('email')}
             error={validationErrors.email.length !== 0}
             helperText={validationErrors.email}
@@ -65,8 +65,8 @@ const ContactForm = ({ classes, twoColumn }) => {
             label="Phone Number"
             type="tel"
             className={classes.textField}
-            value={form.phone}
             name="phone"
+            value={form.phone}
             onChange={handleChange('phone')}
             error={validationErrors.phone.length !== 0}
             helperText={validationErrors.phone}
@@ -77,8 +77,8 @@ const ContactForm = ({ classes, twoColumn }) => {
             select
             label="Job Type"
             className={classes.textField}
-            value={form.industry}
             name="industry"
+            value={form.industry}
             onChange={handleChange('industry')}
             error={validationErrors.industry.length !== 0}
             helperText={validationErrors.industry}
