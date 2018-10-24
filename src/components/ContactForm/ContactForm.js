@@ -64,6 +64,7 @@ class ContactForm extends Component {
       >
         <TextField
           label="Name"
+          name="name"
           className={classes.textField}
           value={this.state.name}
           onChange={this.handleChange('name')}
@@ -71,6 +72,8 @@ class ContactForm extends Component {
         />
         <TextField
           label="Email"
+          type="email"
+          name="email"
           className={classes.textField}
           value={this.state.email}
           onChange={this.handleChange('email')}
@@ -78,6 +81,7 @@ class ContactForm extends Component {
         />
         <TextField
           label="Phone Number"
+          name="phone"
           className={classes.textField}
           value={this.state.phone}
           onChange={this.handleChange('phone')}
@@ -86,6 +90,7 @@ class ContactForm extends Component {
         <TextField
           select
           label="Job Type"
+          name="industry"
           className={classes.textField}
           value={this.state.industry}
           onChange={this.handleChange('industry')}
