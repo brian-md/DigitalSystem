@@ -56,7 +56,7 @@ export const Container = styled.section`
   &::before {
     background-image: ${({ flipTop }) =>
       flipTop // eslint-disable-next-line
-        ? 'url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'1900\' height=\'150\' viewBox=\'0 0 1900 150\' preserveAspectRatio=\'none\'%3E%3Cpath d=\'M0,25.7C243.4,84,596.7,150,950,150c353.3,0,706.6-66,950-124.3V150H0V25.7z\' fill=\'%23ffffff\'/%3E%3C/svg%3E")'// eslint-disable-next-line
+        ? "url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1900' height='150' viewBox='0 0 1900 150' preserveAspectRatio='none'%3E%3Cpath d='M0,25.7C243.4,84,596.7,150,950,150c353.3,0,706.6-66,950-124.3V150H0V25.7z' fill='%23ffffff'/%3E%3C/svg%3E\")" // eslint-disable-next-line
         : "url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1900' height='150' viewBox='0 0 1900 150' preserveAspectRatio='none'%3E%3Cpath d='M0,0h1900c-243.3,58.2-596.3,123.9-949.4,124h-1.2C596.3,123.9,243.3,58.2,0,0z' fill='%23ffffff'/%3E%3C/svg%3E\")"};
     transform: ${({ flipTop }) => (flipTop ? 'scaleY(-1)' : 'none')};
     background-size: 100% 100%;
@@ -85,7 +85,7 @@ export const Container = styled.section`
 
 export const Inner = styled.div`
   margin: 0 auto;
-  width: 75rem;
+  width: ${({ width }) => `${width}rem`};
   max-width: calc(100% - 8rem);
   ${MEDIA.DESKTOP`
     max-width: calc(100% - 6rem);

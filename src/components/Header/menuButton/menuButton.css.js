@@ -16,7 +16,7 @@ export const Container = styled.button`
   ${MEDIA.DESKTOP`
   display: flex;
   align-items: center
-  .label {
+  .menu-label {
     color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
     font-size: 0.7rem;

@@ -6,7 +6,7 @@ import MenuIcon from './menuIcon.js';
 const MenuButton = ({ toggleMenu, menuOpen }) => {
   return (
     <Container onClick={toggleMenu}>
-      <span className="label">{menuOpen ? 'close' : 'menu'}</span>
+      <span className="menu-label">{menuOpen ? 'close' : 'menu'}</span>
       <MenuIcon />
     </Container>
   );

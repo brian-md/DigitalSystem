@@ -22,3 +22,5 @@ export * from './ImageCircle/ImageCircle';
 export * from './IconButton/IconButton';
 export * from './Grid/Grid';
 export * from './Inner/Inner';
+export * from './ContactForm/ContactForm';
+export * from './ContactSection/ContactSection';
