@@ -12,6 +12,7 @@ import {
   Card,
   ImageCardGrid,
 } from 'components';
+import { Map } from 'containers';
 
 const ContactWrapper = styled.div`
   display: flex;
@@ -82,7 +83,7 @@ const ContactPage = ({ data, location }) => {
         </div>
       </ContactSection>
       <Section bg="grey" top bottom title="Visit Us">
-        asdf
+        <Map />
       </Section>
       <Section title="keep exploring">
         <ImageCardGrid
