@@ -50,7 +50,10 @@ const ContactPage = ({ data, location }) => {
     allPrismicIndustry: { edges: industries },
   } = data;
   return (
-    <Layout location={location.pathname}>
+    <Layout
+      location={location.pathname}
+      pageTitle="Contact Customer Service and Sales"
+    >
       <Hero
         small
         title={title.text}

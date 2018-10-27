@@ -19,7 +19,10 @@ const ContactPage = ({ data, location }) => {
     },
   } = data;
   return (
-    <Layout location={location.pathname}>
+    <Layout
+      location={location.pathname}
+      pageTitle="Customer Service and Technical Support"
+    >
       <Hero
         small
         title={title.text}
@@ -40,7 +43,7 @@ const ContactPage = ({ data, location }) => {
                 icon="external_link"
                 title={link.link_title.text}
                 description={link.link_description.text}
-                cta={{ href: link.url.url }}
+                cta={{ href: link.url.url, text: 'Go To Link' }}
               />
             ))}
           </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
 import {
   Section,
   ImageCard,
@@ -14,9 +13,6 @@ import {
 
 const Index = ({ data, location }) => {
   const {
-    site: {
-      siteMetadata: { siteTitle },
-    },
     prismicSolution: {
       data: {
         solution_name,
@@ -36,9 +32,11 @@ const Index = ({ data, location }) => {
     },
   } = data;
   return (
-    <Layout location={location.pathname} stuckNav>
-      <Helmet title={`${solution_name.text} | ${siteTitle}`} />
-
+    <Layout
+      location={location.pathname}
+      pageTitle={solution_name.text}
+      stuckNav
+    >
       <Section>
         <Title size="large" line as="h1">
           {solution_name.text}
