@@ -6,7 +6,7 @@ import { Navbar } from 'containers';
 import { Footer } from 'components';
 import GlobalStyle from 'global.css.js';
 
-const Layout = ({ data, children, stuckNav, location }) => (
+const Layout = ({ data, children, stuckNav, location, pageTitle }) => (
   <div
     style={{
       minHeight: '100vh',
@@ -16,7 +16,7 @@ const Layout = ({ data, children, stuckNav, location }) => (
     }}
   >
     <GlobalStyle />
-    <Head />
+    <Head pageTitle={pageTitle} />
     <Navbar
       title={data.site.siteMetadata.siteTitle}
       stuck={stuckNav}
@@ -32,6 +32,7 @@ Layout.propTypes = {
   data: PropTypes.object.isRequired,
   stuckNav: PropTypes.bool,
   location: PropTypes.string,
+  pageTitle: PropTypes.string,
 };
 
 const LayoutWithQuery = props => (
@@ -53,6 +54,7 @@ LayoutWithQuery.propTypes = {
   children: PropTypes.node.isRequired,
   stuckNav: PropTypes.bool,
   location: PropTypes.string,
+  pageTitle: PropTypes.string,
 };
 
 export { LayoutWithQuery as Layout };

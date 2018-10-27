@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
 import {
   Hero,
   ImageCard,
@@ -12,12 +11,10 @@ import {
 } from 'components';
 
 const Index = ({ data, location }) => (
-  <Layout location={location.pathname}>
-    <Helmet
-      title={`${data.prismicService.data.service_name.text} | ${
-        data.site.siteMetadata.siteTitle
-      }`}
-    />
+  <Layout
+    location={location.pathname}
+    pageTitle={data.prismicService.data.service_name.text}
+  >
     <Hero
       small
       pullUp="-10rem"

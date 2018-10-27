@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 // import Tabber from 'containers/tabber';
 // import ImageWings from 'components/imageWings';
-import { Hero, Layout, Section } from 'components';
+import { Hero, Layout, KeepExploring } from 'components';
 
 const ThankYou = ({ data, location }) => (
   <Layout location={location.pathname}>
@@ -23,7 +23,7 @@ const ThankYou = ({ data, location }) => (
       //     desc: 'Go Back',
       //   }}
     />
-    <Section title="keep exploring">adf</Section>
+    <KeepExploring />
   </Layout>
 );
 

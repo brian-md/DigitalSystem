@@ -8,26 +8,12 @@ import {
   Layout,
   Section,
   ContactSection,
-  IconTitle,
   Card,
-  ImageCardGrid,
+  Grid,
+  IconTitle,
+  ContactInfo,
 } from 'components';
 import { Map } from 'containers';
-
-const ContactWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  max-width: 70rem;
-  margin: auto;
-  span {
-    text-align: left;
-  }
-  ${MEDIA.TABLET`
-    flex-direction: column;
-    align-items: center;
-  `};
-`;
 
 const MapWrapper = styled.div`
   display: grid;
@@ -61,45 +47,26 @@ const ContactPage = ({ data, location }) => {
         map_description,
       },
     },
-    allPrismicService: { edges: services },
+    allPrismicIndustry: { edges: industries },
   } = data;
   return (
-    <Layout location={location.pathname}>
+    <Layout
+      location={location.pathname}
+      pageTitle="Contact Customer Service and Sales"
+    >
       <Hero
         small
         title={title.text}
         subtitle={tagline.text}
         image={hero_image.localFile.childImageSharp.fluid}
       >
-        <ContactWrapper>
-          <IconTitle invert icon="phone" href="tel:888-90-Digital">
-            888-90-Digital
-          </IconTitle>
-          <IconTitle
-            invert
-            icon="email"
-            href="mailto:info@digitalsystemsav.com"
-          >
-            info@digitalsystemsav.com
-          </IconTitle>
-        </ContactWrapper>
+        <ContactInfo invert />
       </Hero>
       <ContactSection title={subtitle.text}>
         <div>
           <Card title={description_title.text} description={description.text} />
 
-          <ContactWrapper>
-            <IconTitle icon="phone" size="small" href="tel:888-90-Digital">
-              888-90-Digital
-            </IconTitle>
-            <IconTitle
-              icon="email"
-              size="small"
-              href="mailto:info@digitalsystemsav.com"
-            >
-              info@digitalsystemsav.com
-            </IconTitle>
-          </ContactWrapper>
+          <ContactInfo size="small" />
         </div>
       </ContactSection>
       <Section bg="grey" top bottom title={map_title.text}>
@@ -113,16 +80,19 @@ const ContactPage = ({ data, location }) => {
         </MapWrapper>
       </Section>
       <Section title="keep exploring">
-        <ImageCardGrid
-          features={services.map(service => ({
-            title: service.node.data.service_name.text,
-            description: service.node.data.short_description.text,
-            image: service.node.data.main_image.localFile.childImageSharp.fluid,
-            cta: {
-              to: `/services/${service.node.uid}`,
-            },
-          }))}
-        />
+        <Grid flex size={15}>
+          {industries.map(industry => (
+            <IconTitle
+              iconSize="large"
+              key={industry.node.uid}
+              icon={industry.node.uid}
+              stacked={1}
+              to={`/industries/${industry.node.uid}`}
+            >
+              {industry.node.data.industry_name.text}
+            </IconTitle>
+          ))}
+        </Grid>
       </Section>
     </Layout>
   );
@@ -194,6 +164,18 @@ export const query = graphql`
                   }
                 }
               }
+            }
+          }
+        }
+      }
+    }
+    allPrismicIndustry {
+      edges {
+        node {
+          uid
+          data {
+            industry_name {
+              text
             }
           }
         }

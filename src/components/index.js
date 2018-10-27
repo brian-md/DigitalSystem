@@ -24,3 +24,6 @@ export * from './Grid/Grid';
 export * from './Inner/Inner';
 export * from './ContactForm/ContactForm';
 export * from './ContactSection/ContactSection';
+export * from './Contactinfo/ContactInfo';
+export * from './FlexColumns/FlexColumns';
+export * from './KeepExploring/KeepExploring';
