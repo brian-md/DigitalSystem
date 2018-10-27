@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { StaticQuery, graphql, Link } from 'gatsby';
+
 import {
   Wrapper,
   SiteInfo,
@@ -10,7 +13,7 @@ import {
 } from './Footer.css';
 import { Section, Logo, IconButton, Paragraph, IconTitle } from 'components';
 
-const Footer = () => (
+const Footer = ({ services, industries }) => (
   <Section
     as="footer"
     flipTop
@@ -39,30 +42,41 @@ const Footer = () => (
       </Contact>
       <Nav>
         <NavList>
-          <h3>Website</h3>
+          <h3>Main</h3>
           <ul>
-            <li>Home</li>
-            <li>About Us</li>
-            <li>Support</li>
-            <li>Contact</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about-us">About Us</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
           </ul>
         </NavList>
         <NavList>
           <h3>Services</h3>
           <ul>
-            <li>Contol4</li>
-            <li>Digital Signage</li>
-            <li>Audio</li>
-            <li>Networking</li>
+            {services.map(service => (
+              <li key={service.node.uid}>
+                <Link to={`/services/${service.node.uid}`}>
+                  {service.node.data.service_name.text}
+                </Link>
+              </li>
+            ))}
           </ul>
         </NavList>
         <NavList>
           <h3>Industries</h3>
           <ul>
-            <li>Contol4</li>
-            <li>Digital Signage</li>
-            <li>Audio</li>
-            <li>Networking</li>
+            {industries.map(industry => (
+              <li key={industry.node.uid}>
+                <Link to={`/industries/${industry.node.uid}`}>
+                  {industry.node.data.industry_name.text}
+                </Link>
+              </li>
+            ))}
           </ul>
         </NavList>
       </Nav>
@@ -79,6 +93,49 @@ const Footer = () => (
   </Section>
 );
 
-Footer.propTypes = {};
+Footer.propTypes = {
+  services: PropTypes.array,
+  industries: PropTypes.array,
+};
 
-export { Footer };
+const FooterWithQuery = props => (
+  <StaticQuery
+    query={graphql`
+      query FooterQuery {
+        allPrismicIndustry {
+          edges {
+            node {
+              uid
+              data {
+                industry_name {
+                  text
+                }
+              }
+            }
+          }
+        }
+        allPrismicService {
+          edges {
+            node {
+              uid
+              data {
+                service_name {
+                  text
+                }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => (
+      <Footer
+        industries={data.allPrismicIndustry.edges}
+        services={data.allPrismicService.edges}
+        {...props}
+      />
+    )}
+  />
+);
+
+export { FooterWithQuery as Footer };

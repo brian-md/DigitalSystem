@@ -125,6 +125,13 @@ export const NavList = styled.div`
     li {
       font-size: 1.1rem;
       line-height: 1.3rem;
+      a {
+        text-decoration: none;
+
+        :hover {
+          color: rgba(255, 255, 255, 0.6);
+        }
+      }
     }
   }
   ${MEDIA.PHONE`
