@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import GoogleMapReact from 'google-map-react';
-import { MapWrapper } from './Map.css';
+import { MapWrapper, LocationMarker } from './Map.css';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-AnyReactComponent.propTypes = {
-  text: PropTypes.string,
-};
+// const AnyReactComponent = ({ text }) => <div>{text}</div>;
+// AnyReactComponent.propTypes = {
+//   text: PropTypes.string,
+// };
 class Map extends Component {
   static defaultProps = {
     center: {
@@ -25,7 +25,7 @@ class Map extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <AnyReactComponent
+          <LocationMarker
             lat={41.932435}
             lng={-87.665932}
             text={'Kreyser Avrora'}
