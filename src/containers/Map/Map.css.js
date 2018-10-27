@@ -28,3 +28,22 @@ export const MapWrapper = styled.div`
   
   `};
 `;
+
+export const LocationMarker = styled.div`
+  width: 0.7rem;
+  height: 0.7rem;
+  background-color: #4797ec;
+  background-image: url('/images/overlay.png'),
+    linear-gradient(45deg, rgba(71, 151, 236, 0), #884beb 80%);
+  box-shadow: 0 0.5rem 1.75rem 0 rgba(0, 0, 0, 0.25);
+  border-radius: 100%;
+  opacity: 0.8;
+  ::after {
+    content: 'Our Location';
+    text-transform: uppercase;
+    position: absolute;
+    font-size: 0.8rem;
+    left: -1rem;
+    bottom: -3rem;
+  }
+`;
