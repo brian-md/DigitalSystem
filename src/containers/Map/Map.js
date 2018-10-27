@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import GoogleMapReact from 'google-map-react';
+import { MapWrapper } from './Map.css';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 AnyReactComponent.propTypes = {
@@ -9,8 +10,8 @@ AnyReactComponent.propTypes = {
 class Map extends Component {
   static defaultProps = {
     center: {
-      lat: 59.95,
-      lng: 30.33,
+      lat: 41.932435,
+      lng: -87.665932,
     },
     zoom: 11,
   };
@@ -18,19 +19,19 @@ class Map extends Component {
   render() {
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
+      <MapWrapper style={this.props.style}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyBULpOdPqvTRSxwshkilGbPScQEmjphl4s' }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
           <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
+            lat={41.932435}
+            lng={-87.665932}
             text={'Kreyser Avrora'}
           />
         </GoogleMapReact>
-      </div>
+      </MapWrapper>
     );
   }
 
@@ -38,6 +39,7 @@ class Map extends Component {
     text: PropTypes.string,
     center: PropTypes.object,
     zoom: PropTypes.number,
+    style: PropTypes.object,
   };
 }
 
