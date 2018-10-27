@@ -43,7 +43,11 @@ export const LocationMarker = styled.div`
     text-transform: uppercase;
     position: absolute;
     font-size: 0.8rem;
-    left: -1rem;
-    bottom: -3rem;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 1);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+    left: 1rem;
+    bottom: -1.5rem;
   }
 `;

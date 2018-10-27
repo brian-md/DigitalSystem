@@ -34,8 +34,9 @@ const MapWrapper = styled.div`
   grid-template-columns: max-content minmax(10rem, max-content);
   grid-template-rows: 1fr;
   grid-template-areas: 'map desc';
-  grid-gap: 2rem;
+  grid-gap: 4rem;
   ${MEDIA.TABLET`
+  grid-gap: 2rem;
     flex-direction: column;
     grid-template-rows: max-content max-content;
     grid-template-columns: 1fr;
@@ -55,6 +56,9 @@ const ContactPage = ({ data, location }) => {
         tagline,
         description,
         description_title,
+        map_title,
+        map_subtitle,
+        map_description,
       },
     },
     allPrismicService: { edges: services },
@@ -98,13 +102,13 @@ const ContactPage = ({ data, location }) => {
           </ContactWrapper>
         </div>
       </ContactSection>
-      <Section bg="grey" top bottom title="We're Local">
+      <Section bg="grey" top bottom title={map_title.text}>
         <MapWrapper>
           <Map style={{ margin: 'auto' }} />
           <Card
             style={{ gridArea: 'desc' }}
-            title="We'll Come to You"
-            description="Our office is based in Chicago, and our sales team can visit your home or facility to design your custom system."
+            title={map_subtitle.text}
+            description={map_description.text}
           />
         </MapWrapper>
       </Section>
@@ -149,6 +153,15 @@ export const query = graphql`
           text
         }
         description {
+          text
+        }
+        map_title {
+          text
+        }
+        map_subtitle {
+          text
+        }
+        map_description {
           text
         }
         hero_image {

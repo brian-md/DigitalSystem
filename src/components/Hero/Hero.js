@@ -64,6 +64,7 @@ const HeroContents = ({
         <Paragraph size="medium">{subtitle}</Paragraph>
       </AnimatedContainer>
     )}
+    {children && <AnimatedContainer>{children}</AnimatedContainer>}
     {(primaryAction || secondaryAction) && (
       <AnimatedContainer>
         <ButtonWrapper>
@@ -80,7 +81,6 @@ const HeroContents = ({
         </ButtonWrapper>
       </AnimatedContainer>
     )}
-    {children && <AnimatedContainer>{children}</AnimatedContainer>}
     {image && (
       <ImageWrapper small={small}>
         <Img fluid={image} style={{ minHeight: '100vh' }} />
