@@ -13,6 +13,7 @@ const Card = ({
   visible,
   as,
   icon,
+  noButton,
   style,
 }) => {
   const CardTitle = icon ? IconTitle : Title;
@@ -31,22 +32,25 @@ const Card = ({
         size={small ? 'small' : undefined}
         as="h3"
         invert={invert}
+        to={cta ? cta.to && cta.to : undefined}
+        href={cta ? cta.href && cta.href : undefined}
       >
         {title}
       </CardTitle>
       {description && (
         <Paragraph size={small ? 'small' : undefined}>{description}</Paragraph>
       )}
-      {cta && (
-        <Button
-          aria-label={`Learn More about ${title}`}
-          size={small ? 'small' : undefined}
-          invert={invert}
-          {...cta}
-        >
-          {cta.text ? cta.text : 'Learn More'}
-        </Button>
-      )}
+      {cta &&
+        !noButton && (
+          <Button
+            aria-label={`Learn More about ${title}`}
+            size={small ? 'small' : undefined}
+            invert={invert}
+            {...cta}
+          >
+            {cta.text ? cta.text : 'Learn More'}
+          </Button>
+        )}
     </Container>
   );
 };
@@ -64,6 +68,7 @@ Card.propTypes = {
   link: PropTypes.string,
   as: PropTypes.string,
   style: PropTypes.object,
+  noButton: PropTypes.bool,
 };
 
 Card.defaultProps = {

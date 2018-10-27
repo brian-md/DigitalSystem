@@ -36,6 +36,7 @@ class NavBar extends Component {
           }))
           .concat([{ name: 'See All', to: '/industries' }]),
       },
+      { name: 'Support', to: '/support' },
       { name: 'Contact', to: '/contact' },
     ];
   }

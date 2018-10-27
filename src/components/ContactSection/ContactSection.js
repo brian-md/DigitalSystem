@@ -1,17 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Section, ContactForm, Card, Paragraph } from 'components';
-import { Wrapper } from './ContactSection.css';
-const ContactSection = ({ title, description, subtitle, children, bg }) => {
+import { Section, ContactForm, Card, Paragraph, IconTitle } from 'components';
+import { Wrapper, ContactWrapper } from './ContactSection.css';
+const ContactSection = ({
+  title,
+  contact,
+  description,
+  subtitle,
+  children,
+  bg,
+}) => {
   return (
     <Section title={title} bg={bg}>
       <Wrapper twoCol={description || subtitle || children}>
         {subtitle && (
-          <Card
-            title={subtitle}
-            style={{ gridArea: 'message' }}
-            description={description}
-          />
+          <div>
+            <Card
+              title={subtitle}
+              style={{ gridArea: 'message' }}
+              description={description}
+            />
+            {contact && (
+              <ContactWrapper>
+                <IconTitle invert icon="phone" href="tel:888-90-Digital">
+                  888-90-Digital
+                </IconTitle>
+                <IconTitle
+                  invert
+                  icon="email"
+                  href="mailto:info@digitalsystemsav.com"
+                >
+                  info@digitalsystemsav.com
+                </IconTitle>
+              </ContactWrapper>
+            )}
+          </div>
         )}
         {!subtitle &&
           description && (
@@ -31,6 +54,7 @@ ContactSection.propTypes = {
   subtitle: PropTypes.string,
   description: PropTypes.string,
   children: PropTypes.node,
+  contact: PropTypes.bool,
   bg: PropTypes.string,
 };
 

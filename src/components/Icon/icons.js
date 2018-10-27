@@ -81,4 +81,15 @@ export const icons = {
       color: '#ffffff',
     },
   ],
+  external_link: [
+    {
+      path:
+        'M192 64v768h768v-768h-768zM896 768h-640v-640h640v640zM128 896v-672l-64-64v800h800l-64-64h-672z',
+      color: '#ffffff',
+    },
+    {
+      path: 'M352 256l160 160-192 192 96 96 192-192 160 160v-416z',
+      color: '#ffffff',
+    },
+  ],
 };

@@ -16,12 +16,12 @@ const IconTitle = ({ icon, children, onClick, stacked, ...props }) => {
       onKeyUp={onClick}
       role={onClick ? 'button' : undefined}
       href={href}
+      target={href && '_blank'}
     >
       <Icon
         size={iconSize}
-        color={invert ? undefined : 'rgba(0, 0, 0, 0.9)'}
+        color={invert ? undefined : 'rgba(0, 0, 0, 0.7)'}
         icon={icon}
-        to={to}
       />
       <Title size={titleSize} {...props}>
         {children}
