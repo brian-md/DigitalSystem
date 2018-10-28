@@ -9,13 +9,15 @@ import {
   ContactSection,
   Card,
   ContactInfo,
+  YouTube,
   FlexColumns,
+  Grid,
 } from 'components';
 
 const ContactPage = ({ data, location }) => {
   const {
     prismicSupportPage: {
-      data: { hero_image, title, subtitle, links },
+      data: { hero_image, title, subtitle, links, videos },
     },
   } = data;
   return (
@@ -48,6 +50,17 @@ const ContactPage = ({ data, location }) => {
             ))}
           </div>
         </FlexColumns>
+      </Section>
+      <Section bg="purple" top bottom title="Troubleshooting Videos">
+        <Grid>
+          {videos.map(video => (
+            <YouTube
+              key={video.url.url}
+              title={video.video_title.text}
+              url={video.url.url}
+            />
+          ))}
+        </Grid>
       </Section>
 
       <ContactSection title="Get in Touch">
@@ -92,6 +105,17 @@ export const query = graphql`
             text
           }
           link_description {
+            text
+          }
+          url {
+            url
+          }
+        }
+        videos {
+          video_title {
+            text
+          }
+          video_description {
             text
           }
           url {

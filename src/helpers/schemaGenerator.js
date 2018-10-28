@@ -8,8 +8,9 @@ export default ({
   pageTitle,
   siteTitle,
   pageTitleFull,
+  parents,
 }) => {
-  const isSubPage = pageTitle && location.pathname !== '/';
+  const isSubPage = pageTitle && !parents && location.pathname !== '/';
 
   let schema = [
     {
@@ -43,6 +44,39 @@ export default ({
           },
         },
       ],
+    });
+  }
+
+  if (parents) {
+    let itemListElement = [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        item: {
+          '@id': siteUrl,
+          name: siteTitle,
+        },
+      },
+    ].concat(
+      parents.map((parent, i) => ({
+        '@type': 'ListItem',
+        position: i + 2,
+        item: { '@id': siteUrl + parent.slug },
+      }))
+    );
+    itemListElement.push({
+      '@type': 'ListItem',
+      position: itemListElement.length + 1,
+      item: {
+        '@id': canonical,
+        name: pageTitle,
+      },
+    });
+
+    schema.push({
+      '@context': 'http://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: itemListElement,
     });
   }
 

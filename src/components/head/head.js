@@ -16,6 +16,7 @@ const Head = ({
   imageUrl,
   location,
   canonical = siteUrl + (location.pathname || ''),
+  parents,
 }) => (
   <Helmet>
     <html lang="en" />
@@ -159,6 +160,7 @@ const Head = ({
           pageTitle,
           siteTitle,
           pageTitleFull,
+          parents,
         })
       )}
     </script>
@@ -177,6 +179,7 @@ Head.propTypes = {
   pageTitle: PropTypes.string,
   pageTitleFull: PropTypes.string,
   location: PropTypes.object.isRequired,
+  parents: PropTypes.array,
 };
 
 const HeadWithQuery = props => (
