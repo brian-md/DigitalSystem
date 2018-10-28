@@ -25,7 +25,11 @@ const ImageCard = ({ as, ...props }) => {
       style={wrapperStyle && wrapperStyle}
     >
       <ImageCircle size={size} image={image} alt={alt ? alt : title} circle />
-      <Card {...props} small={size === 'small'} />{' '}
+      <Card
+        {...props}
+        style={{ gridArea: 'content' }}
+        small={size === 'small'}
+      />{' '}
     </Wrapper>
   );
 };

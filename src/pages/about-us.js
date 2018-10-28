@@ -3,69 +3,47 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import {
-  Hero,
+  Title,
+  Paragraph,
   Layout,
   Section,
   ContactSection,
   Card,
+  ImageCard,
+  KeepExploring,
   ContactInfo,
-  YouTube,
-  Grid,
 } from 'components';
 
-const ContactPage = ({ data, location }) => {
+const AboutUsPage = ({ data, location }) => {
   const {
-    prismicSupportPage: {
+    prismicAboutUs: {
       data: {
         hero_image,
         title,
         subtitle,
         contact_title,
         contact_description,
-        links,
-        videos,
+        description_title,
+        description,
       },
     },
   } = data;
   return (
-    <Layout
-      location={location.pathname}
-      pageTitle="Customer Service and Technical Support"
-    >
-      <Hero
-        small
-        title={title.text}
-        subtitle={subtitle.text}
-        image={hero_image.localFile.childImageSharp.fluid}
-      >
-        <ContactInfo invert />
-      </Hero>
-      <Section title="External Resources">
-        <Grid staticGrid size={20}>
-          {links.map(link => (
-            <Card
-              small
-              noButton
-              key={link.url.url}
-              icon="external_link"
-              title={link.link_title.text}
-              description={link.link_description.text}
-              cta={{ href: link.url.url, text: 'Go To Link' }}
-            />
-          ))}
-        </Grid>
+    <Layout location={location.pathname} pageTitle="About Us" stuckNav>
+      <Section>
+        <Title size="large" line as="h1">
+          {title.text}
+        </Title>
+        <Paragraph size="medium">{subtitle.text}</Paragraph>
+        <ImageCard
+          stacked
+          image={hero_image.localFile.childImageSharp.fluid}
+          title={description_title.text}
+          description={description.html}
+          html
+        />
       </Section>
-      <Section bg="purple" top bottom title="Troubleshooting Videos">
-        <Grid staticGrid>
-          {videos.map(video => (
-            <YouTube
-              key={video.url.url}
-              title={video.video_title.text}
-              url={video.url.url}
-            />
-          ))}
-        </Grid>
-      </Section>
+      <KeepExploring bg="grey" top bottom />
 
       <ContactSection title="Get in Touch">
         <div>
@@ -81,16 +59,16 @@ const ContactPage = ({ data, location }) => {
   );
 };
 
-ContactPage.propTypes = {
+AboutUsPage.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object,
 };
 
-export default ContactPage;
+export default AboutUsPage;
 
 export const query = graphql`
-  query SupportQuery {
-    prismicSupportPage {
+  query AboutUsQuery {
+    prismicAboutUs {
       data {
         title {
           text
@@ -101,7 +79,7 @@ export const query = graphql`
         hero_image {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 2500) {
+              fluid(maxWidth: 2500, maxHeight: 2500) {
                 ...GatsbyImageSharpFluid_noBase64
               }
             }
@@ -113,27 +91,12 @@ export const query = graphql`
         contact_description {
           text
         }
-        links {
-          link_title {
-            text
-          }
-          link_description {
-            text
-          }
-          url {
-            url
-          }
+        description_title {
+          text
         }
-        videos {
-          video_title {
-            text
-          }
-          video_description {
-            text
-          }
-          url {
-            url
-          }
+        description {
+          text
+          html
         }
       }
     }

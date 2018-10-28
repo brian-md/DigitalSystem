@@ -15,6 +15,7 @@ const Card = ({
   icon,
   noButton,
   style,
+  html,
 }) => {
   const CardTitle = icon ? IconTitle : Title;
   return (
@@ -38,7 +39,9 @@ const Card = ({
         {title}
       </CardTitle>
       {description && (
-        <Paragraph size={small ? 'small' : undefined}>{description}</Paragraph>
+        <Paragraph html={html} size={small ? 'small' : undefined}>
+          {description}
+        </Paragraph>
       )}
       {cta &&
         !noButton && (
@@ -69,6 +72,7 @@ Card.propTypes = {
   as: PropTypes.string,
   style: PropTypes.object,
   noButton: PropTypes.bool,
+  html: PropTypes.bool,
 };
 
 Card.defaultProps = {

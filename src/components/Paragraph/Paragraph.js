@@ -6,6 +6,7 @@ const Paragraph = ({ children, as = 'p', size, center, html }) => {
   return html ? (
     <Text
       as={as}
+      html={html}
       size={size}
       center={center}
       dangerouslySetInnerHTML={{ __html: children }}

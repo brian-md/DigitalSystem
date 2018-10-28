@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import MEDIA from 'helpers/mediaTemplates';
 
 export const Container = styled.div`
-  grid-area: content;
   text-align: left;
   display: flex;
   justify-content: center;
