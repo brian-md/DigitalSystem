@@ -17,7 +17,8 @@ export const Grid = styled.div`
   }
   margin: auto;
   ${MEDIA.DESKTOP`
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+grid-template-columns: ${({ staticGrid }) =>
+    staticGrid ? undefined : 'repeat(auto-fill, minmax(15rem, 1fr))'};
     > * {
     margin: ${({ flex }) => (flex ? '0.5rem 1rem' : undefined)};
   }

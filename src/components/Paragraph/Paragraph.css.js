@@ -21,8 +21,11 @@ export const Text = styled.p`
   margin: 0;
   line-height: 2;
   letter-spacing: 0.1px;
-  margin-bottom: 2rem;
+  margin-bottom: ${({ html }) => (html ? 0 : '2rem')};
   &:only-of-type {
+    margin-bottom: ${({ html }) => (html ? 0 : '2rem')};
+  }
+  p {
     margin-bottom: 2rem;
   }
   ${MEDIA.TABLET`

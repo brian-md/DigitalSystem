@@ -36,6 +36,12 @@ const Index = ({ data, location }) => {
       location={location.pathname}
       pageTitle={solution_name.text}
       stuckNav
+      parents={[
+        {
+          slug: `/industries/${industry.document[0].uid}`,
+          name: `${industry.document[0].data.industry_name.text}`,
+        },
+      ]}
     >
       <Section>
         <Title size="large" line as="h1">
@@ -165,6 +171,11 @@ export const query = graphql`
         industry {
           document {
             uid
+            data {
+              industry_name {
+                text
+              }
+            }
           }
         }
         services {
