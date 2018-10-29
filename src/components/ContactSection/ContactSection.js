@@ -9,9 +9,10 @@ const ContactSection = ({
   subtitle,
   children,
   bg,
+  ...props
 }) => {
   return (
-    <Section title={title} bg={bg}>
+    <Section title={title} bg={bg} {...props}>
       <Wrapper twoCol={description || subtitle || children}>
         {subtitle && (
           <div>

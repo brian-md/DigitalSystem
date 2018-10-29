@@ -61,7 +61,7 @@ const Index = ({ data, location }) => (
           }))}
       />
     </Section>
-    <Section title="Who We Serve">
+    <Section title="What Sets Us Apart">
       <ImageWings
         image={
           data.prismicIndustry.data.secondary_image.localFile.childImageSharp
@@ -102,6 +102,15 @@ export const query = graphql`
           text
         }
         long_description {
+          text
+        }
+        contact_title {
+          text
+        }
+        contact_description_title {
+          text
+        }
+        contact_description {
           text
         }
         main_image {

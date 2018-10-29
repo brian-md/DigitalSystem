@@ -6,8 +6,11 @@ import { ButtonWrapper } from './ImageCardGridTabs.css';
 
 const ImageCardGridTabs = ({ data, invert }) => {
   return (
-    <Tabber keys={data.map(card => card.name)}>
+    <Tabber
+      keys={data.filter(tab => tab.features.length > 0).map(card => card.name)}
+    >
       {({ setTab, getVisibility }) => {
+        data = data.filter(tab => tab.features.length > 0);
         const buttons = data.map(tab => (
           <Button
             size="tiny"

@@ -13,6 +13,7 @@ const ImageWings = props => {
     description,
     visible,
     cta,
+    maxFeatures,
     icon,
   } = props;
   return (
@@ -37,7 +38,7 @@ const ImageWings = props => {
       <Left>
         {features &&
           features
-            .slice(0, Math.floor(features.length / 2))
+            .slice(0, Math.floor(Math.min(features.length, maxFeatures) / 2))
             .map((feature, i) => (
               <Card as="li" small invert={invert} key={i} {...feature} />
             ))}
@@ -46,8 +47,8 @@ const ImageWings = props => {
         {features &&
           features
             .slice(
-              Math.floor(features.length / 2),
-              Math.floor(features.length / 2) * 2
+              Math.floor(Math.min(features.length, maxFeatures) / 2),
+              Math.floor(Math.min(features.length, maxFeatures) / 2) * 2
             )
             .map((feature, i) => (
               <Card as="li" small invert={invert} key={i} {...feature} />
@@ -59,6 +60,7 @@ const ImageWings = props => {
 
 ImageWings.defaultProps = {
   visible: true,
+  maxFeatures: 10,
 };
 
 ImageWings.propTypes = {
@@ -73,6 +75,7 @@ ImageWings.propTypes = {
   description: PropTypes.string,
   cta: PropTypes.object,
   icon: PropTypes.string,
+  maxFeatures: PropTypes.number,
 };
 
 export { ImageWings };
