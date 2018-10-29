@@ -8,74 +8,83 @@ import {
   Layout,
   Section,
   ImageCardGrid,
+  ContactSection,
 } from 'components';
 
-const Index = ({ data, location }) => (
-  <Layout
-    location={location.pathname}
-    pageTitle={data.prismicIndustry.data.industry_name.text}
-  >
-    <Hero
-      small
-      pullUp="-10rem"
-      title={data.prismicIndustry.data.industry_name.text}
-      image={
-        data.prismicIndustry.data.main_image.localFile.childImageSharp.fluid
-      }
-      subtitle={data.prismicIndustry.data.tagline.text}
-    />
-    <Section>
-      <ImageCard
-        flip
-        title={data.prismicIndustry.data.long_description_title.text}
-        description={data.prismicIndustry.data.long_description.text}
-        image={
-          data.prismicIndustry.data.main_image.localFile.childImageSharp.fluid
-        }
+const Index = ({ data, location }) => {
+  const {
+    prismicIndustry: {
+      uid,
+      data: {
+        industry_name,
+        tagline,
+        long_description_title,
+        long_description,
+        main_image,
+        contact_title,
+        contact_description_title,
+        contact_description,
+      },
+    },
+  } = data;
+  return (
+    <Layout location={location.pathname} pageTitle={industry_name.text}>
+      <Hero
+        small
+        pullUp="-10rem"
+        title={data.prismicIndustry.data.industry_name.text}
+        image={main_image.localFile.childImageSharp.fluid}
+        subtitle={tagline.text}
       />
-    </Section>
-    <Section
-      bg="purple"
-      bottom
-      top
-      title={`${data.prismicIndustry.data.industry_name.text} Solutions`}
-    >
-      <ImageCardGrid
-        invert
-        features={data.allPrismicSolution.edges
-          .filter(
-            solution =>
-              solution.node.data.industry.document[0].uid ===
-              data.prismicIndustry.uid
-          )
-          .map(solution => ({
-            title: solution.node.data.solution_name.text,
-            description: solution.node.data.short_description.text,
-            image:
-              solution.node.data.main_image.localFile.childImageSharp.fluid,
-            cta: {
-              to: `/industries/${solution.node.data.industry.document[0].uid}/${
-                solution.node.uid
-              }`,
-            },
+      <Section>
+        <ImageCard
+          flip
+          title={long_description_title.text}
+          description={long_description.text}
+          image={main_image.localFile.childImageSharp.fluid}
+        />
+      </Section>
+      <Section bg="purple" bottom top title={`${industry_name.text} Solutions`}>
+        <ImageCardGrid
+          invert
+          features={data.allPrismicSolution.edges
+            .filter(
+              solution => solution.node.data.industry.document[0].uid === uid
+            )
+            .map(solution => ({
+              title: solution.node.data.solution_name.text,
+              description: solution.node.data.short_description.text,
+              image:
+                solution.node.data.main_image.localFile.childImageSharp.fluid,
+              cta: {
+                to: `/industries/${
+                  solution.node.data.industry.document[0].uid
+                }/${solution.node.uid}`,
+              },
+            }))}
+        />
+      </Section>
+      <Section title="What Sets Us Apart">
+        <ImageWings
+          image={
+            data.prismicIndustry.data.secondary_image.localFile.childImageSharp
+              .fluid
+          }
+          description={data.prismicIndustry.data.features_intro.text}
+          features={data.prismicIndustry.data.features.map(feature => ({
+            title: feature.title.text,
+            description: feature.description.text,
           }))}
+        />
+      </Section>
+      <ContactSection
+        title={contact_title.text}
+        subtitle={contact_description_title.text}
+        description={contact_description.text}
       />
-    </Section>
-    <Section title="What Sets Us Apart">
-      <ImageWings
-        image={
-          data.prismicIndustry.data.secondary_image.localFile.childImageSharp
-            .fluid
-        }
-        description={data.prismicIndustry.data.features_intro.text}
-        features={data.prismicIndustry.data.features.map(feature => ({
-          title: feature.title.text,
-          description: feature.description.text,
-        }))}
-      />
-    </Section>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 Index.propTypes = {
   data: PropTypes.object.isRequired,
