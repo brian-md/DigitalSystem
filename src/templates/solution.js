@@ -9,6 +9,7 @@ import {
   Layout,
   DescriptionFeatureList,
   ImageCardGrid,
+  ContactSection,
 } from 'components';
 
 const Index = ({ data, location }) => {
@@ -28,6 +29,9 @@ const Index = ({ data, location }) => {
         explanation,
         industry,
         services,
+        contact_title,
+        contact_description,
+        contact_description_title,
       },
     },
   } = data;
@@ -96,7 +100,15 @@ const Index = ({ data, location }) => {
           })}
         />
       </Section>
-      <Section bg="grey" top bottom title="Related Solutions">
+      <ContactSection
+        title={contact_title.text}
+        bg="grey"
+        top
+        bottom
+        subtitle={contact_description_title.text}
+        description={contact_description.text}
+      />
+      <Section title="Related Solutions">
         <ImageCardGrid
           small
           stacked
@@ -148,6 +160,15 @@ export const query = graphql`
           text
         }
         long_description {
+          text
+        }
+        contact_title {
+          text
+        }
+        contact_description {
+          text
+        }
+        contact_description_title {
           text
         }
         main_image {
