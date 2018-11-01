@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes, { arrayOf } from 'prop-types';
 import { Container, Left, Middle, Right } from './ImageWings.css';
-import { Button, Icon, Card, Image, Paragraph } from 'components';
+import { Button, Icon, Title, Card, Image, Paragraph } from 'components';
 
 const ImageWings = props => {
   const {
@@ -14,11 +14,13 @@ const ImageWings = props => {
     visible,
     cta,
     maxFeatures,
+    title,
     icon,
   } = props;
   return (
     <Container visible={visible}>
       <Middle>
+        {title && <Title as="h2">{title}</Title>}
         {icon && <Icon size="jumbo" icon={icon} style={{ margin: 'auto' }} />}
         <Image
           image={image}
@@ -76,6 +78,7 @@ ImageWings.propTypes = {
   cta: PropTypes.object,
   icon: PropTypes.string,
   maxFeatures: PropTypes.number,
+  title: PropTypes.string,
 };
 
 export { ImageWings };

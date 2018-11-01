@@ -62,7 +62,7 @@ const ContactPage = ({ data, location }) => {
       >
         <ContactInfo invert />
       </Hero>
-      <ContactSection title={subtitle.text}>
+      <ContactSection title={subtitle.text} id="contact">
         <div>
           <Card title={description_title.text} description={description.text} />
 

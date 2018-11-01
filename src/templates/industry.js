@@ -78,6 +78,7 @@ const Index = ({ data, location }) => {
         />
       </Section>
       <ContactSection
+        id={`industry-${uid}`}
         title={contact_title.text}
         subtitle={contact_description_title.text}
         description={contact_description.text}

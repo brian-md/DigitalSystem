@@ -24,8 +24,22 @@ const Footer = ({ services, industries }) => (
   >
     <Wrapper>
       <Social>
-        <IconButton size="medium" href="google.com" icon="facebook" />
-        <IconButton size="medium" href="google.com" icon="linkedin" />
+        <li>
+          <IconButton
+            size="medium"
+            href="google.com"
+            icon="facebook"
+            aria-label="facebook"
+          />
+        </li>
+        <li>
+          <IconButton
+            size="medium"
+            href="google.com"
+            icon="linkedin"
+            aria-label="linkedin"
+          />
+        </li>
       </Social>
       <Contact>
         <IconTitle icon="phone" invert size="small" href="tel:888-90-Digital">

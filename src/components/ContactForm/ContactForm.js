@@ -25,7 +25,7 @@ const styles = theme => ({
   },
 });
 
-const ContactForm = ({ classes, twoColumn }) => {
+const ContactForm = ({ classes, twoColumn, id }) => {
   const FormWrapper = twoColumn ? TwoColumn : SingleColumn;
 
   return (
@@ -38,6 +38,7 @@ const ContactForm = ({ classes, twoColumn }) => {
           name="sales-inquiry"
         >
           <TextField
+            id={id ? `${id}-name` : undefined}
             required
             label="Name"
             className={classes.textField}
@@ -51,6 +52,7 @@ const ContactForm = ({ classes, twoColumn }) => {
           <TextField
             required
             label="Email"
+            id={id ? `${id}-email` : undefined}
             type="email"
             className={classes.textField}
             name="email"
@@ -64,6 +66,7 @@ const ContactForm = ({ classes, twoColumn }) => {
             required
             label="Phone Number"
             type="tel"
+            id={id ? `${id}-tel` : undefined}
             className={classes.textField}
             name="phone"
             value={form.phone}
@@ -75,6 +78,7 @@ const ContactForm = ({ classes, twoColumn }) => {
           <TextField
             required
             select
+            id={id ? `${id}-jobtype` : undefined}
             label="Job Type"
             className={classes.textField}
             name="industry"
@@ -120,6 +124,7 @@ const ContactForm = ({ classes, twoColumn }) => {
 ContactForm.propTypes = {
   classes: PropTypes.object.isRequired,
   twoColumn: PropTypes.bool,
+  id: PropTypes.string,
 };
 
 const ContactFormWithStyles = withStyles(styles)(ContactForm);

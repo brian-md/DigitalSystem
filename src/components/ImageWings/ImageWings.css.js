@@ -49,7 +49,7 @@ export const Middle = styled.div`
   display: grid;
   grid-area: middle;
   grid-template-columns: 30rem;
-  grid-template-rows: min-content min-content min-content;
+  grid-auto-rows: min-content;
   margin: auto;
   grid-gap: 2rem;
   > p:only-of-type {
@@ -57,16 +57,14 @@ export const Middle = styled.div`
     margin: 0 !important;
   }
   ${MEDIA.LARGE`
-  grid-template-columns: 20rem;
-  grid-template-rows: min-content min-content min-content;  
+  grid-template-columns: 20rem;  
   margin-bottom: 2rem;
     `};
   ${MEDIA.DESKTOP`
     grid-gap: 1rem;
     
     `} ${MEDIA.PHONE`
-  grid-template-columns: 70vw;
-  grid-template-rows: min-content min-content min-content;  
+  grid-template-columns: 70vw;  
   
   > p:only-of-type {
     padding: 0 1rem;
