@@ -9,6 +9,7 @@ const ContactSection = ({
   subtitle,
   children,
   bg,
+  id,
   ...props
 }) => {
   return (
@@ -42,7 +43,7 @@ const ContactSection = ({
             <Paragraph style={{ margin: 'auto' }}>{description}</Paragraph>
           )}
         {children && children}
-        <ContactForm />
+        <ContactForm id={id} />
       </Wrapper>
     </Section>
   );
@@ -51,6 +52,7 @@ ContactSection.defaultProps = {
   title: 'Get in Touch',
 };
 ContactSection.propTypes = {
+  id: PropTypes.string,
   title: PropTypes.string,
   subtitle: PropTypes.string,
   description: PropTypes.string,

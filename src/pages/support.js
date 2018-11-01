@@ -67,7 +67,7 @@ const ContactPage = ({ data, location }) => {
         </Grid>
       </Section>
 
-      <ContactSection title="Get in Touch">
+      <ContactSection title="Get in Touch" id="support">
         <div>
           <Card
             title={contact_title.text}

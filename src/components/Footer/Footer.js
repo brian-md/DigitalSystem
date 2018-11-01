@@ -24,8 +24,22 @@ const Footer = ({ services, industries }) => (
   >
     <Wrapper>
       <Social>
-        <IconButton size="medium" href="google.com" icon="facebook" />
-        <IconButton size="medium" href="google.com" icon="linkedin" />
+        <li>
+          <IconButton
+            size="medium"
+            href="google.com"
+            icon="facebook"
+            aria-label="facebook"
+          />
+        </li>
+        <li>
+          <IconButton
+            size="medium"
+            href="google.com"
+            icon="linkedin"
+            aria-label="linkedin"
+          />
+        </li>
       </Social>
       <Contact>
         <IconTitle icon="phone" invert size="small" href="tel:888-90-Digital">
@@ -43,27 +57,35 @@ const Footer = ({ services, industries }) => (
       <Nav>
         <NavList>
           <h3>Main</h3>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
+          <ul role="menu">
+            <li role="none">
+              <Link role="menuitem" to="/">
+                Home
+              </Link>
             </li>
-            <li>
-              <Link to="/about-us">About Us</Link>
+            <li role="none">
+              <Link role="menuitem" to="/about-us">
+                About Us
+              </Link>
             </li>
-            <li>
-              <Link to="/support">Support</Link>
+            <li role="none">
+              <Link role="menuitem" to="/support">
+                Support
+              </Link>
             </li>
-            <li>
-              <Link to="/contact">Contact</Link>
+            <li role="none">
+              <Link role="menuitem" to="/contact">
+                Contact
+              </Link>
             </li>
           </ul>
         </NavList>
         <NavList>
           <h3>Services</h3>
-          <ul>
+          <ul role="menu">
             {services.map(service => (
-              <li key={service.node.uid}>
-                <Link to={`/services/${service.node.uid}`}>
+              <li role="none" key={service.node.uid}>
+                <Link role="menuitem" to={`/services/${service.node.uid}`}>
                   {service.node.data.service_name.text}
                 </Link>
               </li>
@@ -72,10 +94,10 @@ const Footer = ({ services, industries }) => (
         </NavList>
         <NavList>
           <h3>Industries</h3>
-          <ul>
+          <ul role="menu">
             {industries.map(industry => (
-              <li key={industry.node.uid}>
-                <Link to={`/industries/${industry.node.uid}`}>
+              <li role="none" key={industry.node.uid}>
+                <Link role="menuitem" to={`/industries/${industry.node.uid}`}>
                   {industry.node.data.industry_name.text}
                 </Link>
               </li>

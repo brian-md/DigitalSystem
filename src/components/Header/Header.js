@@ -36,7 +36,11 @@ const Header = ({
       location={location}
     />
 
-    <MenuButton menuOpen={menuOpen} toggleMenu={toggleMenu} />
+    <MenuButton
+      menuOpen={menuOpen}
+      aria-expanded={menuOpen}
+      toggleMenu={toggleMenu}
+    />
   </Container>
 );
 

@@ -15,6 +15,7 @@ import {
 const Index = ({ data, location }) => {
   const {
     prismicSolution: {
+      uid,
       data: {
         solution_name,
         tagline,
@@ -101,6 +102,7 @@ const Index = ({ data, location }) => {
         />
       </Section>
       <ContactSection
+        id={`solution-${uid}`}
         title={contact_title.text}
         bg="grey"
         top

@@ -17,7 +17,7 @@ export const Container = styled.button`
   display: flex;
   align-items: center
   .menu-label {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.8);
     text-transform: uppercase;
     font-size: 0.7rem;
     margin-right: 0.5rem;

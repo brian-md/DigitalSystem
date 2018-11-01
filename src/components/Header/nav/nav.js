@@ -17,6 +17,7 @@ const Nav = ({
       <li key={item.name}>
         {item.to && !item.submenu ? (
           <Link
+            role="menuitem"
             to={item.to}
             className={location && location === item.to ? 'current' : undefined}
             aria-current={location && location === item.to ? 'page' : undefined}
@@ -26,7 +27,8 @@ const Nav = ({
         ) : (
           <button
             onClick={() => toggleSubmenu(item.name)}
-            role="menu"
+            role="menuitem"
+            aria-haspopup="true"
             className={
               item.name == currentSubmenu
                 ? 'open-submenu'
@@ -34,21 +36,29 @@ const Nav = ({
                   ? 'current'
                   : undefined
             }
+            aria-controls={
+              item.name == currentSubmenu
+                ? `main-nav-${item.name}-submenu`.replace(/ /g, '')
+                : undefined
+            }
           >
             {item.name}
           </button>
         )}
         {item.submenu && (
           <SubmenuWrapper stuck={stuck} visible={item.name == currentSubmenu}>
-            <dt>
-              {item.name}
-              <Link to={item.to}>See All</Link>
-            </dt>
+            <dt>{item.name}</dt>
             <dd>
-              <Submenu stuck={stuck} visible={item.name == currentSubmenu}>
+              <Submenu
+                stuck={stuck}
+                role="menu"
+                aria-label={item.name}
+                visible={item.name == currentSubmenu}
+              >
                 {item.submenu.map(menuItem => (
-                  <li key={menuItem.name}>
+                  <li key={menuItem.name} role="none">
                     <Link
+                      role="menuitem"
                       className={
                         location &&
                         location.includes(menuItem.to) &&
@@ -83,7 +93,7 @@ const Nav = ({
       menuOpen={menuOpen}
       aria-label="Main Menu"
     >
-      <ul>{mappedMenu}</ul>
+      <ul role="menubar">{mappedMenu}</ul>
     </Container>
   );
 };

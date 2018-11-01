@@ -45,7 +45,7 @@ const AboutUsPage = ({ data, location }) => {
       </Section>
       <KeepExploring bg="grey" top bottom />
 
-      <ContactSection title="Get in Touch">
+      <ContactSection title="Get in Touch" id="about-us">
         <div>
           <Card
             title={contact_title.text}

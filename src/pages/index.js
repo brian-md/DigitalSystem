@@ -72,6 +72,7 @@ const Index = ({ data, location }) => (
           );
           return {
             name: industry.node.data.industry_name.text,
+            title: `${industry.node.data.industry_name.text} Solutions`,
             image:
               industry.node.data.main_image.localFile.childImageSharp.fluid,
             description: industry.node.data.short_description.text,
@@ -90,6 +91,7 @@ const Index = ({ data, location }) => (
       />
     </Section>
     <ContactSection
+      id="home"
       title="Let Us Help"
       subtitle="come on!"
       description="Immerse yourself in art and experience movies like they were meant to be.Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque interdum luctus purus sit amet rhoncus. Vestibulum vitae consectetur eros, consequat aliquet erat."
