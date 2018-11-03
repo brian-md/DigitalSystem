@@ -139,7 +139,7 @@ const FooterWithQuery = props => (
             }
           }
         }
-        allPrismicService {
+        allPrismicService(sort: { fields: [data___order], order: ASC }) {
           edges {
             node {
               uid

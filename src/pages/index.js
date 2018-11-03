@@ -154,7 +154,7 @@ export const query = graphql`
         }
       }
     }
-    allPrismicService {
+    allPrismicService(sort: { fields: [data___order], order: ASC }) {
       edges {
         node {
           uid
@@ -165,10 +165,11 @@ export const query = graphql`
             short_description {
               text
             }
+            order
             main_image {
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 2500) {
+                  fluid(maxWidth: 1500, maxHeight: 1500) {
                     ...GatsbyImageSharpFluid
                   }
                 }

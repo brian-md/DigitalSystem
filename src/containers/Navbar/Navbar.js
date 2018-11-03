@@ -120,7 +120,7 @@ const NavBarWithData = props => (
   <StaticQuery
     query={graphql`
       query NavQuery {
-        allPrismicService {
+        allPrismicService(sort: { fields: [data___order], order: ASC }) {
           edges {
             node {
               uid
