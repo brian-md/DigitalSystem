@@ -37,7 +37,7 @@ const KeepExploringWithQuery = props => (
   <StaticQuery
     query={graphql`
       query KeepExploringQuery {
-        allPrismicIndustry {
+        allPrismicIndustry(sort: { fields: [data___order], order: ASC }) {
           edges {
             node {
               uid

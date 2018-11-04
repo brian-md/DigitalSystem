@@ -9,8 +9,7 @@ import {
   Section,
   ContactSection,
   Card,
-  Grid,
-  IconTitle,
+  KeepExploring,
   ContactInfo,
 } from 'components';
 import { Map } from 'containers';
@@ -47,7 +46,6 @@ const ContactPage = ({ data, location }) => {
         map_description,
       },
     },
-    allPrismicIndustry: { edges: industries },
   } = data;
   return (
     <Layout
@@ -79,21 +77,7 @@ const ContactPage = ({ data, location }) => {
           />
         </MapWrapper>
       </Section>
-      <Section title="keep exploring">
-        <Grid flex size={15}>
-          {industries.map(industry => (
-            <IconTitle
-              iconSize="large"
-              key={industry.node.uid}
-              icon={industry.node.uid}
-              stacked={1}
-              to={`/industries/${industry.node.uid}`}
-            >
-              {industry.node.data.industry_name.text}
-            </IconTitle>
-          ))}
-        </Grid>
-      </Section>
+      <KeepExploring />
     </Layout>
   );
 };

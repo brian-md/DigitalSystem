@@ -127,7 +127,7 @@ const FooterWithQuery = props => (
   <StaticQuery
     query={graphql`
       query FooterQuery {
-        allPrismicIndustry {
+        allPrismicIndustry(sort: { fields: [data___order], order: ASC }) {
           edges {
             node {
               uid

@@ -72,7 +72,6 @@ const Index = ({ data, location }) => (
           );
           return {
             name: industry.node.data.industry_name.text,
-            title: `${industry.node.data.industry_name.text} Solutions`,
             image:
               industry.node.data.main_image.localFile.childImageSharp.fluid,
             description: industry.node.data.short_description.text,
@@ -179,7 +178,7 @@ export const query = graphql`
         }
       }
     }
-    allPrismicIndustry {
+    allPrismicIndustry(sort: { fields: [data___order], order: ASC }) {
       edges {
         node {
           uid

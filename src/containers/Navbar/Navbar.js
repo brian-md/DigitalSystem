@@ -132,7 +132,7 @@ const NavBarWithData = props => (
             }
           }
         }
-        allPrismicIndustry {
+        allPrismicIndustry(sort: { fields: [data___order], order: ASC }) {
           edges {
             node {
               uid

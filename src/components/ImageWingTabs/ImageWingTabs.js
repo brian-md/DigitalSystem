@@ -16,7 +16,6 @@ class ImageWingTabs extends Component {
         {({ setTab, getVisibility }) => {
           const buttons = data.map(tab => (
             <Button
-              size="tiny"
               invert={invert}
               noOutline={!getVisibility(tab.name)}
               key={tab.name}
