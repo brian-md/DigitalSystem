@@ -43,7 +43,7 @@ class ServiceCardList extends Component {
               }
               title={service.node.data.service_name.text}
               description={service.node.data.short_description.text}
-              cta={{ to: `/services/${service.node.uid}`, text: 'Learn More' }}
+              cta={{ to: `/services/${service.node.uid}` }}
             />
           ))
           .concat(
@@ -58,7 +58,6 @@ class ServiceCardList extends Component {
                 description={service.node.data.short_description.text}
                 cta={{
                   to: `/services/${service.node.uid}`,
-                  text: 'Learn More',
                 }}
                 visible={this.state.showMore}
               />
