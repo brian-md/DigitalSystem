@@ -11,6 +11,7 @@ module.exports = {
     'gatsby-transformer-json',
     'gatsby-transformer-remark',
     'gatsby-plugin-eslint',
+    'gatsby-plugin-catch-links',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -38,15 +39,17 @@ module.exports = {
         accessToken:
           'MC5XNjFmZ2hJQUFDWUFWdk1o.IFp477-9Ze-_vV7vv73vv73vv73vv73vv73vv73vv73vv71QRO-_vVjvv73vv70177-9EHfvv73vv73vv73vv71rde-_vQ',
 
-        // Set a link resolver function used to process links in your content.
-        // Fields with rich text formatting or links to internal content use this
-        // function to generate the correct link URL.
-        // The document node, field key (i.e. API ID), and field value are
-        // provided to the function, as seen below. This allows you to use
-        // different link resolver logic for each field if necessary.
-        // See: https://prismic.io/docs/javascript/query-the-api/link-resolving
         linkResolver: ({ node, key, value }) => doc => {
           // Your link resolver
+
+          if (doc.type === 'service') return '/services/' + doc.uid;
+          if (doc.type === 'industry') return '/industries/' + doc.uid;
+          if (doc.type === 'solution')
+            return (
+              '/industries/' + doc.data.industry.document[0].uid + '/' + doc.uid
+            );
+          // Fallback for other types, in case new custom types get created
+          return '/doc/' + doc.id;
         },
 
         // Set a list of links to fetch and be made available in your link

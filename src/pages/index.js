@@ -72,6 +72,7 @@ const Index = ({ data, location }) => (
           );
           return {
             name: industry.node.data.industry_name.text,
+            title: `${industry.node.data.industry_name.text} services`,
             image:
               industry.node.data.main_image.localFile.childImageSharp.fluid,
             description: industry.node.data.short_description.text,

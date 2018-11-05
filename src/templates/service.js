@@ -54,7 +54,8 @@ const Index = ({ data, location }) => {
           description={features_intro.text}
           features={features.map(feature => ({
             title: feature.title.text,
-            description: feature.description.text,
+            description: feature.description.html,
+            html: true,
             icon: feature.icon,
           }))}
         />
@@ -161,6 +162,7 @@ export const query = graphql`
           }
           description {
             text
+            html
           }
           icon
         }

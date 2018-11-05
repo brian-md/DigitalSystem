@@ -28,3 +28,4 @@ export * from './Contactinfo/ContactInfo';
 export * from './FlexColumns/FlexColumns';
 export * from './KeepExploring/KeepExploring';
 export * from './YouTube/YouTube';
+export * from './HelperText/HelperText';

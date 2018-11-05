@@ -7450,6 +7450,14 @@ gatsby-node-helpers@^0.3.0:
     lodash "^4.17.4"
     p-is-promise "^1.1.0"
 
+gatsby-plugin-catch-links@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-2.0.6.tgz#a6bd6d5258d53c327c0ceeb1594cca61560ecab1"
+  integrity sha512-3XbnBwgsH00PDMVrlG05mc358wQ/CAV8Hv/92ZYVOl3UlaGbPPiUrbC7hGwDGcN6DD7kkNwNu02ceAKoGvvQmQ==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    escape-string-regexp "^1.0.5"
+
 gatsby-plugin-eslint@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-eslint/-/gatsby-plugin-eslint-2.0.1.tgz#88641be50b95a867416878c43b64458a2d6b9c21"

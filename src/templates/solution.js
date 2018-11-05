@@ -63,8 +63,9 @@ const Index = ({ data, location }) => {
         <DescriptionFeatureList
           invert
           features={features.map(feature => ({
-            description: feature.feature.text,
+            description: feature.feature.html,
             icon: feature.icon,
+            html: true,
           }))}
         >
           {/* <Paragraph>{features_summary.text}</Paragraph> */}
@@ -220,6 +221,7 @@ export const query = graphql`
         features {
           feature {
             text
+            html
           }
           icon
         }

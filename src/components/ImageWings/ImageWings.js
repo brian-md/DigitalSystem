@@ -1,7 +1,15 @@
 import React from 'react';
 import PropTypes, { arrayOf } from 'prop-types';
 import { Container, Left, Middle, Right } from './ImageWings.css';
-import { Button, Icon, Title, Card, Image, Paragraph } from 'components';
+import {
+  Button,
+  Icon,
+  Title,
+  Card,
+  Image,
+  Paragraph,
+  HelperText,
+} from 'components';
 
 const ImageWings = props => {
   const {
@@ -16,15 +24,16 @@ const ImageWings = props => {
     maxFeatures,
     title,
     icon,
+    showTitle,
   } = props;
   return (
     <Container visible={visible}>
       <Middle>
-        {title && <Title as="h2">{title}</Title>}
+        {title && showTitle && <Title as="h2">{title}</Title>}
         {icon && <Icon size="jumbo" icon={icon} style={{ margin: 'auto' }} />}
         <Image
           image={image}
-          alt={alt && alt}
+          alt={alt ? alt : title}
           circle
           fixed={fixedImage}
           style={{ gridArea: 'image' }}
@@ -32,7 +41,14 @@ const ImageWings = props => {
         {description && <Paragraph>{description}</Paragraph>}
         {cta && (
           <Button invert={invert} size="small" {...cta}>
-            {cta.text ? cta.text : 'Learn More'}
+            {cta.text ? (
+              cta.text
+            ) : (
+              <>
+                Learn More
+                <HelperText>about {title}</HelperText>
+              </>
+            )}
           </Button>
         )}
       </Middle>
@@ -63,6 +79,7 @@ const ImageWings = props => {
 ImageWings.defaultProps = {
   visible: true,
   maxFeatures: 10,
+  showTitle: false,
 };
 
 ImageWings.propTypes = {

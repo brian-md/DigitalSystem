@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container } from './Card.css';
-import { Button, Paragraph, Title, IconTitle } from 'components';
+import { Button, Paragraph, Title, IconTitle, HelperText } from 'components';
 
 const Card = ({
   flip,
@@ -39,7 +39,11 @@ const Card = ({
         {title}
       </CardTitle>
       {description && (
-        <Paragraph html={html} size={small ? 'small' : undefined}>
+        <Paragraph
+          html={html}
+          as={html ? 'div' : undefined}
+          size={small ? 'small' : undefined}
+        >
           {description}
         </Paragraph>
       )}
@@ -51,7 +55,14 @@ const Card = ({
             invert={invert}
             {...cta}
           >
-            {cta.text ? cta.text : 'Learn More'}
+            {cta.text ? (
+              cta.text
+            ) : (
+              <>
+                Learn More
+                <HelperText>about {title}</HelperText>
+              </>
+            )}
           </Button>
         )}
     </Container>

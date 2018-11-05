@@ -15,16 +15,18 @@ const DescriptionFeatureList = ({ children, features, ...props }) => {
       <FeatureList>
         {features.map((feature, i) => {
           const Feature = feature.icon ? IconTitle : Title;
+          const { icon, description, html } = feature;
           return (
             <li key={i}>
               <Feature
                 {...props}
                 align="left"
-                icon={feature.icon}
+                icon={icon}
                 size="small"
+                html={html}
                 noCaps
               >
-                {feature.description}
+                {description}
               </Feature>
             </li>
           );
@@ -40,6 +42,7 @@ DescriptionFeatureList.propTypes = {
     PropTypes.shape({
       description: PropTypes.string.isRequired,
       icon: PropTypes.string,
+      html: PropTypes.bool,
     })
   ),
 };
