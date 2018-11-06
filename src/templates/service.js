@@ -228,7 +228,7 @@ export const query = graphql`
         }
       }
     }
-    allPrismicIndustry {
+    allPrismicIndustry(sort: { fields: [data___order], order: ASC }) {
       edges {
         node {
           uid

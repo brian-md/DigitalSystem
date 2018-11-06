@@ -45,9 +45,7 @@ module.exports = {
           if (doc.type === 'service') return '/services/' + doc.uid;
           if (doc.type === 'industry') return '/industries/' + doc.uid;
           if (doc.type === 'solution')
-            return (
-              '/industries/' + doc.data.industry.document[0].uid + '/' + doc.uid
-            );
+            return '/industries/' + doc.tags[0] + '/' + doc.uid;
           // Fallback for other types, in case new custom types get created
           return '/doc/' + doc.id;
         },

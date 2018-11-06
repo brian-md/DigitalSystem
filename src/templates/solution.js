@@ -81,9 +81,33 @@ const Index = ({ data, location }) => {
           />
         </DescriptionFeatureList>
       </Section>
-      <Section title="How We Do It">
+      <Section title="Related Solutions">
+        <ImageCardGrid
+          features={data.allPrismicSolution.edges
+            .filter(
+              solution =>
+                solution.node.data.industry.document[0].uid ===
+                industry.document[0].uid
+            )
+            .map(solution => ({
+              title: solution.node.data.solution_name.text,
+              description: solution.node.data.short_description.text,
+              image:
+                solution.node.data.main_image.localFile.childImageSharp.fluid,
+              cta: {
+                to: `/industries/${
+                  solution.node.data.industry.document[0].uid
+                }/${solution.node.uid}`,
+              },
+            }))}
+        />
+      </Section>
+
+      <Section bg="grey" top bottom title="How We Do It">
         <Paragraph>{explanation.text}</Paragraph>
         <ImageCardGrid
+          small
+          stacked
           features={services.map(serviceId => {
             const service = data.allPrismicService.edges.find(
               service => service.node.uid === serviceId.service.document[0].uid
@@ -105,35 +129,9 @@ const Index = ({ data, location }) => {
       <ContactSection
         id={`solution-${uid}`}
         title={contact_title.text}
-        bg="grey"
-        top
-        bottom
         subtitle={contact_description_title.text}
         description={contact_description.text}
       />
-      <Section title="Related Solutions">
-        <ImageCardGrid
-          small
-          stacked
-          features={data.allPrismicSolution.edges
-            .filter(
-              solution =>
-                solution.node.data.industry.document[0].uid ===
-                industry.document[0].uid
-            )
-            .map(solution => ({
-              title: solution.node.data.solution_name.text,
-              description: solution.node.data.short_description.text,
-              image:
-                solution.node.data.main_image.localFile.childImageSharp.fluid,
-              cta: {
-                to: `/industries/${
-                  solution.node.data.industry.document[0].uid
-                }/${solution.node.uid}`,
-              },
-            }))}
-        />
-      </Section>
     </Layout>
   );
 };
