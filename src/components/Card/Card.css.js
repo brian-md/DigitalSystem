@@ -17,10 +17,12 @@ export const Container = styled.div`
         ? 'translateX(-10rem)'
         : 'translateX(10rem)'};
 
-  > p:only-of-type {
+  > p:only-of-type,
+  div > p:only-of-type {
     margin-top: ${({ small }) => (small ? '0.5rem' : '0')};
 
-    margin-bottom: ${({ small }) => (small ? '1rem' : '2rem')};
+    margin-bottom: ${({ small, cta }) =>
+      !cta ? '0' : small ? '1rem' : '2rem'};
   }
   ${MEDIA.DESKTOP`
     padding-bottom: 2rem;

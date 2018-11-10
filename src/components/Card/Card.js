@@ -20,6 +20,7 @@ const Card = ({
   const CardTitle = icon ? IconTitle : Title;
   return (
     <Container
+      cta={cta}
       style={style}
       as={as}
       small={small}
