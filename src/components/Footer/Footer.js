@@ -28,7 +28,7 @@ const Footer = ({ services, industries }) => (
           <IconButton
             size="medium"
             href="google.com"
-            icon="presentation"
+            icon="facebook"
             aria-label="facebook"
           />
         </li>
