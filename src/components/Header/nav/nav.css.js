@@ -171,8 +171,8 @@ export const SubmenuWrapper = styled.dl`
     stuck
       ? 'opacity 0.2s ease 0s, top 0s ease 0.0s;'
       : visible
-        ? 'opacity 0.2s ease 0.25s, top 0.0s ease 00s;'
-        : 'opacity 0.2s ease 0.5s, top 0.1s ease 00s;'}
+      ? 'opacity 0.2s ease 0.25s, top 0.0s ease 00s;'
+      : 'opacity 0.2s ease 0.5s, top 0.1s ease 00s;'}
   min-height: 3.5rem;
   position: absolute;
   right: 0;

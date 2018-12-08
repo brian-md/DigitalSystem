@@ -38,10 +38,9 @@ const ContactSection = ({
             )}
           </div>
         )}
-        {!subtitle &&
-          description && (
-            <Paragraph style={{ margin: 'auto' }}>{description}</Paragraph>
-          )}
+        {!subtitle && description && (
+          <Paragraph style={{ margin: 'auto' }}>{description}</Paragraph>
+        )}
         {children && children}
         <ContactForm id={id} />
       </Wrapper>

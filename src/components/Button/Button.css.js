@@ -68,8 +68,8 @@ export const BasicButton = styled.button`
     noOutline
       ? 'none'
       : invert
-        ? 'inset 0 0 0 1px #ffffff'
-        : 'inset 0 0 0 1px #000000'};
+      ? 'inset 0 0 0 1px #ffffff'
+      : 'inset 0 0 0 1px #000000'};
   border: none;
   background-color: transparent;
   user-select: none;
@@ -99,8 +99,8 @@ export const BasicButton = styled.button`
       noOutline
         ? 'none'
         : invert
-          ? 'inset 0 0 0 1px #ffffff'
-          : 'inset 0 0 0 1px #4797ec'};
+        ? 'inset 0 0 0 1px #ffffff'
+        : 'inset 0 0 0 1px #4797ec'};
 
   }
 `;

@@ -48,24 +48,23 @@ const Card = ({
           {description}
         </Paragraph>
       )}
-      {cta &&
-        !noButton && (
-          <Button
-            aria-label={`Learn More about ${title}`}
-            size={small ? 'small' : undefined}
-            invert={invert}
-            {...cta}
-          >
-            {cta.text ? (
-              cta.text
-            ) : (
-              <>
-                Learn More
-                <HelperText>about {title}</HelperText>
-              </>
-            )}
-          </Button>
-        )}
+      {cta && !noButton && (
+        <Button
+          aria-label={`Learn More about ${title}`}
+          size={small ? 'small' : undefined}
+          invert={invert}
+          {...cta}
+        >
+          {cta.text ? (
+            cta.text
+          ) : (
+            <>
+              Learn More
+              <HelperText>about {title}</HelperText>
+            </>
+          )}
+        </Button>
+      )}
     </Container>
   );
 };

@@ -33,8 +33,8 @@ const Nav = ({
               item.name == currentSubmenu
                 ? 'open-submenu'
                 : location && location.includes(item.to)
-                  ? 'current'
-                  : undefined
+                ? 'current'
+                : undefined
             }
             aria-controls={
               item.name == currentSubmenu

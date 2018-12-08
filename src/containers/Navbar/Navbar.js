@@ -50,8 +50,8 @@ class NavBar extends Component {
       return this.state.currentSubmenu && this.state.currentSubmenu != submenu
         ? { currentSubmenu: submenu }
         : prevState.submenuOpen
-          ? { submenuOpen: false, currentSubmenu: null }
-          : { submenuOpen: true, currentSubmenu: submenu };
+        ? { submenuOpen: false, currentSubmenu: null }
+        : { submenuOpen: true, currentSubmenu: submenu };
     });
   };
 

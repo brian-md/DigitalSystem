@@ -20,8 +20,8 @@ export const Wrapper = styled.i`
         ? `inset 0 0 0 ${sizes[size].border}px ${color}`
         : `inset 0 0 0 ${sizes.default.border}px ${color}`
       : size
-        ? `inset 0 0 0 ${sizes[size].border}px #ffffff`
-        : 'inset 0 0 0 1px #ffffff'};
+      ? `inset 0 0 0 ${sizes[size].border}px #ffffff`
+      : 'inset 0 0 0 1px #ffffff'};
   display: inline-flex;
   svg {
     margin: auto;

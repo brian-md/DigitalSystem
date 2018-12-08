@@ -14,8 +14,8 @@ export const Container = styled.div`
     visible
       ? 'translateX(0)'
       : flip
-        ? 'translateX(-10rem)'
-        : 'translateX(10rem)'};
+      ? 'translateX(-10rem)'
+      : 'translateX(10rem)'};
 
   > p:only-of-type,
   div > p:only-of-type {
