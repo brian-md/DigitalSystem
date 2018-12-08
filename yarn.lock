@@ -6684,6 +6684,14 @@ gatsby-plugin-eslint@^2.0.1:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-eslint/-/gatsby-plugin-eslint-2.0.1.tgz#88641be50b95a867416878c43b64458a2d6b9c21"
   integrity sha512-n6T0Rp52+egiAmLx8T43rMud3y0CoGM2eSAqWqM9/hhuZZ8StYqRr2BHLLThhNj/1I2YbJbtSBRXySWUPQ1HhA==
 
+gatsby-plugin-netlify-cache@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-netlify-cache/-/gatsby-plugin-netlify-cache-1.0.0.tgz#729bfae35800305e14bc098b9b2c095325cd74e2"
+  integrity sha512-lNdFUrtuEfee2FaR9Eh9ZF2gUvHQEbjZa9cNUltHj045r4Ej3dI9sXearx/+3IMbwS84aE4Q2yGEu/woNUPa+g==
+  dependencies:
+    babel-runtime "^6.26.0"
+    fs-extra "^7.0.0"
+
 gatsby-plugin-offline@^2.0.5:
   version "2.0.19"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-2.0.19.tgz#b072f43756328887b0941a6597f209ff2c299c88"
