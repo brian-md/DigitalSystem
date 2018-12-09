@@ -81,7 +81,18 @@ const Index = ({ data, location }) => {
           />
         </DescriptionFeatureList>
       </Section>
-      <Section title="Related Solutions">
+      <ContactSection
+        id={`solution-${uid}`}
+        title={contact_title.text}
+        subtitle={contact_description_title.text}
+        description={contact_description.text}
+      />
+      <Section
+        title={`More ${industry.document[0].data.industry_name.text} Solutions`}
+        bg="grey"
+        top
+        bottom
+      >
         <ImageCardGrid
           features={data.allPrismicSolution.edges
             .filter(
@@ -103,7 +114,7 @@ const Index = ({ data, location }) => {
         />
       </Section>
 
-      <Section bg="grey" top bottom title="How We Do It">
+      <Section top title="How We Do It">
         <Paragraph>{explanation.text}</Paragraph>
         <ImageCardGrid
           small
@@ -126,12 +137,6 @@ const Index = ({ data, location }) => {
           })}
         />
       </Section>
-      <ContactSection
-        id={`solution-${uid}`}
-        title={contact_title.text}
-        subtitle={contact_description_title.text}
-        description={contact_description.text}
-      />
     </Layout>
   );
 };

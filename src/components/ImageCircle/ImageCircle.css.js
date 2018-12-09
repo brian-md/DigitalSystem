@@ -19,4 +19,8 @@ export const ImageWrapper = styled.div`
       : sizes.default.desktop};
   
   `};
+  ${MEDIA.PHONE`
+      display: ${({ responsiveImage }) =>
+        responsiveImage ? 'none' : undefined}
+  `}
 `;

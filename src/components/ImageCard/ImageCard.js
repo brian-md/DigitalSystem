@@ -14,17 +14,25 @@ const ImageCard = ({ as, ...props }) => {
     wrapperStyle,
     visible,
     stacked,
+    responsiveImage,
   } = props;
   const Wrapper = size === 'small' ? SmallContainer : Container;
   return (
     <Wrapper
+      responsiveImage={responsiveImage}
       visible={visible}
       stacked={stacked}
       as={as}
       flip={flip}
       style={wrapperStyle && wrapperStyle}
     >
-      <ImageCircle size={size} image={image} alt={alt ? alt : title} circle />
+      <ImageCircle
+        responsiveImage={responsiveImage}
+        size={size}
+        image={image}
+        alt={alt ? alt : title}
+        circle
+      />
       <Card
         {...props}
         style={{ gridArea: 'content' }}
@@ -48,6 +56,7 @@ ImageCard.propTypes = {
   as: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   stacked: PropTypes.bool,
+  responsiveImage: PropTypes.bool,
 };
 
 ImageCard.defaultProps = {

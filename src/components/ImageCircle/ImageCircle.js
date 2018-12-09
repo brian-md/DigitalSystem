@@ -3,9 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ImageWrapper } from './ImageCircle.css';
 
-const ImageCircle = ({ image, alt, title, size }) => {
+const ImageCircle = ({ image, alt, title, size, ...props }) => {
   return (
-    <ImageWrapper size={size}>
+    <ImageWrapper size={size} {...props}>
       <Image image={image} circle alt={alt} title={title} />
     </ImageWrapper>
   );

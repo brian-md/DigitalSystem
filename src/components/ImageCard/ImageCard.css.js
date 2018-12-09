@@ -66,7 +66,8 @@ export const Container = styled.div`
   `};
   ${MEDIA.PHONE`
     grid-template-columns: 1fr;
-    grid-template-rows: 75vw 1fr;
+  grid-template-rows: ${({ responsiveImage }) =>
+    responsiveImage ? '0 1fr' : '75vw 1fr'};
     grid-template-areas: 
         'image'
         'content';

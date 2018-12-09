@@ -81,24 +81,26 @@ const Footer = ({ services, industries }) => (
           </ul>
         </NavList>
         <NavList>
+          <h3> Who We Serve </h3>{' '}
+          <ul role="menu">
+            {' '}
+            {industries.map(industry => (
+              <li role="none" key={industry.node.uid}>
+                <Link role="menuitem" to={`/industries/${industry.node.uid}`}>
+                  {' '}
+                  {industry.node.data.industry_name.text}{' '}
+                </Link>{' '}
+              </li>
+            ))}{' '}
+          </ul>{' '}
+        </NavList>
+        <NavList>
           <h3>Services</h3>
           <ul role="menu">
             {services.map(service => (
               <li role="none" key={service.node.uid}>
                 <Link role="menuitem" to={`/services/${service.node.uid}`}>
                   {service.node.data.service_name.text}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </NavList>
-        <NavList>
-          <h3>Industries</h3>
-          <ul role="menu">
-            {industries.map(industry => (
-              <li role="none" key={industry.node.uid}>
-                <Link role="menuitem" to={`/industries/${industry.node.uid}`}>
-                  {industry.node.data.industry_name.text}
                 </Link>
               </li>
             ))}
