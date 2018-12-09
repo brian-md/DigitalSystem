@@ -1,3 +1,4 @@
+import { StaticQuery, graphql } from 'gatsby';
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
@@ -25,7 +26,7 @@ const styles = theme => ({
   },
 });
 
-const ContactForm = ({ classes, twoColumn, id }) => {
+const ContactForm = ({ classes, twoColumn, id, industries }) => {
   const FormWrapper = twoColumn ? TwoColumn : SingleColumn;
 
   return (
@@ -93,14 +94,21 @@ const ContactForm = ({ classes, twoColumn, id }) => {
             }}
             margin="normal"
           >
-            {[
-              { value: 'residential', label: 'Residential' },
-              { value: 'commercial', label: 'Commercial' },
-            ].map(option => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
+            {industries.map(industry => {
+              const {
+                node: {
+                  uid,
+                  data: {
+                    industry_name: { text: industry_name },
+                  },
+                },
+              } = industry;
+              return (
+                <MenuItem key={uid} value={uid}>
+                  {industry_name}
+                </MenuItem>
+              );
+            })}
           </TextField>
           <input type="hidden" name="sales-inquiry" value="contact" />
           <p hidden>
@@ -125,8 +133,33 @@ ContactForm.propTypes = {
   classes: PropTypes.object.isRequired,
   twoColumn: PropTypes.bool,
   id: PropTypes.string,
+  industries: PropTypes.array.isRequired,
 };
 
-const ContactFormWithStyles = withStyles(styles)(ContactForm);
+const ContactFormWithData = props => (
+  <StaticQuery
+    query={graphql`
+      query ContactFormQuery {
+        allPrismicIndustry(sort: { fields: [data___order], order: ASC }) {
+          edges {
+            node {
+              uid
+              data {
+                industry_name {
+                  text
+                }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => (
+      <ContactForm {...props} industries={data.allPrismicIndustry.edges} />
+    )}
+  />
+);
+
+const ContactFormWithStyles = withStyles(styles)(ContactFormWithData);
 
 export { ContactFormWithStyles as ContactForm };

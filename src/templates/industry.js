@@ -38,6 +38,7 @@ const Index = ({ data, location }) => {
       />
       <Section>
         <ImageCard
+          responsiveImage
           flip
           title={long_description_title.text}
           description={long_description.text}

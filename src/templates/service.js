@@ -20,7 +20,6 @@ const Index = ({ data, location }) => {
         tagline,
         long_description_title,
         long_description,
-        features_intro,
         features,
         main_image,
         secondary_image,
@@ -41,17 +40,17 @@ const Index = ({ data, location }) => {
       />
       <Section>
         <ImageCard
+          responsiveImage
           flip
           title={long_description_title.text}
           description={long_description.text}
           image={main_image.localFile.childImageSharp.fluid}
         />
       </Section>
-      <Section title="Main Benefits" bg="purple" bottom top>
+      <Section title="Main Benefits" bg="purple" bottom>
         <ImageWings
           invert
           image={secondary_image.localFile.childImageSharp.fluid}
-          description={features_intro.text}
           features={features.map(feature => ({
             title: feature.title.text,
             description: feature.description.html,
@@ -86,9 +85,9 @@ const Index = ({ data, location }) => {
           })}
         />
       </Section>
-      <Section title="Our Partners" bg="grey" bottom top>
+      {/* <Section title="Our Partners" bg="grey" bottom top>
         brands
-      </Section>
+      </Section> */}
       <ContactSection
         id={`service-${uid}`}
         title={contact_title.text}

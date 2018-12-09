@@ -17,19 +17,19 @@ class NavBar extends Component {
     this.menu = [
       { name: 'Home', to: '/' },
       {
+        name: 'Who We Serve',
+        to: '/industries',
+        submenu: industries.map(industry => ({
+          name: industry.node.data.industry_name.text,
+          to: `/industries/${industry.node.uid}`,
+        })),
+      },
+      {
         name: 'Services',
         to: '/services',
         submenu: services.map(service => ({
           name: service.node.data.service_name.text,
           to: `/services/${service.node.uid}`,
-        })),
-      },
-      {
-        name: 'Industries',
-        to: '/industries',
-        submenu: industries.map(industry => ({
-          name: industry.node.data.industry_name.text,
-          to: `/industries/${industry.node.uid}`,
         })),
       },
       { name: 'Support', to: '/support' },
