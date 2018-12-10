@@ -60,7 +60,7 @@ const Card = ({
           ) : (
             <>
               Learn More
-              <HelperText>about {title}</HelperText>
+              <HelperText> about {title}</HelperText>
             </>
           )}
         </Button>
