@@ -10,6 +10,7 @@ const ContactSection = ({
   children,
   bg,
   id,
+  invert,
   ...props
 }) => {
   return (
@@ -24,11 +25,15 @@ const ContactSection = ({
             />
             {contact && (
               <ContactWrapper>
-                <IconTitle invert icon="phone" href="tel:888-90-Digital">
+                <IconTitle
+                  invert={invert}
+                  icon="phone"
+                  href="tel:888-90-Digital"
+                >
                   888-90-Digital
                 </IconTitle>
                 <IconTitle
-                  invert
+                  invert={invert}
                   icon="email"
                   href="mailto:info@digitalsystemsav.com"
                 >
@@ -49,6 +54,7 @@ const ContactSection = ({
 };
 ContactSection.defaultProps = {
   title: 'Get in Touch',
+  invert: true,
 };
 ContactSection.propTypes = {
   id: PropTypes.string,
@@ -58,6 +64,7 @@ ContactSection.propTypes = {
   children: PropTypes.node,
   contact: PropTypes.bool,
   bg: PropTypes.string,
+  invert: PropTypes.bool,
 };
 
 export { ContactSection };

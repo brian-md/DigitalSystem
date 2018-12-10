@@ -92,9 +92,11 @@ const Index = ({ data, location }) => (
     </Section>
     <ContactSection
       id="home"
-      title="Let Us Help"
-      subtitle="come on!"
-      description="Immerse yourself in art and experience movies like they were meant to be.Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque interdum luctus purus sit amet rhoncus. Vestibulum vitae consectetur eros, consequat aliquet erat."
+      title="Get Started"
+      subtitle="Schedule a Free On-Site Consultation"
+      description="Our technology specialist will personalize a solution based on your needs and feedback."
+      contact
+      invert={false}
     />
   </Layout>
 );

@@ -8,20 +8,17 @@ import { Hero, Layout, KeepExploring } from 'components';
 const NotFound = ({ data, location }) => (
   <Layout location={location.pathname}>
     <Hero
-      logo
-      title="Thank You for reaching out."
-      subtitle="One of our technology specialists will contact you within 48 hours!"
-      image={
-        data.prismicHomePage.data.hero_image.localFile.childImageSharp.fluid
-      }
+      title="Oops!  We can't find that page right now."
+      subtitle="Keep exploring, and let us know if you can't find what you're looking for."
+      image={data.notFoundImage.childImageSharp.fluid}
       primaryAction={{
         to: '/',
         desc: 'Go Home',
       }}
-      //   secondaryAction={{
-      //     onClick: this.context.router.history.goBack,
-      //     desc: 'Go Back',
-      //   }}
+      secondaryAction={{
+        to: '/contact',
+        desc: 'Contact Us',
+      }}
     />{' '}
     <KeepExploring />
   </Layout>
@@ -36,6 +33,13 @@ export default NotFound;
 
 export const query = graphql`
   query NotFoundQuery {
+    notFoundImage: file(relativePath: { eq: "notfound.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2500) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
     prismicHomePage {
       data {
         tagline {
