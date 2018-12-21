@@ -36,6 +36,7 @@ line-height: normal;
       outline: none;
       border: none;
       text-transform: uppercase;
+      letter-spacing: 1px;
       font-size: 0.9rem;
       border-radius: 2rem;
       padding: 0.625rem 1.5rem

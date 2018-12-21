@@ -17,7 +17,12 @@ const Wrapper = ({ to, href, children, ...props }) => {
 
 const IconButton = ({ to, href, ...props }) => {
   return to || href ? (
-    <Wrapper to={to} href={href} {...props}>
+    <Wrapper
+      to={to}
+      href={href}
+      target={href && to == undefined ? '_blank' : undefined}
+      {...props}
+    >
       <StyledIcon to={to} href={href} {...props} />
     </Wrapper>
   ) : (

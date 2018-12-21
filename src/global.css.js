@@ -4,6 +4,7 @@ import MEDIA from 'helpers/mediaTemplates';
 
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Dosis:200,400,700');
+/* @import url('https://fonts.googleapis.com/css?family=Krub:300,400,700'); */
 
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -53,6 +54,7 @@ export default createGlobalStyle`
 
   body {
     font-family: 'Dosis', sans-serif;;
+    /* font-family: 'Krub', sans-serif; */
     line-height: 1;
     font-size: 1.6rem;
     color: #000;
@@ -111,6 +113,7 @@ export default createGlobalStyle`
     color: ${accent};
     border: 1px solid #ddd;
     font-family: 'Dosis', sans-serif;
+
   }
 
   video {

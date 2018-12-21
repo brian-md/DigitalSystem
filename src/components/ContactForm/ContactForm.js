@@ -122,6 +122,7 @@ const ContactForm = ({ classes, twoColumn, id, industries }) => {
             <Button primary type="submit" size="large">
               Get Started
             </Button>
+            <p className="privacy">Digital Systems respects your privacy.</p>
           </ButtonWrapper>
         </FormWrapper>
       )}

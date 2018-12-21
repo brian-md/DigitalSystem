@@ -33,8 +33,14 @@ export const TwoColumn = styled.form`
 
 export const ButtonWrapper = styled.div`
   grid-area: button;
+  flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
+  .privacy {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.5;
+  }
 `;

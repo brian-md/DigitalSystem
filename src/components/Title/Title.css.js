@@ -22,6 +22,7 @@ export const Text = styled.span`
         return '1.75rem';
     }
   }};
+  letter-spacing: 1px;
   text-align: ${({ align }) => align};
   line-height: 1.2;
   text-transform: ${({ noCaps }) => (noCaps ? 'none' : 'uppercase')};

@@ -27,7 +27,7 @@ const Footer = ({ services, industries }) => (
         <li>
           <IconButton
             size="medium"
-            href="google.com"
+            href="https://www.facebook.com/digitalsystemsandintegration/"
             icon="facebook"
             aria-label="facebook"
           />
@@ -35,7 +35,7 @@ const Footer = ({ services, industries }) => (
         <li>
           <IconButton
             size="medium"
-            href="google.com"
+            href="https://www.linkedin.com/company/digital-systems-and-integration"
             icon="linkedin"
             aria-label="linkedin"
           />

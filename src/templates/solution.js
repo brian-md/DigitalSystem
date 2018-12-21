@@ -4,12 +4,12 @@ import { graphql } from 'gatsby';
 import {
   Section,
   ImageCard,
-  Title,
   Paragraph,
   Layout,
   DescriptionFeatureList,
   ImageCardGrid,
   ContactSection,
+  Hero,
 } from 'components';
 
 const Index = ({ data, location }) => {
@@ -40,7 +40,6 @@ const Index = ({ data, location }) => {
     <Layout
       location={location.pathname}
       pageTitle={solution_name.text}
-      stuckNav
       parents={[
         {
           slug: `/industries/${industry.document[0].uid}`,
@@ -48,15 +47,20 @@ const Index = ({ data, location }) => {
         },
       ]}
     >
+      <Hero
+        small
+        pullUp="-10rem"
+        title={solution_name.text}
+        image={main_image.localFile.childImageSharp.fluid}
+        subtitle={tagline.text}
+      />
       <Section>
-        <Title size="large" line as="h1">
-          {solution_name.text}
-        </Title>
-        <Paragraph size="medium">{tagline.text}</Paragraph>
         <ImageCard
-          image={main_image.localFile.childImageSharp.fluid}
+          responsiveImage
+          flip
           title={long_description_title.text}
           description={long_description.text}
+          image={main_image.localFile.childImageSharp.fluid}
         />
       </Section>
       <Section bg="purple" title={features_title.text} top bottom>
@@ -182,6 +186,9 @@ export const query = graphql`
             childImageSharp {
               fluid(maxWidth: 3800, maxHeight: 3800) {
                 ...GatsbyImageSharpFluid
+              }
+              fixed(width: 1024, height: 512) {
+                ...GatsbyImageSharpFixed
               }
             }
           }

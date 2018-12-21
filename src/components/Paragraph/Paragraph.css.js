@@ -3,6 +3,8 @@ import MEDIA from 'helpers/mediaTemplates';
 
 export const Text = styled.p`
   display: block;
+  letter-spacing: 1px;
+  word-spacing: 2px;
   font-weight: ${({ bold }) => (bold ? 900 : 100)};
   font-size: ${({ size }) => () => {
     switch (size) {
@@ -13,9 +15,9 @@ export const Text = styled.p`
       case 'medium':
         return '1.5rem';
       case 'small':
-        return '0.9rem';
+        return '1.05rem';
       default:
-        return '1rem';
+        return '1.2rem';
     }
   }};
   margin: 0;
@@ -38,9 +40,9 @@ export const Text = styled.p`
         case 'medium':
           return '1.3rem';
         case 'small':
-          return '0.9rem';
-        default:
           return '1rem';
+        default:
+          return '1.1rem';
       }
     }};
   `};
