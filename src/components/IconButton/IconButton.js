@@ -21,12 +21,13 @@ const IconButton = ({ to, href, ...props }) => {
       to={to}
       href={href}
       target={href && to == undefined ? '_blank' : undefined}
+      rel={href && to == undefined ? 'noopener' : undefined}
       {...props}
     >
-      <StyledIcon to={to} href={href} {...props} />
+      <StyledIcon {...props} />
     </Wrapper>
   ) : (
-    <StyledIcon to={to} href={href} {...props} />
+    <StyledIcon {...props} />
   );
 };
 
