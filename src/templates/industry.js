@@ -28,11 +28,14 @@ const Index = ({ data, location }) => {
     },
   } = data;
   return (
-    <Layout location={location.pathname} pageTitle={industry_name.text}>
+    <Layout
+      location={location.pathname}
+      pageTitle={`${industry_name.text} Solutions`}
+    >
       <Hero
         small
         pullUp="-10rem"
-        title={data.prismicIndustry.data.industry_name.text}
+        title={`${data.prismicIndustry.data.industry_name.text} Solutions`}
         image={main_image.localFile.childImageSharp.fluid}
         subtitle={tagline.text}
       />
