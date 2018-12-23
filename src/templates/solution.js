@@ -43,7 +43,7 @@ const Index = ({ data, location }) => {
       parents={[
         {
           slug: `/industries/${industry.document[0].uid}`,
-          name: `${industry.document[0].data.industry_name.text}`,
+          name: `${industry.document[0].data.industry_name.text} Solutions`,
         },
       ]}
     >
