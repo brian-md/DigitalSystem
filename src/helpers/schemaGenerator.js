@@ -61,7 +61,7 @@ export default ({
       parents.map((parent, i) => ({
         '@type': 'ListItem',
         position: i + 2,
-        item: { '@id': siteUrl + parent.slug },
+        item: { '@id': siteUrl + parent.slug, name: parent.name },
       }))
     );
     itemListElement.push({
