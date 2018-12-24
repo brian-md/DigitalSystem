@@ -119,6 +119,7 @@ const ContactForm = ({ classes, twoColumn, id, industries }) => {
           </p>
 
           <ButtonWrapper>
+            <div data-netlify-recaptcha="true" />
             <Button primary type="submit" size="large">
               Get Started
             </Button>
