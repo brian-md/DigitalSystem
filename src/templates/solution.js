@@ -46,7 +46,7 @@ const Index = ({ data, location }) => {
       location={location.pathname}
       services={[
         {
-          name: solution_name,
+          name: solution_name.text,
           description: long_description.text,
           image: {
             url: main_image.localFile.childImageSharp.fixed.src,

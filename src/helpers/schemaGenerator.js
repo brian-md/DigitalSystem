@@ -101,6 +101,16 @@ export default ({
       telephone: '888-90-Digital',
     },
     alternateName: 'Digital Systems',
+    image: [
+      `${siteUrl}/logo.png`,
+      {
+        '@type': 'ImageObject',
+        width: 3608,
+        url: `${siteUrl}/logo.png`,
+        height: 1458,
+        '@id': `${siteUrl}/logo.png`,
+      },
+    ],
     description:
       'We design, install, and service audio-video and other technology systems for homes and businesses in the Chicagoland area.',
     name: 'Digital Systems & Integration',
