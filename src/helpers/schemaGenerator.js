@@ -109,6 +109,11 @@ export default ({
         '@id': `${siteUrl}/logo.png`,
       },
     ],
+    sameAs: [
+      'https://www.facebook.com/digitalsystemsandintegration/',
+      'https://www.linkedin.com/company/digital-systems-and-integration/',
+      'https://twitter.com/DigSysInt',
+    ],
     description:
       'We design, install, and service audio-video and other technology systems for homes and businesses in the Chicagoland area.',
     name: 'Digital Systems & Integration',
