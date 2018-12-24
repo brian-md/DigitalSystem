@@ -13,15 +13,12 @@ export const Wrapper = styled.div`
 
 export const ContactWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-evenly;
   max-width: 70rem;
   margin: auto;
   span {
     text-align: left;
   }
-  ${MEDIA.TABLET`
-  flex-direction: column;
-  align-items: center;
-`};
 `;

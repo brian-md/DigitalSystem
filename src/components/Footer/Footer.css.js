@@ -141,6 +141,10 @@ export const NavList = styled.div`
       margin-bottom: 0;
     }
   `};
+  margin-right: 0.5rem;
+  &:last-child {
+    margin-right: 0;
+  }
 `;
 
 export const Copyright = styled.div`
