@@ -117,6 +117,7 @@ export const query = graphql`
         }
         services_tagline {
           html
+          text
         }
         services_title {
           text

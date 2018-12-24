@@ -10,6 +10,7 @@ const Head = ({
   siteDescription,
   siteUrl,
   pageTitle,
+  pageDescription,
   pageTitleFull = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle,
   themeColor,
   social,
@@ -17,6 +18,7 @@ const Head = ({
   location,
   canonical = siteUrl + (location.pathname || ''),
   parents,
+  services,
 }) => (
   <Helmet>
     <html lang="en" />
@@ -32,9 +34,15 @@ const Head = ({
     <meta content={pageTitleFull} name="twitter:title" />
     <title>{pageTitleFull}</title>
 
-    <meta content={siteDescription} name="description" />
-    <meta content={siteDescription} property="og:description" />
-    <meta content={siteDescription} name="twitter:description" />
+    <meta content={pageDescription || siteDescription} name="description" />
+    <meta
+      content={pageDescription || siteDescription}
+      property="og:description"
+    />
+    <meta
+      content={pageDescription || siteDescription}
+      name="twitter:description"
+    />
 
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta
@@ -161,6 +169,7 @@ const Head = ({
           siteTitle,
           pageTitleFull,
           parents,
+          services,
         })
       )}
     </script>
@@ -180,6 +189,8 @@ Head.propTypes = {
   pageTitleFull: PropTypes.string,
   location: PropTypes.object.isRequired,
   parents: PropTypes.array,
+  services: PropTypes.array,
+  pageDescription: PropTypes.string,
 };
 
 const HeadWithQuery = props => (

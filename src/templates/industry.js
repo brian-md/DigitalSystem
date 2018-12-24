@@ -26,11 +26,16 @@ const Index = ({ data, location }) => {
         contact_description,
       },
     },
+    site: {
+      siteMetadata: { siteUrl },
+    },
   } = data;
   return (
     <Layout
       location={location.pathname}
       pageTitle={`${industry_name.text} Solutions`}
+      imageUrl={`${siteUrl}${main_image.localFile.childImageSharp.fixed.src}`}
+      pageDescription={long_description.text}
     >
       <Hero
         small
@@ -133,6 +138,9 @@ export const query = graphql`
               fluid(maxWidth: 3800, maxHeight: 3800) {
                 ...GatsbyImageSharpFluid
               }
+              fixed(width: 1024, height: 512) {
+                ...GatsbyImageSharpFixed
+              }
             }
           }
         }
@@ -193,6 +201,7 @@ export const query = graphql`
     site {
       siteMetadata {
         siteTitle
+        siteUrl
       }
     }
   }

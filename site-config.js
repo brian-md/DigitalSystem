@@ -4,7 +4,7 @@ module.exports = {
   siteTitle: 'Digital Systems and Integration',
   siteTitleShort: 'DSIAV',
   siteDescription:
-    "We are an Audio/Video and Technology integrator serving Chicagoland's luxury homes and businesses.",
+    'We design, install, and service audio-video and other technology systems for homes and businesses in the Chicagoland area.',
   siteUrl: 'https://www.digitalsystemsav.com',
   themeColor: '#000',
   backgroundColor: '#fff',

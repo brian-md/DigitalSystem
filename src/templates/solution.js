@@ -35,10 +35,26 @@ const Index = ({ data, location }) => {
         contact_description_title,
       },
     },
+    site: {
+      siteMetadata: { siteUrl },
+    },
   } = data;
   return (
     <Layout
+      imageUrl={`${siteUrl}${main_image.localFile.childImageSharp.fixed.src}`}
+      pageDescription={long_description.text}
       location={location.pathname}
+      services={[
+        {
+          name: solution_name,
+          description: long_description.text,
+          image: {
+            url: main_image.localFile.childImageSharp.fixed.src,
+            width: main_image.localFile.childImageSharp.fixed.width,
+            height: main_image.localFile.childImageSharp.fixed.height,
+          },
+        },
+      ]}
       pageTitle={solution_name.text}
       parents={[
         {
@@ -327,6 +343,7 @@ export const query = graphql`
     site {
       siteMetadata {
         siteTitle
+        siteUrl
       }
     }
   }
