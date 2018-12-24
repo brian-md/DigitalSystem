@@ -16,15 +16,13 @@ export default ({
   let schema = [];
 
   // Website schema
-  schema.push([
-    {
-      '@context': 'http://schema.org',
-      '@type': 'WebSite',
-      url: canonical,
-      name: pageTitle || siteTitle,
-      alternateName: pageTitleFull,
-    },
-  ]);
+  schema.push({
+    '@context': 'http://schema.org',
+    '@type': 'WebSite',
+    url: canonical,
+    name: pageTitle || siteTitle,
+    alternateName: pageTitleFull,
+  });
   // Breadcrumbs for 1st level subpage
   if (isSubPage) {
     schema.push({
