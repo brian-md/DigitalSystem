@@ -38,6 +38,18 @@ const Index = ({ data, location }) => {
       pageTitle={service_name.text}
       imageUrl={`${siteUrl}${main_image.localFile.childImageSharp.fixed.src}`}
       pageDescription={long_description.text}
+      services={[
+        {
+          name: service_name.text,
+          description: long_description.text,
+          image: {
+            url: main_image.localFile.childImageSharp.fixed.src,
+            width: main_image.localFile.childImageSharp.fixed.width,
+            height: main_image.localFile.childImageSharp.fixed.height,
+          },
+          slug: `/services/#${uid}`,
+        },
+      ]}
     >
       <Hero
         small

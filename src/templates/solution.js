@@ -53,6 +53,7 @@ const Index = ({ data, location }) => {
             width: main_image.localFile.childImageSharp.fixed.width,
             height: main_image.localFile.childImageSharp.fixed.height,
           },
+          slug: `/industries/${industry.document[0].uid}/#${uid}`,
         },
       ]}
       pageTitle={solution_name.text}

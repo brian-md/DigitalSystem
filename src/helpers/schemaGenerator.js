@@ -164,7 +164,7 @@ export default ({
             : undefined,
         name: service.name,
         url: canonical,
-        '@id': canonical,
+        '@id': service.slug ? `${siteUrl}${service.slug}` : canonical,
       }))
     );
   }
