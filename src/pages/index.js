@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 // import Tabber from 'containers/tabber';
 // import ImageWings from 'components/imageWings';
-import { ServiceCardList } from 'containers';
 import {
   Hero,
   Paragraph,
   ImageWingTabs,
   Layout,
+  ImageCard,
   Section,
   IconTitle,
   Grid,
@@ -53,14 +53,18 @@ const Index = ({ data, location }) => (
       <Paragraph html>
         {data.prismicHomePage.data.services_tagline.html}
       </Paragraph>
-      <ServiceCardList
-        services={data.allPrismicService.edges}
-        spotlight={[
-          data.prismicHomePage.data.service_spotlight_1.document[0].uid,
-          data.prismicHomePage.data.service_spotlight_2.document[0].uid,
-          data.prismicHomePage.data.service_spotlight_3.document[0].uid,
-        ]}
-      />
+      <Grid flex style={{ justifyContent: 'stretch' }}>
+        {data.allPrismicService.edges.map((service, i) => (
+          <ImageCard
+            key={service.node.uid}
+            flip={i % 2 !== 0}
+            image={service.node.data.main_image.localFile.childImageSharp.fluid}
+            title={service.node.data.service_name.text}
+            description={service.node.data.short_description.text}
+            cta={{ to: `/services/${service.node.uid}` }}
+          />
+        ))}
+      </Grid>
     </Section>
     <Section title="Who We Serve" bg="purple" bottom top>
       <ImageWingTabs

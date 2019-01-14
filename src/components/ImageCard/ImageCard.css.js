@@ -21,12 +21,12 @@ export const Container = styled.div`
   opacity: ${({ visible }) => (visible ? '1' : '0')};
   display: ${({ visible, stacked }) =>
     visible ? (stacked ? 'flex' : 'grid') : 'none'};
-  grid-gap: 6rem;
-  grid-template-columns: ${({ flip }) => (flip ? '1fr 30rem' : '30rem 1fr')};
+  grid-gap: 4rem;
+  grid-template-columns: ${({ flip }) => (flip ? '1fr 22rem' : '22rem 1fr')};
   grid-template-rows: 1fr;
   grid-template-areas: ${({ flip }) =>
     // eslint-disable-next-line
-    flip ? '\'content image\'' : '\'image content\''};
+    flip ? "'content image'" : "'image content'"};
   align-self: stretch;
   > div:first-child {
     align-self: center;
@@ -43,7 +43,7 @@ export const Container = styled.div`
     }
   `};
   ${MEDIA.LARGE`
-  grid-template-columns: ${({ flip }) => (flip ? '1fr 20rem' : '20rem 1fr')};
+  grid-template-columns: ${({ flip }) => (flip ? '1fr 12rem' : '12rem 1fr')};
   >div:first-child {
         width: 20rem;
         height: 20rem;

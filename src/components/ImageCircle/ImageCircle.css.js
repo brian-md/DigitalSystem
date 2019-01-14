@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import MEDIA from 'helpers/mediaTemplates';
 const sizes = {
-  default: { all: '30rem', desktop: '20rem', phone: '15rem' },
+  default: { all: '22rem', desktop: '12rem', phone: '11rem' },
   small: { all: '10rem' },
   medium: { all: '20rem', desktop: '15rem', phone: '10rem' },
 };
