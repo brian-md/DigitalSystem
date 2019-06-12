@@ -110,5 +110,11 @@ module.exports = {
         // cookieDomain: 'digitalsystemsav.com',
       },
     },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: 'GTM-WWGBCBF',
+      },
+    },
   ],
 };
