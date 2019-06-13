@@ -110,6 +110,7 @@ NavBar.propTypes = {
   stuck: PropTypes.bool,
   data: PropTypes.array,
   location: PropTypes.string,
+  industries: PropTypes.array,
 };
 
 const NavBarWithData = props => (

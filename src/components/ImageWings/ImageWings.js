@@ -96,6 +96,7 @@ ImageWings.propTypes = {
   icon: PropTypes.string,
   maxFeatures: PropTypes.number,
   title: PropTypes.string,
+  showTitle: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
 };
 
 export { ImageWings };

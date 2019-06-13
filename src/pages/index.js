@@ -17,20 +17,16 @@ import {
 } from 'components';
 
 const Index = ({ data, location }) => (
-  <Layout location={location.pathname}>
+  <Layout
+    location={location.pathname}
+    pageTitle={data.prismicHomePage.data.seo_title.text}
+    pageDescription={data.prismicHomePage.data.seo_description.text}
+  >
     <Hero
       title={data.prismicHomePage.data.tagline.html}
       image={
         data.prismicHomePage.data.hero_image.localFile.childImageSharp.fluid
       }
-      // primaryAction={{
-      //   to: '/contact',
-      //   desc: 'Get Started',
-      // }}
-      // secondaryAction={{
-      //   to: '/contact',
-      //   desc: 'Watch Video',
-      // }}
     >
       <Inner>
         <Grid flex size={15}>
@@ -84,9 +80,7 @@ const Index = ({ data, location }) => (
               title: solution.node.data.solution_name.text,
               description: solution.node.data.short_description.text,
               cta: {
-                to: `/industries/${
-                  solution.node.data.industry.document[0].uid
-                }/${solution.node.uid}`,
+                to: `/industries/${solution.node.data.industry.document[0].uid}/${solution.node.uid}`,
               },
             })),
             cta: { to: `/industries/${industry.node.uid}` },
@@ -116,6 +110,12 @@ export const query = graphql`
   query HomepageQuery {
     prismicHomePage {
       data {
+        seo_title {
+          text
+        }
+        seo_description {
+          text
+        }
         tagline {
           html
         }

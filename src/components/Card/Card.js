@@ -73,7 +73,11 @@ Card.propTypes = {
   alt: PropTypes.string,
   flip: PropTypes.bool,
   small: PropTypes.bool,
-  invert: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+  invert: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   visible: PropTypes.bool,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
