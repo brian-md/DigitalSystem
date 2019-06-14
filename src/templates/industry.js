@@ -16,6 +16,8 @@ const Index = ({ data, location }) => {
     prismicIndustry: {
       uid,
       data: {
+        seo_title,
+        seo_description,
         industry_name,
         tagline,
         long_description_title,
@@ -33,9 +35,9 @@ const Index = ({ data, location }) => {
   return (
     <Layout
       location={location.pathname}
-      pageTitle={`${industry_name.text} Solutions`}
+      pageTitle={seo_title.text || `${industry_name.text} Solutions`}
+      pageDescription={seo_description.text || long_description.text}
       imageUrl={`${siteUrl}${main_image.localFile.childImageSharp.fixed.src}`}
-      pageDescription={long_description.text}
     >
       <Hero
         small
@@ -66,9 +68,7 @@ const Index = ({ data, location }) => {
               image:
                 solution.node.data.main_image.localFile.childImageSharp.fluid,
               cta: {
-                to: `/industries/${
-                  solution.node.data.industry.document[0].uid
-                }/${solution.node.uid}`,
+                to: `/industries/${solution.node.data.industry.document[0].uid}/${solution.node.uid}`,
               },
             }))}
         />
@@ -108,6 +108,12 @@ export const query = graphql`
     prismicIndustry(uid: { eq: $slug }) {
       uid
       data {
+        seo_title {
+          text
+        }
+        seo_description {
+          text
+        }
         industry_name {
           text
         }

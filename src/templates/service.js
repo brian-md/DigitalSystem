@@ -16,6 +16,8 @@ const Index = ({ data, location }) => {
     prismicService: {
       uid,
       data: {
+        seo_title,
+        seo_description,
         service_name,
         tagline,
         long_description_title,
@@ -35,9 +37,9 @@ const Index = ({ data, location }) => {
   return (
     <Layout
       location={location.pathname}
-      pageTitle={service_name.text}
+      pageTitle={seo_title.text || service_name.text}
       imageUrl={`${siteUrl}${main_image.localFile.childImageSharp.fixed.src}`}
-      pageDescription={long_description.text}
+      pageDescription={seo_description.text || long_description.text}
       services={[
         {
           name: service_name.text,
@@ -130,6 +132,12 @@ export const query = graphql`
     prismicService(uid: { eq: $slug }) {
       uid
       data {
+        seo_title {
+          text
+        }
+        seo_description {
+          text
+        }
         service_name {
           text
         }

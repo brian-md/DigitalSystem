@@ -39,6 +39,7 @@ IconTitle.propTypes = {
   to: PropTypes.string,
   href: PropTypes.string,
   onClick: PropTypes.func,
+  invert: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
 };
 
 export { IconTitle };

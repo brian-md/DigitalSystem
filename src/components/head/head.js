@@ -11,7 +11,7 @@ const Head = ({
   siteUrl,
   pageTitle,
   pageDescription,
-  pageTitleFull = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle,
+  pageTitleFull = pageTitle ? pageTitle : siteTitle,
   themeColor,
   social,
   imageUrl,

@@ -17,6 +17,8 @@ const Index = ({ data, location }) => {
     prismicSolution: {
       uid,
       data: {
+        seo_title,
+        seo_description,
         solution_name,
         tagline,
         main_image,
@@ -42,7 +44,7 @@ const Index = ({ data, location }) => {
   return (
     <Layout
       imageUrl={`${siteUrl}${main_image.localFile.childImageSharp.fixed.src}`}
-      pageDescription={long_description.text}
+      pageDescription={seo_description.text || long_description.text}
       location={location.pathname}
       services={[
         {
@@ -56,7 +58,7 @@ const Index = ({ data, location }) => {
           slug: `/industries/${industry.document[0].uid}/#${uid}`,
         },
       ]}
-      pageTitle={solution_name.text}
+      pageTitle={seo_title.text || solution_name.text}
       parents={[
         {
           slug: `/industries/${industry.document[0].uid}`,
@@ -127,9 +129,7 @@ const Index = ({ data, location }) => {
               image:
                 solution.node.data.main_image.localFile.childImageSharp.fluid,
               cta: {
-                to: `/industries/${
-                  solution.node.data.industry.document[0].uid
-                }/${solution.node.uid}`,
+                to: `/industries/${solution.node.data.industry.document[0].uid}/${solution.node.uid}`,
               },
             }))}
         />
@@ -174,6 +174,12 @@ export const query = graphql`
     prismicSolution(uid: { eq: $slug }) {
       uid
       data {
+        seo_title {
+          text
+        }
+        seo_description {
+          text
+        }
         solution_name {
           text
         }

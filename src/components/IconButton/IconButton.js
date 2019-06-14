@@ -15,6 +15,12 @@ const Wrapper = ({ to, href, children, ...props }) => {
   );
 };
 
+Wrapper.propTypes = {
+  to: PropTypes.string,
+  href: PropTypes.string,
+  children: PropTypes.node,
+};
+
 const IconButton = ({ to, href, ...props }) => {
   return to || href ? (
     <Wrapper
