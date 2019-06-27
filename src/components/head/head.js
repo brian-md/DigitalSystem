@@ -33,7 +33,10 @@ const Head = ({
     <meta content={pageTitleFull} property="og:title" />
     <meta content={pageTitleFull} name="twitter:title" />
     <title>{pageTitleFull}</title>
-
+    <meta
+      name="google-site-verification"
+      content="2g6OsLnbuQT22iNkcWSQhkpdI3yKJ6Oftpq_tbIEkiE"
+    />
     <meta content={pageDescription || siteDescription} name="description" />
     <meta
       content={pageDescription || siteDescription}
