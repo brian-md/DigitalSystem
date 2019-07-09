@@ -4,16 +4,17 @@ import { graphql } from 'gatsby';
 // import Tabber from 'containers/tabber';
 // import ImageWings from 'components/imageWings';
 import {
-  Hero,
-  Paragraph,
-  ImageWingTabs,
-  Layout,
-  ImageCard,
-  Section,
-  IconTitle,
-  Grid,
-  Inner,
   ContactSection,
+  Grid,
+  Hero,
+  IconTitle,
+  ImageCard,
+  ImageWingTabs,
+  Inner,
+  Layout,
+  Paragraph,
+  Section,
+  Title,
 } from 'components';
 
 const Index = ({ data, location }) => (
@@ -87,6 +88,14 @@ const Index = ({ data, location }) => (
           };
         })}
       />
+      <div style={{ marginTop: '5rem' }}>
+        <Title size="medium" as="h2" line center invert>
+          {data.prismicHomePage.data.outro_title.text}
+        </Title>
+        <Paragraph html>
+          {data.prismicHomePage.data.outro_description.html}
+        </Paragraph>
+      </div>
     </Section>
     <ContactSection
       id="home"
@@ -110,6 +119,12 @@ export const query = graphql`
   query HomepageQuery {
     prismicHomePage {
       data {
+        outro_title {
+          text
+        }
+        outro_description {
+          html
+        }
         seo_title {
           text
         }
