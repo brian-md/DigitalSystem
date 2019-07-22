@@ -4,47 +4,43 @@ import { graphql } from 'gatsby';
 
 import {
   Title,
-  Paragraph,
   Layout,
   Section,
   ContactSection,
+  ImageCardGrid,
   Card,
-  ImageCard,
   KeepExploring,
   ContactInfo,
 } from 'components';
 
-const AboutUsPage = ({ data, location }) => {
+const BlogPage = ({ data, location }) => {
+  // eslint-disable-next-line
+  console.log(data.allPrismicBlogPost);
   const {
     prismicAboutUs: {
-      data: {
-        hero_image,
-        title,
-        subtitle,
-        contact_title,
-        contact_description,
-        description_title,
-        description,
-      },
+      data: { contact_title, contact_description },
     },
+    allPrismicBlogPost: { edges: posts },
   } = data;
   return (
     <Layout location={location.pathname} pageTitle="About Us" stuckNav>
       <Section>
         <Title size="large" line as="h1">
-          {title.text}
+          Blog
         </Title>
-        <Paragraph center size="medium">
-          {subtitle.text}
-        </Paragraph>
-        <ImageCard
-          stacked
-          image={hero_image.localFile.childImageSharp.fluid}
-          title={description_title.text}
-          description={description.html}
-          html
+        <ImageCardGrid
+          features={posts.map(post => ({
+            title: post.node.data.title.text,
+            image: post.node.data.main_image.localFile.childImageSharp.fluid,
+            description: `${post.node.data.article.text.substring(0, 150)}…`,
+            cta: {
+              to: `/blog/${post.node.uid}`,
+              text: 'Read More',
+            },
+          }))}
         />
       </Section>
+
       <KeepExploring bg="grey" top bottom />
 
       <ContactSection title="Get in Touch" id="about-us">
@@ -61,34 +57,34 @@ const AboutUsPage = ({ data, location }) => {
   );
 };
 
-AboutUsPage.propTypes = {
+BlogPage.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object,
 };
 
-export default AboutUsPage;
+export default BlogPage;
 
 export const query = graphql`
-  query AboutUsQuery {
+  query BlogQuery {
     allPrismicBlogPost(sort: { order: DESC, fields: data___date }) {
       edges {
         node {
           data {
             date(formatString: "dddd, MMMM Do YYYY")
             article {
-              html
+              text
             }
             main_image {
-              url
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000, maxHeight: 1000) {
+                    ...GatsbyImageSharpFluid_noBase64
+                  }
+                }
+              }
             }
             title {
               text
-            }
-            gallery {
-              image {
-                url
-              }
-              caption
             }
           }
           uid

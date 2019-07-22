@@ -90,10 +90,32 @@ exports.createPages = async ({ graphql, actions }) => {
 
   solutions.data.allPrismicSolution.edges.forEach(edge => {
     createPage({
-      path: `/industries/${edge.node.data.industry.document[0].uid}/${
-        edge.node.uid
-      }`,
+      path: `/industries/${edge.node.data.industry.document[0].uid}/${edge.node.uid}`,
       component: solutionTemplate,
+      context: {
+        slug: edge.node.uid,
+      },
+    });
+  });
+
+  const blogPosts = await graphql(`
+    {
+      allPrismicBlogPost {
+        edges {
+          node {
+            uid
+          }
+        }
+      }
+    }
+  `);
+
+  const blogPostTemplate = path.resolve('./src/templates/post.js');
+
+  blogPosts.data.allPrismicBlogPost.edges.forEach(edge => {
+    createPage({
+      path: `/blog/${edge.node.uid}`,
+      component: blogPostTemplate,
       context: {
         slug: edge.node.uid,
       },

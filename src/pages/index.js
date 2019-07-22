@@ -47,7 +47,7 @@ const Index = ({ data, location }) => (
       </Inner>
     </Hero>
     <Section title={data.prismicHomePage.data.services_title.text}>
-      <Paragraph html>
+      <Paragraph html center>
         {data.prismicHomePage.data.services_tagline.html}
       </Paragraph>
       <Grid flex style={{ justifyContent: 'stretch' }}>
@@ -89,10 +89,10 @@ const Index = ({ data, location }) => (
         })}
       />
       <div style={{ marginTop: '5rem' }}>
-        <Title size="medium" as="h2" line center invert>
+        <Title as="h2" line center invert>
           {data.prismicHomePage.data.outro_title.text}
         </Title>
-        <Paragraph html>
+        <Paragraph html center>
           {data.prismicHomePage.data.outro_description.html}
         </Paragraph>
       </div>
