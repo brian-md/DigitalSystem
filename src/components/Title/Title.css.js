@@ -72,4 +72,7 @@ export const Text = styled.span`
       }
     }};
   `};
+  a {
+    text-decoration: none;
+  }
 `;

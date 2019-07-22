@@ -4,8 +4,16 @@ import PropTypes from 'prop-types';
 import { Wrapper } from './IconTitle.css';
 import { Icon, Title } from 'components';
 
-const IconTitle = ({ icon, children, onClick, stacked, ...props }) => {
-  const { invert, iconSize, titleSize, to, href } = props;
+const IconTitle = ({
+  icon,
+  children,
+  onClick,
+  stacked,
+  to,
+  href,
+  ...props
+}) => {
+  const { invert, iconSize, titleSize } = props;
   // const IconElement = to || href ? IconButton : Icon;
   return (
     <Wrapper

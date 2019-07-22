@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import { Text } from './Title.css';
 
 const Title = ({
@@ -10,8 +11,19 @@ const Title = ({
   line,
   align,
   invert,
+  to,
+  href,
   html,
 }) => {
+  const TitleNode = to ? (
+    <Link to={to}>{children}</Link>
+  ) : href ? (
+    <a href={href} rel="noopener">
+      {children}
+    </a>
+  ) : (
+    children
+  );
   return html ? (
     <Text
       as={as}
@@ -31,7 +43,7 @@ const Title = ({
       noCaps={noCaps}
       invert={invert}
     >
-      {children}
+      {TitleNode}
     </Text>
   );
 };
@@ -45,6 +57,8 @@ Title.propTypes = {
   invert: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   html: PropTypes.bool,
   noCaps: PropTypes.bool,
+  to: PropTypes.string,
+  href: PropTypes.string,
 };
 
 Title.defaultProps = {
