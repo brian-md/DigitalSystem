@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { Hero, Layout, Section, ContactSection, Paragraph } from 'components';
+import {
+  Gallery,
+  Layout,
+  Section,
+  ContactSection,
+  Paragraph,
+  Title,
+} from 'components';
 
 const Post = ({ data, location }) => {
   const {
     prismicBlogPost: {
       uid,
-      data: { title, date, main_image, article },
+      data: { title, date, main_image, caption, gallery, article },
     },
     site: {
       siteMetadata: { siteUrl },
@@ -15,20 +22,28 @@ const Post = ({ data, location }) => {
   } = data;
   return (
     <Layout
+      stuckNav
       location={location.pathname}
       pageTitle={title.text}
       pageDescription={article.text.substring(0, 300)}
       imageUrl={`${siteUrl}${main_image.localFile.childImageSharp.fixed.src}`}
     >
-      <Hero
-        small
-        pullUp="-10rem"
-        title={title.text}
-        image={main_image.localFile.childImageSharp.fluid}
-        subtitle={`Published ${date}`}
-      />
-
       <Section>
+        <Title size="large" line as="h1">
+          {title.text}
+        </Title>
+        <Paragraph center size="medium">
+          Published {date}
+        </Paragraph>
+        <Gallery
+          items={[{ image: main_image.localFile, title: caption.text }].concat(
+            gallery.map(({ image, caption }) => ({
+              image: image.localFile,
+              title: caption,
+            }))
+          )}
+        />
+
         <Paragraph center={false} html as="div">
           {article.html}
         </Paragraph>
@@ -55,10 +70,13 @@ export const query = graphql`
           html
           text
         }
+        caption {
+          text
+        }
         main_image {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 3800, maxHeight: 3800) {
+              fluid(maxWidth: 1500, maxHeight: 927) {
                 ...GatsbyImageSharpFluid
               }
               fixed(width: 1024, height: 512) {
@@ -74,7 +92,7 @@ export const query = graphql`
           image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 3800, maxHeight: 3800) {
+                fluid(maxWidth: 1500, maxHeight: 927) {
                   ...GatsbyImageSharpFluid
                 }
               }

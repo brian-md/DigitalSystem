@@ -23,7 +23,7 @@ const BlogPage = ({ data, location }) => {
     allPrismicBlogPost: { edges: posts },
   } = data;
   return (
-    <Layout location={location.pathname} pageTitle="About Us" stuckNav>
+    <Layout location={location.pathname} pageTitle="Blog" stuckNav>
       <Section>
         <Title size="large" line as="h1">
           Blog
