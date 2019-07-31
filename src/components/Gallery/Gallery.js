@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Item from './item';
 import { Container, Wrapper } from './Gallery.css';
-import { Paragraph } from 'components';
 
 const Gallery = ({ items }) => {
   const [mainImage, setMainImage] = useState(0);
@@ -10,11 +9,6 @@ const Gallery = ({ items }) => {
     <Wrapper>
       <div className="main">
         <Item className="main" {...items[mainImage]} />
-        {items[mainImage].title && (
-          <Paragraph center size="medium">
-            {items[mainImage].title}
-          </Paragraph>
-        )}
       </div>
       <Container role="listbox">
         {items.length > 0 &&

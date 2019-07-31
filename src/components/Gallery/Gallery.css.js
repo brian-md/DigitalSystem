@@ -20,7 +20,7 @@ export const Container = styled.div`
   }
   @supports (display: grid) {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     align-items: start;
     grid-auto-rows: min-content;
     grid-gap: 1rem;
@@ -40,7 +40,8 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  margin-bottom: 2rem;
   ${MEDIA.TABLET`
     flex-direction: column;
     `};
