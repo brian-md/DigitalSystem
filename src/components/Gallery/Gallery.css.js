@@ -27,11 +27,17 @@ export const Container = styled.div`
     & > div {
       width: 100%;
     }
+    padding: 0.4rem;
   }
 
+  ${MEDIA.TABLET`
+  grid-template-columns: repeat(4, 1fr);
+
+  `}
   & > * {
-    border: 2px solid transparent;
-    padding: 0.4rem;
+    /* border: 2px solid transparent; */
+    /* padding: 0.4rem; */
+    box-sizing: border-box;
   }
   & > .selected {
     border-color: brandLight;
@@ -42,8 +48,12 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
+  padding-left: 12rem;
+  padding-right: 12rem;
   ${MEDIA.TABLET`
     flex-direction: column;
+    padding-left: 2rem;
+  padding-right: 2rem;
     `};
   .main {
     flex: 1.618;

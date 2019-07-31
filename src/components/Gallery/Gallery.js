@@ -16,7 +16,7 @@ const Gallery = ({ items }) => {
             <div
               role="option"
               aria-selected={mainImage === i ? 'true' : 'false'}
-              className={mainImage === i && 'selected'}
+              className={mainImage === i ? 'selected' : ''}
               key={i}
               onClick={() => setMainImage(i)}
               onKeyPress={() => setMainImage(i)}
