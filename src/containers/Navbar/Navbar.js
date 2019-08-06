@@ -34,6 +34,7 @@ class NavBar extends Component {
       },
       { name: 'Support', to: '/support' },
       { name: 'About Us', to: '/about-us' },
+      { name: 'Blog', to: '/blog' },
       { name: 'Contact', to: '/contact' },
     ];
   }

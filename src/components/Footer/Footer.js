@@ -64,13 +64,18 @@ const Footer = ({ services, industries }) => (
               </Link>
             </li>
             <li role="none">
+              <Link role="menuitem" to="/support">
+                Support
+              </Link>
+            </li>
+            <li role="none">
               <Link role="menuitem" to="/about-us">
                 About Us
               </Link>
             </li>
             <li role="none">
-              <Link role="menuitem" to="/support">
-                Support
+              <Link role="menuitem" to="/blog">
+                Blog
               </Link>
             </li>
             <li role="none">
