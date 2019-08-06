@@ -38,7 +38,7 @@ const ImageWings = props => {
           fixed={fixedImage}
           style={{ gridArea: 'image' }}
         />
-        {description && <Paragraph>{description}</Paragraph>}
+        {description && <Paragraph center>{description}</Paragraph>}
         {cta && (
           <Button invert={invert} size="small" {...cta}>
             {cta.text ? (

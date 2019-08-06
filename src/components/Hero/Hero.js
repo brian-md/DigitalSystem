@@ -61,7 +61,9 @@ const HeroContents = ({
     </AnimatedContainer>
     {subtitle && (
       <AnimatedContainer>
-        <Paragraph size="medium">{subtitle}</Paragraph>
+        <Paragraph center size="medium">
+          {subtitle}
+        </Paragraph>
       </AnimatedContainer>
     )}
     {children && <AnimatedContainer>{children}</AnimatedContainer>}

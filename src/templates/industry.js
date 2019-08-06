@@ -50,8 +50,9 @@ const Index = ({ data, location }) => {
         <ImageCard
           responsiveImage
           flip
+          html
           title={long_description_title.text}
-          description={long_description.text}
+          description={long_description.html}
           image={main_image.localFile.childImageSharp.fluid}
         />
       </Section>
@@ -127,7 +128,7 @@ export const query = graphql`
           text
         }
         long_description {
-          text
+          html
         }
         contact_title {
           text
